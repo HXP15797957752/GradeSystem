@@ -78,7 +78,7 @@
 				else{
 				/* ajax请求 */
 				$.ajax({
-					url : "${pageContext.request.contextPath}/user/login.do",
+					url : "user/login.do",
 					type : "post",
 					data : {
 						"userName":userName,
@@ -92,13 +92,13 @@
 								 area:['230px', '70px'],
 								 time: 2000,
 								}); 
-							setimeOut(window.location.href = "${pageContext.request.contextPath}/userlogin.html",2000)
+							setimeOut(window.location.href = "userlogin.html",2000)
 						
 						/* 	setTimeout(,5000); */
 					    
 			
 						} else if (data != null && data == 'user/index.jsp'){
-							window.location.href = "${pageContext.request.contextPath}/user/index.jsp";
+							window.location.href = "user/index.jsp";
 							
 						}
 					}
