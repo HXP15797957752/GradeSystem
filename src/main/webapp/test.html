@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+function changeEdit()
+{
+var B=document.getElementById('willChange');
+var text=B.innerHTML;
+B.innerHTML='<input value='+text+'></input>';
+}
+</script>
+</head>
+<body>
+<table>
+<tr>
+<td>
+<B id='willChange'>将要变成编辑状态</B>
+</td>
+<td>
+</td> <input type='button' value='点我' onclick='changeEdit()'></input>
+</tr>
+</table>
+</body>
+</html>
