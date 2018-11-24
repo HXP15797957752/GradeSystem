@@ -46,9 +46,6 @@ public class UserController {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-		/*	request.setAttribute("user", user);
-			request.setAttribute("errorMsg", "用户名密码错误");*/
-		/*	request.getSession().setAttribute("erroruser",user );*/
 			return "userlogin";
 			
 		}
