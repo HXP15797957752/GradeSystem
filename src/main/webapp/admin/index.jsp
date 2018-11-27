@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html class="no-js">
 <head>
@@ -51,36 +54,33 @@
   <!-- sidebar start -->
   <div class="admin-sidebar">
     <ul class="am-list admin-sidebar-list">
-      <li><a href="admin-index.html"><span class="am-icon-home"></span> 首页</a></li>
-      <!-- <li class="admin-parent">
-        <a class="am-cf" data-am-collapse="{target: '#collapse-nav'}"><span class="am-icon-file"></span> 页面模块 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
-        <ul class="am-list am-collapse admin-sidebar-sub am-in" id="collapse-nav">
-          <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 个人资料<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
-          <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
-          <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
-          <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 系统日志</a></li>
-          <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li>
-        </ul>
-      </li> -->
-      <li><a href="admin-user.html"><span class="am-icon-check"></span> 个人资料</a></li>
-      <li><a href="grade-table.html"><span class="am-icon-table"></span> 民主测评统计</a></li>
-      <li><a href="teach-unit.html"><span class="am-icon-table"></span> 教学科研统计</a></li>
-      <li><a href="manage-unit.html"><span class="am-icon-table"></span> 管理服务统计</a></li>
+      <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
+      <li><a href="/GradeSystem/admin-user.html"><span class="am-icon-check"></span> 个人资料</a></li>
+      <li><a href="user-manage.html"><span class="am-icon-map-marker"></span> 用户管理</a></li>
+      <li><a href="unit-manage.html"><span class="am-icon-map-marker"></span> 单位管理</a></li>
+      <li><a href="grade-table.html"><span class="am-icon-map-marker"></span> 校领导打分统计</a></li>
+      <li><a href="unit-score-statistics.html"><span class="am-icon-map-marker"></span> 领导班级子评分统计</a></li>
+      <li><a href="chief-score-statistics.html"><span class="am-icon-map-marker"></span> 正职评分统计</a></li>
+      <li><a href="subchief-score-statistics.html"><span class="am-icon-map-marker"></span> 副职评分统计</a></li>
+      <li><a href="/GradeSystem/quantify/quantifyIndex.do"><span class="am-icon-map-marker"></span> 评分比例设置</a></li>
+      <li><a href="set-assessment-group.html"><span class="am-icon-table"></span> 考核分组设置</a></li>
+      <li><a href="teach-unit.jsp"><span class="am-icon-table"></span> 教学科研单位评分</a></li>
+      <li><a href="manage-unit.html"><span class="am-icon-table"></span> 管理服务单位评分</a></li>
     </ul>
 
     <div class="am-panel am-panel-default admin-sidebar-panel">
       <div class="am-panel-bd">
         <p><span class="am-icon-bookmark"></span> 公告</p>
-        <p>时光静好，与君语；细水流年，与君同。—— Amaze</p>
+        <p>单位民主测评必须于2018-12-22之前完成，请相关人员督促到位。—— 组织部</p>
       </div>
     </div>
 
-    <div class="am-panel am-panel-default admin-sidebar-panel">
+    <!--<div class="am-panel am-panel-default admin-sidebar-panel">
       <div class="am-panel-bd">
-        <p><span class="am-icon-tag"></span> wiki</p>
-        <p>Welcome to the Amaze wiki!</p>
+        <p><span class="am-icon-tag"></span> jxau</p>
+        <p>Welcome to the JXAU!</p>
       </div>
-    </div>
+    </div>-->
   </div>
   <!-- sidebar end -->
 
@@ -92,10 +92,10 @@
     </div>
 
     <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
-      <li><a href="grade-table.html" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>民主测评统计<br/>2300</a></li>
-      <li><a href="teach-unit.html" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>教学科研统计<br/>308</a></li>
-      <li><a href="manage-unit.html" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>管理服务统计<br/>80082</a></li>
-      <li><a href="#" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>在线用户<br/>3000</a></li>
+      <li><a href="set-score-scale.html" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>评分比例设置<br/></a></li>
+      <li><a href="set-assessment-group.html" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>考核分组设置<br/></a></li>
+      <li><a href="scan-teach-unit.html" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>教学科研单位评分<br/></a></li>
+      <li><a href="scan-manage-unit.html" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>管理服务单位评分<br/></a></li>
     </ul>
 
     <div class="am-g">
@@ -103,11 +103,11 @@
         <table class="am-table am-table-bd am-table-striped admin-content-table">
           <thead>
           <tr>
-            <th>ID</th><th>用户名</th><th>最后成交任务</th><th>成交订单</th><th>管理</th>
+            <th>序号</th><th>文件名</th><th>最后下载时间</th><th>下载次数</th><th>操作</th>
           </tr>
           </thead>
           <tbody>
-          <tr><td>1</td><td>John Clark</td><td><a href="#">Business management</a></td> <td><span class="am-badge am-badge-success">+20</span></td>
+          <tr><td>1</td><td>民主测评表</td><td><a href="#">2018-11-19</a></td> <td><span class="am-badge am-badge-success">+20</span></td>
             <td>
               <div class="am-dropdown" data-am-dropdown>
                 <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
@@ -119,7 +119,19 @@
               </div>
             </td>
           </tr>
-          <tr><td>2</td><td>风清扬</td><td><a href="#">公司LOGO设计</a> </td><td><span class="am-badge am-badge-danger">+2</span></td>
+          <tr><td>2</td><td>管理服务定量评分统计表</td><td><a href="#">2018-11-06</a> </td><td><span class="am-badge am-badge-danger">+2</span></td>
+            <td>
+              <div class="am-dropdown" data-am-dropdown>
+                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
+                <ul class="am-dropdown-content">
+                  <li><a href="#">1. 更新</a></li>
+                  <li><a href="#">2. 下载</a></li>
+                  <li><a href="#">3. 删除</a></li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+          <tr><td>3</td><td>教学服务单位定量评分统计表</td><td><a href="#">2018-08-24</a></td><td><span class="am-badge am-badge-warning">+10</span></td>
             <td>
               <div class="am-dropdown" data-am-dropdown>
                 <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
@@ -131,19 +143,7 @@
               </div>
             </td>
           </tr>
-          <tr><td>3</td><td>詹姆斯</td><td><a href="#">开发一款业务数据软件</a></td><td><span class="am-badge am-badge-warning">+10</span></td>
-            <td>
-              <div class="am-dropdown" data-am-dropdown>
-                <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
-                <ul class="am-dropdown-content">
-                  <li><a href="#">1. 编辑</a></li>
-                  <li><a href="#">2. 下载</a></li>
-                  <li><a href="#">3. 删除</a></li>
-                </ul>
-              </div>
-            </td>
-          </tr>
-          <tr><td>4</td><td>云适配</td><td><a href="#">适配所有网站</a></td><td><span class="am-badge am-badge-secondary">+50</span></td>
+          <tr><td>4</td><td>处级干部考核名单</td><td><a href="#">2017-12-15</a></td><td><span class="am-badge am-badge-secondary">+50</span></td>
             <td>
               <div class="am-dropdown" data-am-dropdown>
                 <button class="am-btn am-btn-default am-btn-xs am-dropdown-toggle" data-am-dropdown-toggle><span class="am-icon-cog"></span> <span class="am-icon-caret-down"></span></button>
@@ -157,8 +157,8 @@
           </tr>
 
           <tr>
-            <td>5</td><td>呵呵呵</td>
-            <td><a href="#">基兰会获得BUFF</a></td>
+            <td>5</td><td>人才工作满意度测评表</td>
+            <td><a href="#">2017-11-09</a></td>
             <td><span class="am-badge">+22</span></td>
             <td>
               <div class="am-dropdown" data-am-dropdown>
@@ -179,77 +179,13 @@
     <div class="am-g">
       <div class="am-u-md-6">
         <div class="am-panel am-panel-default">
-          <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">文件上传<span class="am-icon-chevron-down am-fr" ></span></div>
-          <div class="am-panel-bd am-collapse am-in" id="collapse-panel-1">
-            <ul class="am-list admin-content-file">
-              <li>
-                <strong><span class="am-icon-upload"></span> Kong-cetian.Mp3</strong>
-                <p>3.3 of 5MB - 5 mins - 1MB/Sec</p>
-                <div class="am-progress am-progress-striped am-progress-sm am-active">
-                  <div class="am-progress-bar am-progress-bar-success" style="width: 82%">82%</div>
-                </div>
-              </li>
-              <li>
-                <strong><span class="am-icon-check"></span> 好人-cetian.Mp3</strong>
-                <p>3.3 of 5MB - 5 mins - 3MB/Sec</p>
-              </li>
-              <li>
-                <strong><span class="am-icon-check"></span> 其实都没有.Mp3</strong>
-                <p>3.3 of 5MB - 5 mins - 3MB/Sec</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div class="am-panel am-panel-default">
-          <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-2'}">浏览器统计<span class="am-icon-chevron-down am-fr" ></span></div>
-          <div id="collapse-panel-2" class="am-in">
-            <table class="am-table am-table-bd am-table-bdrs am-table-striped am-table-hover">
-              <tbody>
-              <tr>
-                <th class="am-text-center">#</th>
-                <th>浏览器</th>
-                <th>访问量</th>
-              </tr>
-              <tr>
-                <td class="am-text-center"><img src="/GradeSystem/i/examples/admin-chrome.png" alt=""></td>
-                <td>Google Chrome</td>
-                <td>3,005</td>
-              </tr>
-              <tr>
-                <td class="am-text-center"><img src="/GradeSystem/i/examples/admin-firefox.png" alt=""></td>
-                <td>Mozilla Firefox</td>
-                <td>2,505</td>
-              </tr>
-              <tr>
-                <td class="am-text-center"><img src="/GradeSystem/i/examples/admin-ie.png" alt=""></td>
-                <td>Internet Explorer</td>
-                <td>1,405</td>
-              </tr>
-              <tr>
-                <td class="am-text-center"><img src="/GradeSystem/i/examples/admin-opera.png" alt=""></td>
-                <td>Opera</td>
-                <td>4,005</td>
-              </tr>
-              <tr>
-                <td class="am-text-center"><img src="/GradeSystem/i/examples/admin-safari.png" alt=""></td>
-                <td>Safari</td>
-                <td>505</td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <div class="am-u-md-6">
-        <div class="am-panel am-panel-default">
-          <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-4'}">任务 task<span class="am-icon-chevron-down am-fr" ></span></div>
+          <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-4'}">考核进度要求<span class="am-icon-chevron-down am-fr" ></span></div>
           <div id="collapse-panel-4" class="am-panel-bd am-collapse am-in">
             <ul class="am-list admin-content-task">
               <li>
                 <div class="admin-task-meta"> Posted on 25/1/2120 by John Clark</div>
                 <div class="admin-task-bd">
-                  The starting place for exploring business management; helping new managers get started and experienced managers get better.
+                  所有工作必须在2019-1-10日之前完成，11日（星期一）将对各单位开展评先评优，及时把考核评分统计表发还给各考核小组，由个小组负责人签字后上交纸质档。
                 </div>
                 <div class="am-cf">
                   <div class="am-btn-toolbar am-fl">
@@ -260,14 +196,14 @@
                     </div>
                   </div>
                   <div class="am-fr">
-                    <button type="button" class="am-btn am-btn-default am-btn-xs">删除</button>
+                    <button type="button" class="am-btn am-btn-default am-btn-xs">发布</button>
                   </div>
                 </div>
               </li>
               <li>
                 <div class="admin-task-meta"> Posted on 25/1/2120 by 呵呵呵</div>
                 <div class="admin-task-bd">
-                  基兰和狗熊出现在不同阵营时。基兰会获得BUFF，“装甲熊憎恨者”。狗熊会获得BUFF，“时光老人憎恨者”。
+                  单位民主测评必须于2018-12-22之前完成，请相关人员督促到位。
                 </div>
                 <div class="am-cf">
                   <div class="am-btn-toolbar am-fl">
@@ -278,25 +214,27 @@
                     </div>
                   </div>
                   <div class="am-fr">
-                    <button type="button" class="am-btn am-btn-default am-btn-xs">删除</button>
+                    <button type="button" class="am-btn am-btn-default am-btn-xs">发布</button>
                   </div>
                 </div>
               </li>
             </ul>
           </div>
         </div>
+      </div>
 
+      <div class="am-u-md-6">
         <div class="am-panel am-panel-default">
-          <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">最近留言<span class="am-icon-chevron-down am-fr" ></span></div>
+          <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">最近反馈<span class="am-icon-chevron-down am-fr" ></span></div>
           <div class="am-panel-bd am-collapse am-in am-cf" id="collapse-panel-3">
             <ul class="am-comments-list admin-content-comment">
               <li class="am-comment">
                 <a href="#"><img src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>
                 <div class="am-comment-main">
                   <header class="am-comment-hd">
-                    <div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 评论于 <time>2014-7-12 15:30</time></div>
+                    <div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 反馈于 <time>2014-7-12 15:30</time></div>
                   </header>
-                  <div class="am-comment-bd"><p>遵循 “移动优先（Mobile First）”、“渐进增强（Progressive enhancement）”的理念，可先从移动设备开始开发网站，逐步在扩展的更大屏幕的设备上，专注于最重要的内容和交互，很好。</p>
+                  <div class="am-comment-bd"><p>第一考核组统计表尚未交，统计工作将于21号之前才能完成。XXX学院由于出现XXX事故，综治得分为零分，取消评先评优资格。</p>
                   </div>
                 </div>
               </li>
@@ -305,9 +243,9 @@
                 <a href="#"><img src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>
                 <div class="am-comment-main">
                   <header class="am-comment-hd">
-                    <div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 评论于 <time>2014-7-12 15:30</time></div>
+                    <div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 反馈于 <time>2014-7-12 15:30</time></div>
                   </header>
-                  <div class="am-comment-bd"><p>有效减少为兼容旧浏览器的臃肿代码；基于 CSS3 的交互效果，平滑、高效。AMUI专注于现代浏览器（支持HTML5），不再为过时的浏览器耗费资源，为更有价值的用户提高更好的体验。</p>
+                  <div class="am-comment-bd"><p>系统出现无法提交民主测评表统计信息，请及时解决！</p>
                   </div>
                 </div>
               </li>

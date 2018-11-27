@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!doctype html>
 <html class="no-js">
 <head>
@@ -130,8 +133,8 @@
 		<!-- sidebar end -->
 
 		<!-- content start -->
+		 <form action="/GradeSystem/quantify/quantifyIndex.do" method="post">
 		<div class="admin-content">
-
 			<div class="am-cf am-padding">
 				<div class="am-fl am-cf">
 					<strong class="am-text-primary am-text-lg">教学科研</strong> / <small>定量评分统计表（处级领导班子）</small>
@@ -139,7 +142,6 @@
 			</div>
 
 			<div class="am-g">
-               <form action="" method="">
                 <div class="am-u-sm-12">
                     <!-- <h2 class="am-text-center am-text-xxxl am-margin-top-lg">404. Not Found</h2> -->
                     <!-- <p class="am-text-center">测 评 要 素</p> -->
@@ -178,39 +180,46 @@
 								<td>评分</td>
 							</tr>
 							<tr>
-							    <td>1</td>
-							    <td>1</td>
-							    <td>农学院</td>
-							    <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user1"></td>
-						        <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user2"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user3"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user4"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user5"></td>
+							   <td><input type="text" style="width:90%;border:none;" name="id" value="1" readOnly="true"></td>
+							   <td><input type="text" style="width:90%;border:none;" name="year" value="1" readOnly="true"></td>
+							   <td><input type="text" style="width:90%;border:none;" name="user1" value="农学院" readOnly="true"></td>
+							   <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="proportion"></td>
+						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="grade"></td>
+						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="unitID"></td>
+						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="optionID"></td>
+						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="departmentID"></td>
+							   <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user6"></td>
+						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user7"></td>
+						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user8"></td>
+						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user9"></td>
+							</tr>
+							<tr>
+							   <td><input type="text" style="width:90%;border:none;" name="id" value="2" readOnly="true"></td>
+							   <td><input type="text" style="width:90%;border:none;" name="year" value="2" readOnly="true"></td>
+							   <td><input type="text" style="width:90%;border:none;" name="user1" value="软件学院" readOnly="true"></td>
+							   <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="proportion"></td>
+						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="grade"></td>
+						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="unitID"></td>
+						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="optionID"></td>
+						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="departmentID"></td>
 							   <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user6"></td>
 						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user7"></td>
 						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user8"></td>
 						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user9"></td>
 							</tr>
 						</tbody>
-						<!-- <tbody>
-                        	<tr>
-	                            <td>
-									<button id="btn" type="button" onclick="addtr()" class="am-btn am-btn-primary am-btn-xs">添加</button>
-	                            </td>
-	                        </tr>
-                        </tbody> -->
                		</table>
                </div>
-               </form>             
-			</div>
-			<div class="am-margin">
+               </div>
+            	<div class="am-margin">
 				<!-- scan-teach-unit.html -->
-				<a href="${pageContext.request.contextPath}/quantify/quantifyIndex.action"><button type="button" class="am-btn am-btn-primary am-btn-xs">提交保存</button></a>
-				<button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button>
+				<button type="submit" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+				<button type="reset" class="am-btn am-btn-primary am-btn-xs">放弃保存</button>
 			</div>
+			</div>
+         </form> 
 		</div>
 		<!-- content end -->
-	</div>
 	<footer>
 		<hr>
 		<p class="am-padding-left">© 2018 江西农业大学.蓝点工作室</p>
@@ -222,3 +231,4 @@
 	<script src="/GradeSystem/js/app.js"></script>
 </body>
 </html>
+
