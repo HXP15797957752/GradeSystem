@@ -134,11 +134,10 @@
 		          </thead>
 		          <tbody>
 			          <c:forEach items="${teacherDepartments}" var="teacherDepartment">
-		          	  <tr>
-			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="teacherDepartmentId" value="${teacherDepartment.departmentId}" readonly="true"></td>
-				        <td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="teacherDepartmentName" value="${teacherDepartment.departmentName}"></td>
+		          	  <tr><td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="teacherDepartmentId" value="${teacherDepartment.departmentId}" readonly="true"></td>
+			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="teacherDepartmentName" value="${teacherDepartment.departmentName}"></td>
 			            <td>
-			            	<button type="button" class="am-btn am-btn-primary am-btn-xs">修改</button>
+			            <button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="UpdateTeacherDepartment(this)">修改</button>
 							<button type="button" class="am-btn am-btn-primary am-btn-xs">删除</button>
 			            </td>
 			          </tr>	
@@ -342,16 +341,21 @@
   <hr>
   <p class="am-padding-left">© 2018 江西农业大学.蓝点工作室</p>
 </footer>
-
-<!--[if lt IE 9]>
-<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="/GradeSystem/js/polyfill/rem.min.js"></script>
-<script src="/GradeSystem/js/polyfill/respond.min.js"></script>
-<script src="/GradeSystem/js/amazeui.legacy.js"></script>
-<![endif]-->
-
-<!--[if (gte IE 9)|!(IE)]><!-->
+<script type="text/javascript">
+	function UpdateTeacherDepartment(object){
+		var tr1 = object.parentNode.parentNode;
+		alert(tr1.cells[0].childNodes[0].value);
+		alert(tr1.cells[1].childNodes[0].value);
+		$.ajax({
+			url : "/GradeSystem/quantify/updateDepartment",
+			type : post,
+			data :{
+				departmentId :tr1.cells[0].childNodes[0].value,
+				departmentName : tr1.cells[1].childNodes[0].value,
+			}
+		});
+	}
+</script>
 <script src="/GradeSystem/js/jquery.min.js"></script>
 <script src="/GradeSystem/js/amazeui.min.js"></script>
 <!--<![endif]-->

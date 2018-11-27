@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bluedot.dao.DepartmentDao" >
+
+  	<insert id="insertDepartment" parameterType="com.bluedot.po.Option">
+  		insert into department (departmentName,gradingUnitId)values(#{departmentName,jdbcType=VARCHAR},#{gradingUnitId,jdbcType=INTEGER})
+  	</insert>
+  	<select id="searchManageDepartment" resultType="com.bluedot.po.Department">
+  		select departmentid,departmentname,gradingunitid from department where gradingunitid =2
+  	</select>
+  	<select id="searchTeacherDepartment" resultType="com.bluedot.po.Department">
+  		select departmentid,departmentname,gradingunitid from department where gradingunitid =1
+  	</select>
+</mapper>
