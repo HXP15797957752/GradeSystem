@@ -14,4 +14,10 @@
   	<select id="searchTeacherOption" resultType="com.bluedot.po.Option">
   		select id,optionname from qoption where id not in (select optionid from quantify where unitid = 1)
   	</select>
+  	<update id="updateOption" parameterType="com.bluedot.po.Option">
+  		update qoption set optionname =  #{optionName,jdbcType=VARCHAR} where id = #{id,jdbcType=INTEGER} 
+  	</update>
+  	<delete id="deleteOption" parameterType="com.bluedot.po.Option">
+  		delete from qoption where id = #{id,jdbcType=INTEGER}
+  	</delete>
 </mapper>

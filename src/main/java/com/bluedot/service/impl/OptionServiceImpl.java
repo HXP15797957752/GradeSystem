@@ -40,6 +40,17 @@ public class OptionServiceImpl implements OptionService{
 		// TODO Auto-generated method stub
 		return optionDao.searchTeacherOption();
 	}
-	
+
+	@Override
+	public void updateOption(Option option) {
+		// TODO Auto-generated method stub
+		optionDao.updateOption(option);
+	}
+
+	@Override
+	public void deleteOption(Option option) {
+		// TODO Auto-generated method stub
+		optionDao.deleteOption(option);
+	}
 	
 }

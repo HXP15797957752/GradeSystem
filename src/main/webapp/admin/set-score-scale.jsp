@@ -126,6 +126,7 @@
       <div class="am-tab-panel am-fade am-in am-active" id="tab1">
 				<div class="am-g am-margin-top">
 				<div class="am-u-sm-12">
+				<form class="am-form">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
 		          <tr>
@@ -134,17 +135,25 @@
 		          </thead>
 		          <tbody>
 			          <c:forEach items="${teacherDepartments}" var="teacherDepartment">
-		          	  <tr><td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="teacherDepartmentId" value="${teacherDepartment.departmentId}" readonly="true"></td>
-			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="teacherDepartmentName" value="${teacherDepartment.departmentName}"></td>
+		          	  <tr>
+		          	    <td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentId" value="${teacherDepartment.departmentId}" readonly="true"></td>
+			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentName" value="${teacherDepartment.departmentName}"></td>
+			          	<td>
+			          		<select name="gradingUnitId" style="width: 100%">
+			          			<option value="1">教学科研</option>
+			          			<option value="2">管理服务</option>
+			          		</select>
+			          	</td>
 			            <td>
-			            <button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="UpdateTeacherDepartment(this)">修改</button>
-							<button type="button" class="am-btn am-btn-primary am-btn-xs">删除</button>
+			                <button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="UpdateDepartment(this)">修改</button>
+							<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="DeleteDepartment(this)">删除</button>
 			            </td>
 			          </tr>	
 		          	</c:forEach>	
 			          
 		          </tbody>
 		        </table>
+		         </form>
 		      </div>
 				</div>
          </div>
@@ -163,11 +172,17 @@
 		          <tbody>
 		          	<c:forEach items="${manageDepartments}" var="manageDepartment">
 		          	  <tr>
-			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="manageDepartmentId" value="${manageDepartment.departmentId}" readonly="true"></td>
-				          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="manageDepartmentName" value="${manageDepartment.departmentName}"></td>
+			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentId" value="${manageDepartment.departmentId}" readonly="true"></td>
+				        <td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentName" value="${manageDepartment.departmentName}"></td>
+			           <td>
+			          		<select name="gradingUnitId" style="width: 100%">
+			          			<option value="2">服务管理</option>
+			          			<option value="1">教学科研</option>
+			          		</select>
+			          	</td>
 			            <td>
-			            	<button type="button" class="am-btn am-btn-primary am-btn-xs">修改</button>
-							<button type="button" class="am-btn am-btn-primary am-btn-xs">删除</button>
+			            	<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="UpdateDepartment(this)">修改</button>
+							<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="DeleteDepartment(this)">删除</button>
 			            </td>
 			          </tr>	
 		          	</c:forEach>		        		          
@@ -288,8 +303,8 @@
 				          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="id" value="${option.id}" readonly="true"></td>
 				          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="optionName" value="${option.optionName}"></td>
 				            <td>
-				            	<button type="button" class="am-btn am-btn-primary am-btn-xs">修改</button>
-								<button type="button" class="am-btn am-btn-primary am-btn-xs">删除</button>
+				            	<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="updateOption(this)">修改</button>
+								<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="deleteOption(this)">删除</button>
 				            </td>
 				          </tr>
 			          </c:forEach>
@@ -342,18 +357,75 @@
   <p class="am-padding-left">© 2018 江西农业大学.蓝点工作室</p>
 </footer>
 <script type="text/javascript">
-	function UpdateTeacherDepartment(object){
+	function deleteOption(object){
 		var tr1 = object.parentNode.parentNode;
-		alert(tr1.cells[0].childNodes[0].value);
-		alert(tr1.cells[1].childNodes[0].value);
 		$.ajax({
-			url : "/GradeSystem/quantify/updateDepartment",
-			type : post,
+			url : "/GradeSystem/quantify/deleteOption.do",
+    		Type : "post",
+    		data :{
+    			id :tr1.cells[0].childNodes[0].value
+    		},
+    		dataType :"json",
+    		success :function(result){
+    			alert("删除成功");
+    		},error : function(){
+    			alert("删除成功");
+    		}
+		})
+	}
+    function DeleteDepartment(object){
+    	var tr1 = object.parentNode.parentNode;
+    	$.ajax({
+    		url : "/GradeSystem/quantify/deleteDepartment.do",
+    		Type : "post",
+    		data :{
+    			departmentId :tr1.cells[0].childNodes[0].value
+    		},
+    		dataType :"json",
+    		success :function(result){
+    			alert("删除成功");
+    		},error : function(){
+    			alert("删除成功");
+    		}
+    	})
+    }
+    function updateOption(object){
+    	var tr1 = object.parentNode.parentNode;
+    	$.ajax({
+    		url : "/GradeSystem/quantify/updateOption.do",
+    		type : "post",
+    		data :{
+				id :tr1.cells[0].childNodes[0].value,
+				optionName : tr1.cells[1].childNodes[0].value,
+			},
+			dataType : "json",
+			success : function(result){
+				alert("更新成功");
+			},error : function (){
+				alert("更新成功");
+			}
+    	});
+    }
+	function UpdateDepartment(object){
+		var tr1 = object.parentNode.parentNode;
+		/* alert(tr1.cells[0].childNodes[0].value);
+		alert(tr1.cells[1].childNodes[0].value);
+		alert(tr1.cells[2].getElementsByTagName("select")[0].value); */
+	 	$.ajax({
+			url : "/GradeSystem/quantify/updateDepartment.do",
+			type : "post",
 			data :{
 				departmentId :tr1.cells[0].childNodes[0].value,
 				departmentName : tr1.cells[1].childNodes[0].value,
+				gradingUnitId : tr1.cells[2].getElementsByTagName("select")[0].value
+			},
+			dataType : "json",
+			success : function(result){
+				alert("更新成功");
+			},error : function (){
+				alert("更新成功");
 			}
-		});
+		}); 
 	}
 </script>
 <script src="/GradeSystem/js/jquery.min.js"></script>

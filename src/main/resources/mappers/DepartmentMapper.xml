@@ -11,4 +11,10 @@
   	<select id="searchTeacherDepartment" resultType="com.bluedot.po.Department">
   		select departmentid,departmentname,gradingunitid from department where gradingunitid =1
   	</select>
+  	<update id="updateDepartment" parameterType="com.bluedot.po.Department">
+  		update department set departmentname = #{departmentName,jdbcType=VARCHAR}, gradingunitid =#{gradingUnitId,jdbcType=INTEGER} where departmentid = #{departmentId,jdbcType=INTEGER}
+  	</update>
+  	<delete id="deleteDepartment" parameterType="com.bluedot.po.Department">
+  		delete from department where departmentid = #{departmentId,jdbcType=VARCHAR}
+  	</delete>
 </mapper>

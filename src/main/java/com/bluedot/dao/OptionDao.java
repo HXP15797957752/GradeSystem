@@ -13,4 +13,6 @@ public interface OptionDao {
 	public List<Option> searchAllOption(); 
 	public List<Option> searchManageOption();
 	public List<Option> searchTeacherOption();
+	public void updateOption(Option option);
+	public void deleteOption(Option option);
 }

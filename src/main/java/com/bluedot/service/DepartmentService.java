@@ -12,5 +12,6 @@ public interface DepartmentService {
 	public int insertDepartment(Department department);
 	public List<Department> searchManageDepartment();
 	public List<Department> searchTeacherDepartment();
-	
+	public void updateDepartment(Department department);
+	public void deleteDepartment(Department department);
 }
