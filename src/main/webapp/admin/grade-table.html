@@ -16,75 +16,29 @@
 		<meta name="apple-mobile-web-app-title" content="Amaze UI" />
 		<link rel="stylesheet" href="/GradeSystem/css/amazeui.min.css" />
 		<link rel="stylesheet" href="/GradeSystem/css/admin.css">
-		<script>
-			var k =0;
-			/*添加领导班子表格*/
-			function addtr(){
-				//获取tbody
-				var tbodyEle  = document.getElementById("personal");
-				var inputEle = document.createElement("input");
-				var selectEle = document.createElement("select");
-				
-				var optionNode = document.createTextNode("----请选择----");
-				var optionEle = document.createElement("option");
-				optionEle.appendChild(optionNode);
-				var optionNode1 = document.createTextNode("党委书记");
-				var optionEle1 = document.createElement("option");
-				optionEle1.appendChild(optionNode1);
-				var optionNode2 = document.createTextNode("党委副书记");
-				var optionEle2 = document.createElement("option");
-				optionEle2.appendChild(optionNode2);
-				var optionNode3 = document.createTextNode("院长");
-				var optionEle3 = document.createElement("option");
-				optionEle3.appendChild(optionNode3);
-				var optionNode4 = document.createTextNode("副院长");
-				var optionEle4 = document.createElement("option");
-				optionEle4.appendChild(optionNode4);
-				var optionNode5 = document.createTextNode("研究所所长");
-				var optionEle5 = document.createElement("option");
-				optionEle5.appendChild(optionNode5);
-				selectEle.appendChild(optionEle);
-				selectEle.appendChild(optionEle1);
-				selectEle.appendChild(optionEle2);
-				selectEle.appendChild(optionEle3);
-				selectEle.appendChild(optionEle4);
-				selectEle.appendChild(optionEle5);
-				
-				var trEle = document.createElement("tr");
-				
-				for(var i = 0;i<6;i++){					
-					//创建元素td
-					var tdEle = document.createElement("td");
-					if(i==2||i==3||i==4||i==5){
-						//创建元素radio
-						var radioEle = document.createElement("input");
-						radioEle.type="radio";
-						radioEle.name="cgrade"+k;
-						tdEle.appendChild(radioEle);
-					}
-					//将文本添加到td
-					if(i==0){
-						tdEle.appendChild(inputEle);
-					}
-					if(i==1){
-						tdEle.appendChild(selectEle);
-					}
-					//将td添加到tr
-					trEle.appendChild(tdEle);
-				}
-				k++;
-				//将tr添加到tbody
-				tbodyEle.appendChild(trEle);
-			}
-			
-			
-		</script>
+        <script type="text/javascript">
+	       function changeCadre(){
+	           var selectValue = document.getElementById("unit").value;
+	           if(selectValue == "请选择"){
+	               alert("请选择"); 
+	           }else{
+	               $.ajax({
+	                    url:'http://localhost:8080/GradeSystem/admin/grade-table.html',
+	                    data:{'unit':selectValue},
+	                    datatype:'json',
+	                    type:'post',
+	                    success:function(data){	                        
+	                       alert("data=="+data);
+	                        var tr = $("<tr><td>"+selectValue+" </td> <td>党委书记</td><td><input type='radio' name='cgrade'/></td><td><input type='radio' name='cgrade'/></td> <td><input type='radio' name='cgrade'/></td><td><input type='radio' name='cgrade'/></td> </tr>");
+	                        $("#personal").append(tr);
+	                    }        
+	                })
+	           }
+	       }
+	    </script>
 	</head>
 <body>
-	<!--[if lte IE 9]>
-<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
-  以获得更好的体验！</p>
-<![endif]-->
+
 
 	<header class="am-topbar admin-header">
 		<div class="am-topbar-brand">
@@ -169,8 +123,7 @@
 				<div class="am-u-sm-12">
 					<table class="am-table am-table-bordered am-table-centered am-table-radius am-table-striped" style="table-layout:fixed;">
 					    <tbody>
-					    	<button id="edit" type="button"  class="am-btn am-btn-primary am-btn-xs">A票</button>
-					    	<button id="edit" type="button"  class="am-btn am-btn-primary am-btn-xs">B票</button>
+
 	                        <tr>
 	                            <td colspan="5" class="am-text-center"> 测 评 要 素</td>
 	                        </tr>
@@ -183,7 +136,7 @@
 							</tr>
 							<tr>
 								<td>
-							    	<select name="academic">
+							    	<select id="unit" onchange="changeCadre()">
 							    		<option value="请选择">请选择</option>
 							    		<option value="农学院">农学院</option>
 							    		<option value="软件学院">软件学院</option>
@@ -268,13 +221,13 @@
 	                            <td><input type="radio" name="cgrade"/></td>
 	                        </tr>
                         </tbody>
-                        <tbody>
+                        <!-- <tbody>
                         	<tr>
 	                            <td>
 									<button id="btn" type="button" onclick="addtr()" class="am-btn am-btn-primary am-btn-xs">添加</button>
 	                            </td>
 	                        </tr>
-                        </tbody>
+                        </tbody> -->
                    </table>
                     <button type="submit" class="am-btn am-btn-primary am-btn-xs">保存提交</button>
                   </form>
@@ -304,5 +257,6 @@
 	<script src="/GradeSystem/js/amazeui.min.js"></script>
 	<!--<![endif]-->
 	<script src="/GradeSystem/js/app.js"></script>
+	
 </body>
 </html>
