@@ -42,7 +42,7 @@ public class UserController {
 		try {
 			subject.login(token);
 			request.getSession().setAttribute("user", user);
-			return "user/index.jsp";
+			return "index.jsp";
 			
 		}catch(Exception e) {
 			e.printStackTrace();
