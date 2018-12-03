@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%
+   pageContext.setAttribute("APP_PATH",request.getContextPath());
+%>
 <!doctype html>
 <html class="no-js">
 <head>
@@ -12,11 +15,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <link rel="icon" type="image/png" href="/GradeSystem/i/favicon.png">
-  <link rel="apple-touch-icon-precomposed" href="/GradeSystem/i/app-icon72x72@2x.png">
+  <link rel="icon" type="image/png" href="${APP_PATH}/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="${APP_PATH}/i/app-icon72x72@2x.png">
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-  <link rel="stylesheet" href="/GradeSystem/css/amazeui.min.css"/>
-  <link rel="stylesheet" href="/GradeSystem/css/admin.css">
+  <link rel="stylesheet" href="${APP_PATH}/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="${APP_PATH}/css/admin.css">
+  <script src="${APP_PATH}/js/jquery.min.js"></script>
+	<script src="${APP_PATH}/js/amazeui.min.js"></script>
+	<!--<![endif]-->
+	<script src="${APP_PATH}/js/app.js"></script>
 </head>
 <body>
 <!--[if lte IE 9]>
@@ -55,7 +62,7 @@
   <div class="admin-sidebar">
     <ul class="am-list admin-sidebar-list">
       <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
-      <li><a href="/GradeSystem/admin-user.html"><span class="am-icon-check"></span> 个人资料</a></li>
+      <li><a href="${APP_PATH }/admin/adminmessage.jsp"><span class="am-icon-check"></span> 个人资料</a></li>
       <li><a href="user-manage.html"><span class="am-icon-map-marker"></span> 用户管理</a></li>
       <li><a href="unit-manage.html"><span class="am-icon-map-marker"></span> 单位管理</a></li>
       <li><a href="grade-table.html"><span class="am-icon-map-marker"></span> 校领导打分统计</a></li>
@@ -283,9 +290,5 @@
 <![endif]-->
 
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="/GradeSystem/js/jquery.min.js"></script>
-<script src="/GradeSystem/js/amazeui.min.js"></script>
-<!--<![endif]-->
-<script src="/GradeSystem/js/app.js"></script>
 </body>
 </html>
