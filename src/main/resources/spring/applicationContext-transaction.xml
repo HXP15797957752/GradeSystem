@@ -35,9 +35,10 @@
 				   <!--  <property name="unauthorizedUrl" value="/unauthor.jsp"/>   -->
 				    <property name="filterChainDefinitions">  
 				        <value>  
-				             /login=anon
+				           
 				         <!--     /user/**=authc,roles[user],roles[admin] -->
-				            /user/index.jsp=authc
+				           /user/login.do=anon
+				            /user/**=authc
 							/admin*/**=authc,roles[admin]
 							<!-- /student=roles[] -->
 				        </value>  
