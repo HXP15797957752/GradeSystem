@@ -27,12 +27,6 @@
 </head>
 <body>
 
-
-  <!--[if lte IE 9]>
-<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
-  以获得更好的体验！</p>
-<![endif]-->
-
 <header class="am-topbar admin-header">
   <div class="am-topbar-brand">
     <strong>江西农业大学</strong> <small>年度考核评分系统</small>
@@ -142,13 +136,6 @@
                <input type="password" id="adminpassword2" >
             </div>
           </div>
-
-         <!--  <div class="am-form-group">
-            <label for="user-QQ" class="am-u-sm-3 am-form-label">新密码</label>
-            <div class="am-u-sm-9">
-              <input type="password" id="user-QQ" placeholder="输入新密码">
-            </div>
-          </div> -->
           <div class="am-form-group">
             <div class="am-u-sm-9 am-u-sm-push-3" id="adminsave">
             <button type="button" class="am-btn am-btn-primary updateSave">保存修改</button> 
@@ -156,32 +143,6 @@
           </div>
         </form>
       </div>
-           
-           <!--    <table>
-                 <tr>
-                   <td></td>
-                   <td></td>
-                 </tr>
-                 <tr>
-                    <td></td>
-                   <td></td>
-                 </tr>
-                 <tr>
-                     <td></td>
-                   <td></td>
-                 </tr>
-                 <tr>
-                     <td></td>
-                   <td></td>
-                 </tr>
-                 <tr>
-                     <td></td>
-                   <td></td>
-         
-                 </tr>
-              </table>
-       -->
-      
     </div>
   </div>
   <!-- content end -->
@@ -193,19 +154,6 @@
   <p class="am-padding-left">© 2018 江西农业大学.蓝点工作室</p>
 </footer>
 
-<!--[if lt IE 9]>
-<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="js/polyfill/rem.min.js"></script>
-<script src="js/polyfill/respond.min.js"></script>
-<script src="js/amazeui.legacy.js"></script>
-<![endif]-->
-
-<!--[if (gte IE 9)|!(IE)]><!-->
-<!-- <script src="js/jquery.min.js"></script>
-<script src="js/amazeui.min.js"></script>
-<![endif]
-<script src="js/app.js"></script> -->
 
 <script type="text/javascript">
      
