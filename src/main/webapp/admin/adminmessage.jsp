@@ -62,11 +62,18 @@
   <!-- sidebar start -->
   <div class="admin-sidebar">
     <ul class="am-list admin-sidebar-list">
-      <li><a href="admin-index.html"><span class="am-icon-home"></span> 首页</a></li>
-      <li><a href="admin-user.html"><span class="am-icon-check"></span> 个人资料</a></li>
-      <li><a href="grade-table.html"><span class="am-icon-map-marker"></span> 民主测评统计</a></li>
-      <li><a href="teach-unit.html"><span class="am-icon-table"></span> 教学科研统计</a></li>
-      <li><a href="manage-unit.html"><span class="am-icon-table"></span> 管理服务统计</a></li>
+     <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
+      <li><a href="${APP_PATH }/admin/adminmessage.jsp"><span class="am-icon-check"></span> 个人资料</a></li>
+      <li><a href="${APP_PATH }/admin/user-manage.jsp"><span class="am-icon-map-marker"></span> 用户管理</a></li>
+      <li><a href="unit-manage.html"><span class="am-icon-map-marker"></span> 单位管理</a></li>
+      <li><a href="grade-table.html"><span class="am-icon-map-marker"></span> 校领导打分统计</a></li>
+      <li><a href="unit-score-statistics.html"><span class="am-icon-map-marker"></span> 领导班级子评分统计</a></li>
+      <li><a href="chief-score-statistics.html"><span class="am-icon-map-marker"></span> 正职评分统计</a></li>
+      <li><a href="subchief-score-statistics.html"><span class="am-icon-map-marker"></span> 副职评分统计</a></li>
+      <li><a href="set-score-scale.html"><span class="am-icon-map-marker"></span> 评分比例设置</a></li>
+      <li><a href="set-assessment-group.html"><span class="am-icon-table"></span> 考核分组设置</a></li>
+      <li><a href="teach-unit.html"><span class="am-icon-table"></span> 教学科研单位评分</a></li>
+      <li><a href="manage-unit.html"><span class="am-icon-table"></span> 管理服务单位评分</a></li>
     </ul>
 
     <div class="am-panel am-panel-default admin-sidebar-panel">
