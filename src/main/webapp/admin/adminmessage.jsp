@@ -66,7 +66,7 @@
       <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
       <li><a href="${APP_PATH }/admin/adminmessage.jsp"><span class="am-icon-check"></span> 个人资料</a></li>
       <li><a href="${APP_PATH }/admin/user-manage.jsp"><span class="am-icon-map-marker"></span> 用户管理</a></li>
-      <li><a href="unit-manage.html"><span class="am-icon-map-marker"></span> 单位管理</a></li>
+      <li><a href="${APP_PATH }/admin/unit-manage.jsp"><span class="am-icon-map-marker"></span> 单位管理</a></li>
       <li><a href="grade-table.html"><span class="am-icon-map-marker"></span> 校领导打分统计</a></li>
       <li><a href="unit-score-statistics.html"><span class="am-icon-map-marker"></span> 领导班级子评分统计</a></li>
       <li><a href="chief-score-statistics.html"><span class="am-icon-map-marker"></span> 正职评分统计</a></li>
