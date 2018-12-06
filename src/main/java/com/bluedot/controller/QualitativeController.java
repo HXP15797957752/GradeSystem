@@ -15,14 +15,14 @@ import com.bluedot.service.QualitativeService;
 @Controller
 @RequestMapping("/schoolgrade")
 public class QualitativeController {
-    @Autowired
+/*    @Autowired
     private  QualitativeService qualititativeService;    
-    /*
+    
      * 加载前端页面所选单位对应的处级干部正职
-     * */
+     * 
     @RequestMapping("/showlist")
     public String loadCadre(@RequestParam(value="department") String department) {
         
         return "";
-    }
+    }*/
 }
