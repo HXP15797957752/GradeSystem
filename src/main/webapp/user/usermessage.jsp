@@ -157,12 +157,30 @@ $.ajax({
 		 $("#adminphone2").val(result.extend.userMessage.phone);
 		 $("#adminpassword2").val(result.extend.userMessage.password);	 
 		 $(document).on("click",".updateSave",function(){
+       var userId=$("#insertUserId").val();
 				var userName= $("input[id=adminname2]").val();
 				var email= $("input[id=adminemail2]").val();
 				var phone= $("input[id=adminphone2]").val();
 				var password= $("input[id=adminpassword2]").val();
 				var regEmail = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-				if(!regEmail.test(email)){
+        if(userId==""){
+		    		  layer.msg('<span style="font-size: 15px;">工资编号不能为空</span>',{
+		   				 offset:'225px',
+		   				 area:['230px', '70px'],
+		   				 time: 1000,
+		   				});  
+		     		   return false;
+		    		  
+		    	  }
+            if(password==""){
+		    		   layer.msg('<span style="font-size: 15px;">密码不能为空</span>',{
+		    				 offset:'225px',
+		    				 area:['230px', '70px'],
+		    				 time: 1000,
+		    				});  
+		      		   return false;
+		    	   }
+				if(!regEmail.test(email)&&email!=""){
 					 layer.msg('<span style="font-size: 15px;">邮箱格式不正确</span>',{
 						 offset:'225px',
 						 area:['230px', '70px'],
@@ -177,6 +195,7 @@ $.ajax({
 						url:"${APP_PATH}/user/adminSave.do",
 						type:"post",
 						data:{
+              "userId":userId,
 							"userName":userName,
 							"email":email,
 							"phone":phone,
