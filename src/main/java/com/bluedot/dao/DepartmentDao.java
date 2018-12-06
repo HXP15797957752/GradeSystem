@@ -14,4 +14,5 @@ public interface DepartmentDao {
 	public List<Department> searchTeacherDepartment();
 	public void updateDepartment(Department department);
 	public void deleteDepartment(Department department);
+	public Department searchDepartment(int id);
 }

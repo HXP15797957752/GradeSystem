@@ -6,7 +6,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>教学科研统计</title>
+<title>管理服务</title>
 <meta name="description" content="这是一个form页面">
 <meta name="keywords" content="form">
 <meta name="viewport"
@@ -28,19 +28,19 @@
 		var optionNode = document.createTextNode("请选择");
 		var optionEle = document.createElement("option");
 		optionEle.appendChild(optionNode);
-		var optionNode1 = document.createTextNode("农学院");
+		var optionNode1 = document.createTextNode("财务处");
 		var optionEle1 = document.createElement("option");
 		optionEle1.appendChild(optionNode1);
-		var optionNode2 = document.createTextNode("林学院");
+		var optionNode2 = document.createTextNode("招生就业处");
 		var optionEle2 = document.createElement("option");
 		optionEle2.appendChild(optionNode2);
-		var optionNode3 = document.createTextNode("软件学院");
+		var optionNode3 = document.createTextNode("后勤集团");
 		var optionEle3 = document.createElement("option");
 		optionEle3.appendChild(optionNode3);
-		var optionNode4 = document.createTextNode("经管学院");
+		var optionNode4 = document.createTextNode("统战部");
 		var optionEle4 = document.createElement("option");
 		optionEle4.appendChild(optionNode4);
-		var optionNode5 = document.createTextNode("动科院");
+		var optionNode5 = document.createTextNode("组织部");
 		var optionEle5 = document.createElement("option");
 		optionEle5.appendChild(optionNode5);
 		selectEle.appendChild(optionEle);
@@ -49,7 +49,7 @@
 		selectEle.appendChild(optionEle3);
 		selectEle.appendChild(optionEle4);
 		selectEle.appendChild(optionEle5);
-		for(var i = 0;i<12;i++){
+		for(var i = 0;i<7;i++){
 			var tdEle = document.createElement("td");
 			if(i==2){
 				tdEle.appendChild(selectEle);
@@ -133,23 +133,21 @@
 		<!-- sidebar end -->
 
 		<!-- content start -->
-		 <form action="/GradeSystem/quantify/quantifyGrade.do" method="post">
 		<div class="admin-content">
+		  <form action="/GradeSystem/quantify/quantifyGrade.do" method="post">
 			<div class="am-cf am-padding">
 				<div class="am-fl am-cf">
-					<strong class="am-text-primary am-text-lg">教学科研</strong> / <small>定量评分统计表（处级领导班子）</small>
+					<strong class="am-text-primary am-text-lg">管理服务</strong> / <small>定量评分统计表（处级领导班子）</small>
 				</div>
 			</div>
 
 			<div class="am-g">
-                <div class="am-u-sm-13">
-                    <!-- <h2 class="am-text-center am-text-xxxl am-margin-top-lg">404. Not Found</h2> -->
-                    <!-- <p class="am-text-center">测 评 要 素</p> -->
+                <div class="am-u-sm-12">
                     <table class="am-table am-table-bordered am-table-centered am-table-radius am-table-striped" style="table-layout:fixed;text-align: center;">
 						<tbody id="tbo1">
 							<tr>
-								<td colspan="13" class="am-text-center">
-									江西农业大学2017年度教学科研单位定量评分统计表（处级领导班子）</td>
+								<td colspan="9" class="am-text-center">
+									江西农业大学${year}年度管理服务单位定量评分统计表（处级领导班子）</td>
 							</tr>
 							<tr>
 								<td rowspan="2">序号</td>
@@ -165,33 +163,52 @@
 								</c:forEach>
 							</tr>
 							<c:forEach items="${departments}" var="department">
-								 <tr>
-								   <td><input type="text" style="width:90%;border:none;" name="id" value="1" readOnly="true"></td>
-								   <td><input type="text" style="width:90%;border:none;" name="departmentId" value="${department.departmentId }" readOnly="true"></td>
-								   <td colspan="2"><input type="text" style="width:90%;border:none;" name="departmentName" value="${department.departmentName }" readOnly="true"></td>
-								   <c:forEach items="${options }" var="option">
-										<td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="grades"></td>
-									</c:forEach>
-								  </tr>
+							 <tr>
+							   <td><input type="text" style="width:90%;border:none;" name="id" value="1" readOnly="true"></td>
+							   <td><input type="text" style="width:90%;border:none;" name="departmentId" value="${department.departmentId }" readOnly="true"></td>
+							   <td colspan="2"><input type="text" style="width:90%;border:none;" name="departmentName" value="${department.departmentName }" readOnly="true"></td>
+							   <c:forEach items="${options }" var="option">
+									<td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="grades"></td>
+								</c:forEach>
+							  </tr>
 							</c:forEach>
 						</tbody>
+						<!-- <tbody>
+	                    	<tr>
+	                            <td>
+									<button id="btn" type="button" onclick="addtr()" class="am-btn am-btn-primary am-btn-xs">添加</button>
+	                            </td>
+	                        </tr>
+	                    </tbody> -->
                		</table>
-               		<input type="hidden" name="type" value="1">
-               </div>
-               </div>
-            	<div class="am-margin">
-				<!-- scan-teach-unit.html -->
-				<button type="submit" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
+               		<input type="hidden" name="type" value="2">
+               </div>         
+			</div>
+
+			<div class="am-margin">
+				<button type="submit" class="am-btn am-btn-primary am-btn-xs"  onclick="javascript:window.location.href='scan-manage-unit.html'">提交保存</button>
 				<button type="reset" class="am-btn am-btn-primary am-btn-xs">放弃保存</button>
 			</div>
-			</div>
-         </form> 
+		  </form>  
 		</div>
 		<!-- content end -->
+
+	</div>
+
+
 	<footer>
 		<hr>
 		<p class="am-padding-left">© 2018 江西农业大学.蓝点工作室</p>
 	</footer>
+
+	<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="/GradeSystem/js/polyfill/rem.min.js"></script>
+<script src="/GradeSystem/js/polyfill/respond.min.js"></script>
+<script src="/GradeSystem/js/amazeui.legacy.js"></script>
+<![endif]-->
+
 	<!--[if (gte IE 9)|!(IE)]><!-->
 	<script src="/GradeSystem/js/jquery.min.js"></script>
 	<script src="/GradeSystem/js/amazeui.min.js"></script>
@@ -199,4 +216,3 @@
 	<script src="/GradeSystem/js/app.js"></script>
 </body>
 </html>
-

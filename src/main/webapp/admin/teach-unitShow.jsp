@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!doctype html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html class="no-js">
 <head>
 <meta charset="utf-8">
@@ -133,8 +134,8 @@
 		<!-- sidebar end -->
 
 		<!-- content start -->
-		 <form action="/GradeSystem/quantify/quantifyGrade.do" method="post">
 		<div class="admin-content">
+
 			<div class="am-cf am-padding">
 				<div class="am-fl am-cf">
 					<strong class="am-text-primary am-text-lg">教学科研</strong> / <small>定量评分统计表（处级领导班子）</small>
@@ -142,52 +143,72 @@
 			</div>
 
 			<div class="am-g">
-                <div class="am-u-sm-13">
+               <form action="" method="">
+                <div class="am-u-sm-12">
                     <!-- <h2 class="am-text-center am-text-xxxl am-margin-top-lg">404. Not Found</h2> -->
                     <!-- <p class="am-text-center">测 评 要 素</p> -->
                     <table class="am-table am-table-bordered am-table-centered am-table-radius am-table-striped" style="table-layout:fixed;text-align: center;">
 						<tbody id="tbo1">
 							<tr>
-								<td colspan="13" class="am-text-center">
-									江西农业大学2017年度教学科研单位定量评分统计表（处级领导班子）</td>
+								<td colspan="22" class="am-text-center">
+									江西农业大学${year }年度教学科研单位定量评分统计表（处级领导班子）
+								</td>
 							</tr>
 							<tr>
 								<td rowspan="2">序号</td>
 								<td rowspan="2">组别</td>
-								<td rowspan="2" colspan="2">考核单位</td>
-								<c:forEach items="${options }" var="option">
-									<td>${option.optionName }</td>
+								<td rowspan="2">考核单位</td>
+								<c:forEach items="${Toptions}" var="option">
+									<td colspan="2">${option.optionName}</td>
 								</c:forEach>
+								<!-- <td>教学</td>
+								<td>科研</td>
+								<td>学科与研究生</td>
+								<td>人才</td>
+								<td>学生工作</td>				
+								<td>就业（考研）</td>
+								<td>党团</td>
+								<td>党风廉政建设</td>
+								<td>综治</td> -->
+								<td rowspan="2">${year }年度定量评价总得分</td>
 							</tr>
 							<tr>
-								<c:forEach items="${options }" var="option">
+								<c:forEach items="${Toptions}" var="option">
 									<td>评分</td>
+								    <td>折算</td>
 								</c:forEach>
 							</tr>
-							<c:forEach items="${departments}" var="department">
-								 <tr>
-								   <td><input type="text" style="width:90%;border:none;" name="id" value="1" readOnly="true"></td>
-								   <td><input type="text" style="width:90%;border:none;" name="departmentId" value="${department.departmentId }" readOnly="true"></td>
-								   <td colspan="2"><input type="text" style="width:90%;border:none;" name="departmentName" value="${department.departmentName }" readOnly="true"></td>
-								   <c:forEach items="${options }" var="option">
-										<td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="grades"></td>
-									</c:forEach>
-								  </tr>
+							<c:forEach items="${Tdepartments}" var="department" varStatus="s">
+								<tr>
+							    <td>1</td>
+							    <td>${department.departmentId}</td>
+							    <td>${department.departmentName}</td>
+							    <c:forEach items="${lists[s.count -1] }" var="quantify">
+							    	<td>${quantify.grade }</td>
+							    	<td>${quantify.getGrade }</td>
+							    </c:forEach>
+						        <td>${listSum[s.count-1]}</td>
+							 </tr>
 							</c:forEach>
 						</tbody>
+						<!-- <tbody>
+                        	<tr>
+	                            <td>
+									<button id="btn" type="button" onclick="addtr()" class="am-btn am-btn-primary am-btn-xs">添加</button>
+	                            </td>
+	                        </tr>
+                        </tbody> -->
                		</table>
-               		<input type="hidden" name="type" value="1">
                </div>
-               </div>
-            	<div class="am-margin">
-				<!-- scan-teach-unit.html -->
-				<button type="submit" class="am-btn am-btn-primary am-btn-xs">提交保存</button>
-				<button type="reset" class="am-btn am-btn-primary am-btn-xs">放弃保存</button>
+               </form>             
 			</div>
+			<div class="am-margin">
+				<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="javascript:window.location.href='scan-teach-unit.html'">提交保存</button>
+				<button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button>
 			</div>
-         </form> 
 		</div>
 		<!-- content end -->
+	</div>
 	<footer>
 		<hr>
 		<p class="am-padding-left">© 2018 江西农业大学.蓝点工作室</p>
@@ -199,4 +220,3 @@
 	<script src="/GradeSystem/js/app.js"></script>
 </body>
 </html>
-

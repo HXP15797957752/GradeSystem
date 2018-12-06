@@ -63,10 +63,15 @@
       <li><a href="unit-score-statistics.html"><span class="am-icon-map-marker"></span> 领导班级子评分统计</a></li>
       <li><a href="chief-score-statistics.html"><span class="am-icon-map-marker"></span> 正职评分统计</a></li>
       <li><a href="subchief-score-statistics.html"><span class="am-icon-map-marker"></span> 副职评分统计</a></li>
-      <li><a href="set-score-scale.html"><span class="am-icon-map-marker"></span> 评分比例设置</a></li>
+      <li><a href="/GradeSystem/quantify/quantifyIndex.do"><span class="am-icon-map-marker"></span> 评分比例设置</a></li>
+      <li><a href="/GradeSystem/quantify/quantifyUpdate.do"><span class="am-icon-map-marker"></span> 评分更新设置</a></li>
       <li><a href="set-assessment-group.html"><span class="am-icon-table"></span> 考核分组设置</a></li>
-      <li><a href="teach-unit.html"><span class="am-icon-table"></span> 教学科研单位评分</a></li>
-      <li><a href="manage-unit.html"><span class="am-icon-table"></span> 管理服务单位评分</a></li>
+      <li><a href="/GradeSystem/quantify/teacherUintGrade.do"><span class="am-icon-table"></span> 教学科研单位评分</a></li>
+      <li><a href="/GradeSystem/quantify/managerUintGrade.do"><span class="am-icon-table"></span> 管理服务单位评分</a></li>
+      <li><a href="/GradeSystem/quantify/teacherUnitProportion.do"><span class="am-icon-table"></span> 教学科研单位评分比例设置</a></li>
+      <li><a href="/GradeSystem/quantify/managerUnitProportion.do"><span class="am-icon-table"></span> 管理服务单位评分比例设置</a></li>
+      <li><a href="/GradeSystem/quantify/teacherUnit.do"><span class="am-icon-table"></span> 教学科研单位信息</a></li>
+      <li><a href="/GradeSystem/quantify/managerUnit.do"><span class="am-icon-table"></span> 管理服务单位信息</a></li>
     </ul>
 
     <div class="am-panel am-panel-default admin-sidebar-panel">

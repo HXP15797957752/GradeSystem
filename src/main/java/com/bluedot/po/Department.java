@@ -26,6 +26,9 @@ public class Department {
 	public void setGradingUnitId(int gradingUnitId) {
 		this.gradingUnitId = gradingUnitId;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "Department [departmentId=" + departmentId + ", departmentName=" + departmentName + ", gradingUnitId="
+				+ gradingUnitId + "]";
+	}
 }

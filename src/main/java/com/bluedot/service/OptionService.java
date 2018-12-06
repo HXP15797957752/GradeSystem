@@ -3,6 +3,7 @@ package com.bluedot.service;
 
 import java.util.List;
 
+import com.bluedot.po.AddOptions;
 import com.bluedot.po.Option;
 
 /**
@@ -16,4 +17,6 @@ public interface OptionService {
 	public List<Option> searchTeacherOption();
 	public void updateOption(Option option);
 	public void deleteOption(Option option);
+	public void insertOneOption(AddOptions addOption);
+	public List<Option> searchOption(int type);
 }
