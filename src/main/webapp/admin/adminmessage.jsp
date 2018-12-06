@@ -112,7 +112,7 @@
           <div class="am-form-group">
             <label for="user-name" class="am-u-sm-3 am-form-label">工资编号</label>
             <div class="am-u-sm-9" id="adminuserId">
-               <input type="text" readonly='readonly' id="adminuserId2" > 
+               <input type="text"  id="adminuserId2" > 
             </div>
           </div>
           <div class="am-form-group">
