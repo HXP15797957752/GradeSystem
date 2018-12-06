@@ -38,7 +38,11 @@
 		    <artifactId>aspectjrt</artifactId>
 		    <version>1.5.4</version>
 		</dependency> -->
-						
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>3.17</version>
+		</dependency>				
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis</artifactId>
