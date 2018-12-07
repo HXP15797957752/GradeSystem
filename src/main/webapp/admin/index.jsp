@@ -61,7 +61,7 @@
       <li><a href="subchief-score-statistics.html"><span class="am-icon-map-marker"></span> 副职评分统计</a></li>
       <li><a href="/GradeSystem/quantify/quantifyIndex.do"><span class="am-icon-map-marker"></span> 评分比例设置</a></li>
       <li><a href="/GradeSystem/quantify/quantifyUpdate.do"><span class="am-icon-map-marker"></span> 评分更新设置</a></li>
-      <li><a href="set-assessment-group.html"><span class="am-icon-table"></span> 考核分组设置</a></li>
+      <li><a href="${APP_PATH }/admin/set-assessment-group.jsp"><span class="am-icon-table"></span> 考核分组设置</a></li>
       <li><a href="/GradeSystem/quantify/teacherUintGrade.do"><span class="am-icon-table"></span> 教学科研单位评分</a></li>
       <li><a href="/GradeSystem/quantify/managerUintGrade.do"><span class="am-icon-table"></span> 管理服务单位评分</a></li>
       <li><a href="/GradeSystem/quantify/teacherUnitProportion.do"><span class="am-icon-table"></span> 教学科研单位评分比例设置</a></li>
