@@ -19,10 +19,6 @@
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
   <link rel="stylesheet" href="${APP_PATH}/css/amazeui.min.css"/>
   <link rel="stylesheet" href="${APP_PATH}/css/admin.css">
-  <%-- <script src="${APP_PATH}/js/jquery.min.js"></script>
-	<script src="${APP_PATH}/js/amazeui.min.js"></script>
-	<!--<![endif]-->
-	<script src="${APP_PATH}/js/app.js"></script> --%>
 </head>
 <body>
    <header class="am-topbar admin-header">
