@@ -51,7 +51,7 @@
   <!-- sidebar start -->
   <div class="admin-sidebar">
     <ul class="am-list admin-sidebar-list">
-      <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
+      <li><a href="${APP_PATH }/admin/index.jsp"><span class="am-icon-home"></span> 首页</a></li>
       <li><a href="${APP_PATH }/admin/adminmessage.jsp"><span class="am-icon-check"></span> 个人资料</a></li>
       <li><a href="${APP_PATH }/admin/user-manage.jsp"><span class="am-icon-map-marker"></span> 用户管理</a></li>
       <li><a href="${APP_PATH }/admin/unit-manage.jsp"><span class="am-icon-map-marker"></span> 单位管理</a></li>
