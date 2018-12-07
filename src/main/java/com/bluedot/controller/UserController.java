@@ -257,4 +257,14 @@ public class UserController {
 		}
 	return null;
 	}
+
+	@RequestMapping("/loginout")
+	public String loginout(HttpServletRequest request) {
+		 Enumeration<String> enumeration = request.getSession().getAttributeNames();
+		  while (enumeration.hasMoreElements()) {
+		  String key = enumeration.nextElement().toString();
+		  request.getSession().removeAttribute(key);
+		 }
+		return "redirect:/userlogin.html";
+	}
 }
