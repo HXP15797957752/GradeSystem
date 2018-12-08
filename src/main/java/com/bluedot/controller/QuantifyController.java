@@ -58,6 +58,14 @@ public class QuantifyController {
 		request.setAttribute("teacherDepartments", teacherDepartment);
 		return "admin/set-score-scale";
 	}
+	@RequestMapping("/groupUser")
+	public String GroupUser(HttpServletRequest request) {
+		List<Department> manageDepartment = departmentService.searchManageDepartment();
+		List<Department> teacherDepartment = departmentService.searchTeacherDepartment();
+		request.setAttribute("manageDepartments", manageDepartment);
+		request.setAttribute("teacherDepartments", teacherDepartment);
+		return "admin/group-department";
+	}
 	@RequestMapping("/quantifyUpdate")
 	public String QuantifyUpdate(HttpServletRequest request) {
 		List<Option> Toptions = optionService.searchOption(1);
