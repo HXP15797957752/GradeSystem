@@ -322,7 +322,7 @@
       <div class="am-tab-panel am-fade" id="tab7">                         
           <div class="am-u-sm-12">
             	<div class="am-g am-margin-top">
-                <form class="am-form" action="/GradeSystem/quantify/addoption.do">
+                <form class="am-form" action="/GradeSystem/quantify/addoption.do" method="post">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
 		          <tr>
