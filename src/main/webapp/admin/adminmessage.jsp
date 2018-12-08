@@ -105,7 +105,7 @@
             </div>
           </div>
           <div class="am-form-group">
-            <label for="user-name"  class="am-u-sm-3 am-form-label">姓名</label>
+            <label for="user-name"  class="am-u-sm-3 am-form-label">编号</label>
             <div class="am-u-sm-9" id="adminname">
                <input type="text" readonly='readonly' id="adminname2" > 
             </div>
