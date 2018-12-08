@@ -134,6 +134,7 @@
 			          <tr>
 			            <td>
 			            	<select name="departmentId">
+			            		<option value="-1">初始化设置</option>
 				          		<c:forEach items="${Tdepartments}" var="Tdepartment">
 				          			<option value="${Tdepartment.departmentId }">${Tdepartment.departmentName }</option>
 				          		</c:forEach>
@@ -179,6 +180,7 @@
 			          <tr>
 			            <td>
 			            	<select name="departmentId">
+			            	    <option value="-1">初始化设置</option>
 				          		<c:forEach items="${Mdepartments}" var="Mdepartment">
 				          			<option value="${Mdepartment.departmentId }">${Mdepartment.departmentName }</option>
 				          		</c:forEach>
@@ -224,6 +226,7 @@
 			          <tr>
 			            <td>
 			            	<select name="departmentId">
+			            		<option value="-1">初始化设置</option>
 				          		<c:forEach items="${Tdepartments}" var="Tdepartment">
 				          			<option value="${Tdepartment.departmentId }">${Tdepartment.departmentName }</option>
 				          		</c:forEach>
@@ -270,6 +273,7 @@
 			          <tr>
 			            <td>
 			            	<select name="departmentId">
+			            		<option value="-1">初始化设置</option>
 				          		<c:forEach items="${Mdepartments}" var="Mdepartment">
 				          			<option value="${Mdepartment.departmentId }">${Mdepartment.departmentName }</option>
 				          		</c:forEach>

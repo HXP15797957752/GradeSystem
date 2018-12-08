@@ -17,6 +17,11 @@
    </update>
    <select id="searchOneQuantify" parameterType="com.bluedot.po.Quantify" resultType="com.bluedot.po.Quantify">
    		select grade,proportion,optionid,departmentid,year,id from quantify where optionid = #{optionID,jdbcType=INTEGER} and departmentid = #{departmentID,jdbcType=INTEGER}
-
    </select>
+   <update id="updateQuantifyProportionAll" parameterType="com.bluedot.po.Quantify">
+   		update quantify set proportion = #{proportion,jdbcType=DOUBLE} where optionid = #{optionID,jdbcType=INTEGER} and unitid = #{unitID,jdbcType=INTEGER}
+   </update>
+   <update id="updateQuantifyGradeAll" parameterType="com.bluedot.po.Quantify">
+   		update quantify set grade = #{grade,jdbcType=DOUBLE} where optionid = #{optionID,jdbcType=INTEGER} and unitid = #{unitID,jdbcType=INTEGER}
+   </update>
 </mapper>

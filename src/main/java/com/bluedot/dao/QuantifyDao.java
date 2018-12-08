@@ -13,4 +13,6 @@ public interface QuantifyDao {
 	public void updateQuantifyProportion(Quantify quantify);
 	public void updateQuantifyGrade(Quantify quantify);
 	public Quantify searchOneQuantify(Quantify quantify);
+	public void updateQuantifyProportionAll(Quantify quantify);
+	public void updateQuantifyGradeAll(Quantify quantify);
 }

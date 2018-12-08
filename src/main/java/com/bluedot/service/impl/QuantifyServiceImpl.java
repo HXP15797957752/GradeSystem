@@ -82,7 +82,6 @@ public class QuantifyServiceImpl implements QuantifyService{
 			options = optionDao.searchHMOption();
 		}
 		for (Option option : options) {
-			quantify.setDepartmentID(departmentId);
 			quantify.setOptionID(option.getId());
 			try{
 				quantify.setProportion(proportions[index++]);
@@ -90,7 +89,13 @@ public class QuantifyServiceImpl implements QuantifyService{
 				// TODO: handle exception
 				quantify.setProportion(0.0);
 			}
-			quantifyDao.updateQuantifyProportion(quantify);
+			if(departmentId == -1) {
+				quantify.setUnitID(type);
+				quantifyDao.updateQuantifyProportionAll(quantify);
+			}else {
+				quantify.setDepartmentID(departmentId);
+				quantifyDao.updateQuantifyProportion(quantify);
+			}
 		}
 	}
 	@Override
@@ -113,7 +118,13 @@ public class QuantifyServiceImpl implements QuantifyService{
 				// TODO: handle exception
 				quantify.setGrade(0.0);
 			}
-			quantifyDao.updateQuantifyGrade(quantify);
+			if(departmentId == -1) {
+				quantify.setUnitID(type);
+				quantifyDao.updateQuantifyGradeAll(quantify);
+			}else {
+				quantify.setDepartmentID(departmentId);
+				quantifyDao.updateQuantifyGrade(quantify);
+			}
 		}
 	}
 	@Override
