@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2018-12-08 11:06:30
+Date: 2018-12-08 16:40:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,7 +23,6 @@ CREATE TABLE `department` (
   `departmentid` int(11) NOT NULL AUTO_INCREMENT,
   `departmentname` varchar(255) DEFAULT NULL,
   `gradingunitid` int(11) DEFAULT NULL,
-  `groupid` int(11) DEFAULT '1',
   `userName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`departmentid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
@@ -31,60 +30,60 @@ CREATE TABLE `department` (
 -- ----------------------------
 -- Records of department
 -- ----------------------------
-INSERT INTO `department` VALUES ('1', '农学院', '1', '1', null);
-INSERT INTO `department` VALUES ('2', '林学院（园林与艺术学院）', '1', '1', null);
-INSERT INTO `department` VALUES ('3', '工学院', '1', '1', null);
-INSERT INTO `department` VALUES ('4', '生物科学与工程学院', '1', '1', null);
-INSERT INTO `department` VALUES ('5', '动物科学技术学院', '1', '1', null);
-INSERT INTO `department` VALUES ('6', '国土资源与环境学院', '1', '1', null);
-INSERT INTO `department` VALUES ('7', '经济管理学院', '1', '1', null);
-INSERT INTO `department` VALUES ('8', '食品科学与工程学院', '1', '1', null);
-INSERT INTO `department` VALUES ('9', '计算机与信息工程学院', '1', '1', null);
-INSERT INTO `department` VALUES ('10', '人文与公共管理学院', '1', '1', null);
-INSERT INTO `department` VALUES ('11', '马克思主义（政治）学院', '1', '1', null);
-INSERT INTO `department` VALUES ('12', '外国语学院', '1', '1', null);
-INSERT INTO `department` VALUES ('13', '软件学院', '1', '1', null);
-INSERT INTO `department` VALUES ('14', '职业师范（技术）学院', '1', '1', null);
-INSERT INTO `department` VALUES ('15', '理学院', '1', '1', null);
-INSERT INTO `department` VALUES ('16', '军体部（武装部）', '1', '1', null);
-INSERT INTO `department` VALUES ('17', '纪委（监察、审计）', '2', '1', null);
-INSERT INTO `department` VALUES ('18', '组织部（机关党委、党校）', '2', '1', null);
-INSERT INTO `department` VALUES ('19', '宣传部', '2', '1', null);
-INSERT INTO `department` VALUES ('20', '统战部', '2', '1', null);
-INSERT INTO `department` VALUES ('21', '工会', '2', '1', null);
-INSERT INTO `department` VALUES ('22', '学工部（处、大学生资助管理中心）', '2', '1', null);
-INSERT INTO `department` VALUES ('23', '团委', '2', '1', null);
-INSERT INTO `department` VALUES ('24', '招生就业处', '2', '1', null);
-INSERT INTO `department` VALUES ('25', '离退休工作处', '2', '1', null);
-INSERT INTO `department` VALUES ('26', '党办校办（党务政务督查室）', '2', '1', null);
-INSERT INTO `department` VALUES ('27', '科技处', '2', '1', null);
-INSERT INTO `department` VALUES ('28', '新农村发展研究院', '2', '1', null);
-INSERT INTO `department` VALUES ('29', '人事处', '2', '1', null);
-INSERT INTO `department` VALUES ('30', '财务处', '2', '1', null);
-INSERT INTO `department` VALUES ('31', '保卫处', '2', '1', null);
-INSERT INTO `department` VALUES ('32', '国际交流处', '2', '1', null);
-INSERT INTO `department` VALUES ('33', '产业处', '2', '1', null);
-INSERT INTO `department` VALUES ('34', '教务处（教学督导组）', '2', '1', null);
-INSERT INTO `department` VALUES ('35', '高教所', '2', '1', null);
-INSERT INTO `department` VALUES ('36', '研究生院', '2', '1', null);
-INSERT INTO `department` VALUES ('37', '资产与实验室管理处', '2', '1', null);
-INSERT INTO `department` VALUES ('38', 'MPA教育中心', '2', '1', null);
-INSERT INTO `department` VALUES ('39', '信息中心', '2', '1', null);
-INSERT INTO `department` VALUES ('40', '招标与采购中心', '2', '1', null);
-INSERT INTO `department` VALUES ('41', '农业科技园', '2', '1', null);
-INSERT INTO `department` VALUES ('42', '校友工作办公室', '2', '1', null);
-INSERT INTO `department` VALUES ('43', '后勤与校园管理处', '2', '1', null);
-INSERT INTO `department` VALUES ('44', '基本建设处', '2', '1', null);
-INSERT INTO `department` VALUES ('45', '图书馆', '2', '1', null);
-INSERT INTO `department` VALUES ('46', '期刊社', '2', '1', null);
-INSERT INTO `department` VALUES ('47', '档案馆', '2', '1', null);
-INSERT INTO `department` VALUES ('48', '继续教育学院（管理干部学院）', '2', '1', null);
-INSERT INTO `department` VALUES ('49', '后勤服务集团', '2', '1', null);
-INSERT INTO `department` VALUES ('50', '附中', '2', '1', null);
-INSERT INTO `department` VALUES ('51', '医院', '2', '1', null);
-INSERT INTO `department` VALUES ('54', '22', '2', '1', null);
-INSERT INTO `department` VALUES ('69', '33333', '1', '1', null);
-INSERT INTO `department` VALUES ('70', '22', '2', '1', null);
+INSERT INTO `department` VALUES ('1', '农学院', '1', '组长1');
+INSERT INTO `department` VALUES ('2', '林学院（园林与艺术学院）', '1', '组长2');
+INSERT INTO `department` VALUES ('3', '工学院', '1', '组长');
+INSERT INTO `department` VALUES ('4', '生物科学与工程学院', '1', null);
+INSERT INTO `department` VALUES ('5', '动物科学技术学院', '1', null);
+INSERT INTO `department` VALUES ('6', '国土资源与环境学院', '1', null);
+INSERT INTO `department` VALUES ('7', '经济管理学院', '1', null);
+INSERT INTO `department` VALUES ('8', '食品科学与工程学院', '1', null);
+INSERT INTO `department` VALUES ('9', '计算机与信息工程学院', '1', null);
+INSERT INTO `department` VALUES ('10', '人文与公共管理学院', '1', null);
+INSERT INTO `department` VALUES ('11', '马克思主义（政治）学院', '1', null);
+INSERT INTO `department` VALUES ('12', '外国语学院', '1', null);
+INSERT INTO `department` VALUES ('13', '软件学院', '1', null);
+INSERT INTO `department` VALUES ('14', '职业师范（技术）学院', '1', null);
+INSERT INTO `department` VALUES ('15', '理学院', '1', null);
+INSERT INTO `department` VALUES ('16', '军体部（武装部）', '1', null);
+INSERT INTO `department` VALUES ('17', '纪委（监察、审计）', '2', null);
+INSERT INTO `department` VALUES ('18', '组织部（机关党委、党校）', '2', null);
+INSERT INTO `department` VALUES ('19', '宣传部', '2', null);
+INSERT INTO `department` VALUES ('20', '统战部', '2', null);
+INSERT INTO `department` VALUES ('21', '工会', '2', null);
+INSERT INTO `department` VALUES ('22', '学工部（处、大学生资助管理中心）', '2', null);
+INSERT INTO `department` VALUES ('23', '团委', '2', null);
+INSERT INTO `department` VALUES ('24', '招生就业处', '2', null);
+INSERT INTO `department` VALUES ('25', '离退休工作处', '2', null);
+INSERT INTO `department` VALUES ('26', '党办校办（党务政务督查室）', '2', null);
+INSERT INTO `department` VALUES ('27', '科技处', '2', null);
+INSERT INTO `department` VALUES ('28', '新农村发展研究院', '2', null);
+INSERT INTO `department` VALUES ('29', '人事处', '2', null);
+INSERT INTO `department` VALUES ('30', '财务处', '2', null);
+INSERT INTO `department` VALUES ('31', '保卫处', '2', null);
+INSERT INTO `department` VALUES ('32', '国际交流处', '2', null);
+INSERT INTO `department` VALUES ('33', '产业处', '2', null);
+INSERT INTO `department` VALUES ('34', '教务处（教学督导组）', '2', null);
+INSERT INTO `department` VALUES ('35', '高教所', '2', null);
+INSERT INTO `department` VALUES ('36', '研究生院', '2', null);
+INSERT INTO `department` VALUES ('37', '资产与实验室管理处', '2', null);
+INSERT INTO `department` VALUES ('38', 'MPA教育中心', '2', null);
+INSERT INTO `department` VALUES ('39', '信息中心', '2', null);
+INSERT INTO `department` VALUES ('40', '招标与采购中心', '2', null);
+INSERT INTO `department` VALUES ('41', '农业科技园', '2', null);
+INSERT INTO `department` VALUES ('42', '校友工作办公室', '2', null);
+INSERT INTO `department` VALUES ('43', '后勤与校园管理处', '2', null);
+INSERT INTO `department` VALUES ('44', '基本建设处', '2', null);
+INSERT INTO `department` VALUES ('45', '图书馆', '2', null);
+INSERT INTO `department` VALUES ('46', '期刊社', '2', null);
+INSERT INTO `department` VALUES ('47', '档案馆', '2', null);
+INSERT INTO `department` VALUES ('48', '继续教育学院（管理干部学院）', '2', null);
+INSERT INTO `department` VALUES ('49', '后勤服务集团', '2', null);
+INSERT INTO `department` VALUES ('50', '附中', '2', null);
+INSERT INTO `department` VALUES ('51', '医院', '2', null);
+INSERT INTO `department` VALUES ('54', '22', '2', null);
+INSERT INTO `department` VALUES ('69', '33333', '1', null);
+INSERT INTO `department` VALUES ('70', '22', '2', null);
 
 -- ----------------------------
 -- Table structure for gradingunit
@@ -331,10 +330,12 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   KEY `roleId` (`roleId`),
   CONSTRAINT `roleId` FOREIGN KEY (`roleId`) REFERENCES `role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', '123', '组长', '123', null, null, '2');
 INSERT INTO `user` VALUES ('2', '123', '胡部长', '123', null, null, '1');
+INSERT INTO `user` VALUES ('3', '123', '组长1', '123', null, null, '2');
+INSERT INTO `user` VALUES ('4', '123', '组长2', '123', null, null, '2');
