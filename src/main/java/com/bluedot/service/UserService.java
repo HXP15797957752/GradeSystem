@@ -49,8 +49,6 @@ public interface UserService {
 
 	public void updateUnit(UnitManage unitManage);
 
+	public List<User> getGroupUser(); 
 
-	
-	
-	
 }

@@ -20,4 +20,7 @@
   	<select id="searchDepartment" parameterType="java.lang.Integer" resultType="com.bluedot.po.Department">
   		select * from department where departmentid = #{id,jdbcType=INTEGER}
   	</select>
+  	<update id="updateDepartmentGroup" parameterType="com.bluedot.po.Department">
+  		update department set UserName =#{userName,jdbcType=INTEGER} where departmentid = #{departmentId,jdbcType=INTEGER}
+  	</update>
 </mapper>

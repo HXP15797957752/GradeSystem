@@ -41,6 +41,8 @@ public interface UserDao {
 	UnitManage selectUnitById(int id);
 
 	void updateUnit(UnitManage unitManage);
+
+	List<User> getGroupUser();
 	
 	
 	

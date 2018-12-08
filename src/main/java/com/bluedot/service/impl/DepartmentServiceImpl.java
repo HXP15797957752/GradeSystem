@@ -29,6 +29,11 @@ public class DepartmentServiceImpl implements DepartmentService{
 	
 	
 	@Override
+	public void updateDepartmentGroup(Department department) {
+		// TODO Auto-generated method stub
+		departmentDao.updateDepartmentGroup(department);
+	}
+	@Override
 	public Department searchDepartment(int id) {
 		// TODO Auto-generated method stub
 		return departmentDao.searchDepartment(id) ;

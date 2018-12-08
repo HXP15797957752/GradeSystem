@@ -2,7 +2,6 @@ package com.bluedot.controller;
 
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -13,17 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bluedot.dao.OptionDao;
-import com.bluedot.dao.QuantifyDao;
 import com.bluedot.po.AddOptions;
 import com.bluedot.po.Department;
 import com.bluedot.po.Option;
 import com.bluedot.po.Quantify;
+import com.bluedot.po.User;
 import com.bluedot.service.DepartmentService;
 import com.bluedot.service.OptionService;
 import com.bluedot.service.QuantifyService;
+import com.bluedot.service.UserService;
 
 
 
@@ -41,6 +39,8 @@ public class QuantifyController {
 	private OptionService optionService;
 	@Autowired
 	private DepartmentService departmentService;
+	@Autowired
+	private UserService userService;
 	/**
 	 * 定量模块index
 	 */
@@ -62,6 +62,8 @@ public class QuantifyController {
 	public String GroupUser(HttpServletRequest request) {
 		List<Department> manageDepartment = departmentService.searchManageDepartment();
 		List<Department> teacherDepartment = departmentService.searchTeacherDepartment();
+		List<User> user = userService.getGroupUser();
+		request.setAttribute("users", user);
 		request.setAttribute("manageDepartments", manageDepartment);
 		request.setAttribute("teacherDepartments", teacherDepartment);
 		return "admin/group-department";
@@ -174,6 +176,11 @@ public class QuantifyController {
 	@RequestMapping("/updateDepartment")
 	public String UpdateDepartment(HttpServletRequest request,HttpServletResponse response, Department department) throws IOException {
 		departmentService.updateDepartment(department);
+		return "admin/index";
+	}
+	@RequestMapping("/updateDepartmentGroup")
+	public String UpdateDepartmentGroup(HttpServletRequest request,HttpServletResponse response, Department department) throws IOException {
+		departmentService.updateDepartmentGroup(department);
 		return "admin/index";
 	}
 	@RequestMapping("/updateOption")

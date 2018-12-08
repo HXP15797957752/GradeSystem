@@ -19,6 +19,12 @@ public class UserServiceImpl implements UserService{
 
 	@Resource
 	private UserDao userDao;
+
+	@Override
+	public List<User> getGroupUser() {
+		// TODO Auto-generated method stub
+		return userDao.getGroupUser();
+	}
 	
 	public User getByUserName(String userName) {
 		return userDao.getByUserName(userName);

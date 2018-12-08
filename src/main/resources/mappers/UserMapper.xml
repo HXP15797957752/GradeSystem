@@ -21,6 +21,11 @@
         
     </select>
     
+    <select id="getGroupUser" resultType="com.bluedot.po.User">
+         
+        select * from user where roleId = 2;
+    </select>
+    
     <!-- selectbyid -->
     
     <select id="selectById" parameterType="Integer" resultMap="UserResult">

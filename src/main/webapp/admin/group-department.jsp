@@ -124,7 +124,7 @@
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
 		          <tr>
-		            <th>序号</th><th>单位</th><th>组号</th><th>用户名</th><th>操作</th>
+		            <th>序号</th><th>单位</th><th>用户名</th><th>操作</th>
 		          </tr>
 		          </thead>
 		          <tbody>
@@ -133,20 +133,14 @@
 		          	    <td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentId" value="${teacherDepartment.departmentId}" readonly="true"></td>
 			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentName" value="${teacherDepartment.departmentName}" readonly="true"></td>
 			          	<td>
-			          		<select name="gradingUnitId" style="width: 100%">
-			          			<option value="1">1</option>
-			          			<option value="2">2</option>
+			          		<select name="userName" style="width: 100%">
+			          			<c:forEach items="${users}" var="user">
+			          				<option value="${user.userName }">${user.userName }</option>
+			          			</c:forEach>
 			          		</select>
 			          	</td>
-			          	<td>
-			          		<select name="gradingUnitId" style="width: 100%">
-			          			<option value="1">1</option>
-			          			<option value="2">2</option>
-			          		</select>
-			          	</td>
-			            <td>
+			            <td style="text-align: center;">
 			                <button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="UpdateDepartment(this)">修改</button>
-							<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="DeleteDepartment(this)">删除</button>
 			            </td>
 			          </tr>	
 		          	</c:forEach>	
@@ -154,21 +148,15 @@
 		          	  <tr>
 			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentId" value="${manageDepartment.departmentId}" readonly="true"></td>
 				        <td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentName" value="${manageDepartment.departmentName}" readonly="true"></td>
-			           <td>
-			          		<select name="gradingUnitId" style="width: 100%">
-			          			<option value="1">1</option>
-			          			<option value="2">2</option>
-			          		</select>
-			          	</td>
 			          	<td>
-			          		<select name="gradingUnitId" style="width: 100%">
-			          			<option value="1">1</option>
-			          			<option value="2">2</option>
+			          		<select name="userName" style="width: 100%">
+			          			<c:forEach items="${users}" var="user">
+			          				<option value="${user.userName }">${user.userName }</option>
+			          			</c:forEach>
 			          		</select>
 			          	</td>
-			            <td>
+			            <td style="text-align: center;">
 			            	<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="UpdateDepartment(this)">修改</button>
-							<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="DeleteDepartment(this)">删除</button>
 			            </td>
 			          </tr>	
 		          	</c:forEach>
@@ -187,67 +175,17 @@
   <p class="am-padding-left">© 2018 江西农业大学.蓝点工作室</p>
 </footer>
 <script type="text/javascript">
-	function deleteOption(object){
-		var tr1 = object.parentNode.parentNode;
-		$.ajax({
-			url : "/GradeSystem/quantify/deleteOption.do",
-    		Type : "post",
-    		data :{
-    			id :tr1.cells[0].childNodes[0].value
-    		},
-    		dataType :"json",
-    		success :function(result){
-    			alert("删除成功");
-    		},error : function(){
-    			alert("删除成功");
-    		}
-		})
-	}
-    function DeleteDepartment(object){
-    	var tr1 = object.parentNode.parentNode;
-    	$.ajax({
-    		url : "/GradeSystem/quantify/deleteDepartment.do",
-    		Type : "post",
-    		data :{
-    			departmentId :tr1.cells[0].childNodes[0].value
-    		},
-    		dataType :"json",
-    		success :function(result){
-    			alert("删除成功");
-    		},error : function(){
-    			alert("删除成功");
-    		}
-    	})
-    }
-    function updateOption(object){
-    	var tr1 = object.parentNode.parentNode;
-    	$.ajax({
-    		url : "/GradeSystem/quantify/updateOption.do",
-    		type : "post",
-    		data :{
-				id :tr1.cells[0].childNodes[0].value,
-				optionName : tr1.cells[1].childNodes[0].value,
-			},
-			dataType : "json",
-			success : function(result){
-				alert("更新成功");
-			},error : function (){
-				alert("更新成功");
-			}
-    	});
-    }
 	function UpdateDepartment(object){
 		var tr1 = object.parentNode.parentNode;
 		/* alert(tr1.cells[0].childNodes[0].value);
 		alert(tr1.cells[1].childNodes[0].value);
 		alert(tr1.cells[2].getElementsByTagName("select")[0].value); */
 	 	$.ajax({
-			url : "/GradeSystem/quantify/updateDepartment.do",
+			url : "/GradeSystem/quantify/updateDepartmentGroup.do",
 			type : "post",
 			data :{
 				departmentId :tr1.cells[0].childNodes[0].value,
-				departmentName : tr1.cells[1].childNodes[0].value,
-				gradingUnitId : tr1.cells[2].getElementsByTagName("select")[0].value
+				userName : tr1.cells[2].getElementsByTagName("select")[0].value
 			},
 			dataType : "json",
 			success : function(result){
