@@ -113,7 +113,6 @@
   <div class="am-tabs am-margin" data-am-tabs>
     <ul class="am-tabs-nav am-nav am-nav-tabs">
       <li class="am-active"><a href="#tab1">分组单位</a></li>
-      <li><a href="#tab2">分组查看</a></li>
     </ul>
 
     <div class="am-tabs-bd">
@@ -134,11 +133,7 @@
 		          	    <td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentId" value="${teacherDepartment.departmentId}" readonly="true"></td>
 			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentName" value="${teacherDepartment.departmentName}" readonly="true"></td>
 			          	<td>
-			          		<select name="userName" style="width: 100%">
-			          			<c:forEach items="${users}" var="user">
-			          				<option value="${user.userName }">${user.userName }</option>
-			          			</c:forEach>
-			          		</select>
+			          		
 			          	</td>
 			            <td style="text-align: center;">
 			                <button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="UpdateDepartment(this)">修改</button>
@@ -149,16 +144,7 @@
 		          	  <tr>
 			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentId" value="${manageDepartment.departmentId}" readonly="true"></td>
 				        <td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentName" value="${manageDepartment.departmentName}" readonly="true"></td>
-			          	<td>
-			          		<select name="userName" style="width: 100%">
-			          			<c:forEach items="${users}" var="user">
-			          				<option value="${user.userName }">${user.userName }</option>
-			          			</c:forEach>
-			          		</select>
-			          	</td>
-			            <td style="text-align: center;">
-			            	<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="UpdateDepartment(this)">修改</button>
-			            </td>
+			          	<td></td>
 			          </tr>	
 		          	</c:forEach>
 		          </tbody>
@@ -168,37 +154,6 @@
 				</div>
          </div>
 <!--      教学科研end-->
-        <div class="am-tab-panel am-fade" id="tab2">  
-				<div class="am-g am-margin-top">
-				<div class="am-u-sm-12">
-				<form class="am-form">
-		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
-		          <thead>
-		          <tr>
-		            <th>序号</th><th>单位</th><th>用户名</th>
-		          </tr>
-		          </thead>
-		          <tbody>
-			          <c:forEach items="${teacherDepartments}" var="teacherDepartment">
-		          	  <tr>
-		          	    <td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentId" value="${teacherDepartment.departmentId}"></td>
-			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentName" value="${teacherDepartment.departmentName}"></td>
-			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentName" value="${teacherDepartment.userName}"></td>
-			          </tr>	
-		          	</c:forEach>	
-			         <c:forEach items="${manageDepartments}" var="manageDepartment">
-		          	  <tr>
-			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentId" value="${manageDepartment.departmentId}"></td>
-				        <td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentName" value="${manageDepartment.departmentName}"></td>
-			          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="departmentName" value="${manageDepartment.userName}"></td>
-			          </tr>	
-		          	</c:forEach>
-		          </tbody>
-		        </table>
-		         </form>
-		      </div>
-				</div>
-         </div>
 </div>
 
 

@@ -6,10 +6,10 @@
   		insert into department (departmentName,gradingUnitId)values(#{departmentName,jdbcType=VARCHAR},#{gradingUnitId,jdbcType=INTEGER})
   	</insert>
   	<select id="searchManageDepartment" resultType="com.bluedot.po.Department">
-  		select departmentid,departmentname,gradingunitid from department where gradingunitid =2
+  		select departmentid,departmentname,gradingunitid,userName from department where gradingunitid =2
   	</select>
   	<select id="searchTeacherDepartment" resultType="com.bluedot.po.Department">
-  		select departmentid,departmentname,gradingunitid from department where gradingunitid =1
+  		select departmentid,departmentname,gradingunitid,userName from department where gradingunitid =1
   	</select>
   	<update id="updateDepartment" parameterType="com.bluedot.po.Department">
   		update department set departmentname = #{departmentName,jdbcType=VARCHAR}, gradingunitid =#{gradingUnitId,jdbcType=INTEGER} where departmentid = #{departmentId,jdbcType=INTEGER}
