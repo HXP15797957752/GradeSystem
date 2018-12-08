@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50717
+Source Server         : localhost_3306
+Source Server Version : 50540
 Source Host           : localhost:3306
 Source Database       : gradesystem
 
 Target Server Type    : MYSQL
-Target Server Version : 50717
+Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2018-12-07 16:25:13
+Date: 2018-12-08 11:06:30
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,66 +23,68 @@ CREATE TABLE `department` (
   `departmentid` int(11) NOT NULL AUTO_INCREMENT,
   `departmentname` varchar(255) DEFAULT NULL,
   `gradingunitid` int(11) DEFAULT NULL,
+  `groupid` int(11) DEFAULT '1',
+  `userName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`departmentid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of department
 -- ----------------------------
-INSERT INTO `department` VALUES ('1', '农学院', '1');
-INSERT INTO `department` VALUES ('2', '林学院（园林与艺术学院）', '1');
-INSERT INTO `department` VALUES ('3', '工学院', '1');
-INSERT INTO `department` VALUES ('4', '生物科学与工程学院', '1');
-INSERT INTO `department` VALUES ('5', '动物科学技术学院', '1');
-INSERT INTO `department` VALUES ('6', '国土资源与环境学院', '1');
-INSERT INTO `department` VALUES ('7', '经济管理学院', '1');
-INSERT INTO `department` VALUES ('8', '食品科学与工程学院', '1');
-INSERT INTO `department` VALUES ('9', '计算机与信息工程学院', '1');
-INSERT INTO `department` VALUES ('10', '人文与公共管理学院', '1');
-INSERT INTO `department` VALUES ('11', '马克思主义（政治）学院', '1');
-INSERT INTO `department` VALUES ('12', '外国语学院', '1');
-INSERT INTO `department` VALUES ('13', '软件学院', '1');
-INSERT INTO `department` VALUES ('14', '职业师范（技术）学院', '1');
-INSERT INTO `department` VALUES ('15', '理学院', '1');
-INSERT INTO `department` VALUES ('16', '军体部（武装部）', '1');
-INSERT INTO `department` VALUES ('17', '纪委（监察、审计）', '2');
-INSERT INTO `department` VALUES ('18', '组织部（机关党委、党校）', '2');
-INSERT INTO `department` VALUES ('19', '宣传部', '2');
-INSERT INTO `department` VALUES ('20', '统战部', '2');
-INSERT INTO `department` VALUES ('21', '工会', '2');
-INSERT INTO `department` VALUES ('22', '学工部（处、大学生资助管理中心）', '2');
-INSERT INTO `department` VALUES ('23', '团委', '2');
-INSERT INTO `department` VALUES ('24', '招生就业处', '2');
-INSERT INTO `department` VALUES ('25', '离退休工作处', '2');
-INSERT INTO `department` VALUES ('26', '党办校办（党务政务督查室）', '2');
-INSERT INTO `department` VALUES ('27', '科技处', '2');
-INSERT INTO `department` VALUES ('28', '新农村发展研究院', '2');
-INSERT INTO `department` VALUES ('29', '人事处', '2');
-INSERT INTO `department` VALUES ('30', '财务处', '2');
-INSERT INTO `department` VALUES ('31', '保卫处', '2');
-INSERT INTO `department` VALUES ('32', '国际交流处', '2');
-INSERT INTO `department` VALUES ('33', '产业处', '2');
-INSERT INTO `department` VALUES ('34', '教务处（教学督导组）', '2');
-INSERT INTO `department` VALUES ('35', '高教所', '2');
-INSERT INTO `department` VALUES ('36', '研究生院', '2');
-INSERT INTO `department` VALUES ('37', '资产与实验室管理处', '2');
-INSERT INTO `department` VALUES ('38', 'MPA教育中心', '2');
-INSERT INTO `department` VALUES ('39', '信息中心', '2');
-INSERT INTO `department` VALUES ('40', '招标与采购中心', '2');
-INSERT INTO `department` VALUES ('41', '农业科技园', '2');
-INSERT INTO `department` VALUES ('42', '校友工作办公室', '2');
-INSERT INTO `department` VALUES ('43', '后勤与校园管理处', '2');
-INSERT INTO `department` VALUES ('44', '基本建设处', '2');
-INSERT INTO `department` VALUES ('45', '图书馆', '2');
-INSERT INTO `department` VALUES ('46', '期刊社', '2');
-INSERT INTO `department` VALUES ('47', '档案馆', '2');
-INSERT INTO `department` VALUES ('48', '继续教育学院（管理干部学院）', '2');
-INSERT INTO `department` VALUES ('49', '后勤服务集团', '2');
-INSERT INTO `department` VALUES ('50', '附中', '2');
-INSERT INTO `department` VALUES ('51', '医院', '2');
-INSERT INTO `department` VALUES ('54', '22', '2');
-INSERT INTO `department` VALUES ('69', '33333', '1');
-INSERT INTO `department` VALUES ('70', '22', '2');
+INSERT INTO `department` VALUES ('1', '农学院', '1', '1', null);
+INSERT INTO `department` VALUES ('2', '林学院（园林与艺术学院）', '1', '1', null);
+INSERT INTO `department` VALUES ('3', '工学院', '1', '1', null);
+INSERT INTO `department` VALUES ('4', '生物科学与工程学院', '1', '1', null);
+INSERT INTO `department` VALUES ('5', '动物科学技术学院', '1', '1', null);
+INSERT INTO `department` VALUES ('6', '国土资源与环境学院', '1', '1', null);
+INSERT INTO `department` VALUES ('7', '经济管理学院', '1', '1', null);
+INSERT INTO `department` VALUES ('8', '食品科学与工程学院', '1', '1', null);
+INSERT INTO `department` VALUES ('9', '计算机与信息工程学院', '1', '1', null);
+INSERT INTO `department` VALUES ('10', '人文与公共管理学院', '1', '1', null);
+INSERT INTO `department` VALUES ('11', '马克思主义（政治）学院', '1', '1', null);
+INSERT INTO `department` VALUES ('12', '外国语学院', '1', '1', null);
+INSERT INTO `department` VALUES ('13', '软件学院', '1', '1', null);
+INSERT INTO `department` VALUES ('14', '职业师范（技术）学院', '1', '1', null);
+INSERT INTO `department` VALUES ('15', '理学院', '1', '1', null);
+INSERT INTO `department` VALUES ('16', '军体部（武装部）', '1', '1', null);
+INSERT INTO `department` VALUES ('17', '纪委（监察、审计）', '2', '1', null);
+INSERT INTO `department` VALUES ('18', '组织部（机关党委、党校）', '2', '1', null);
+INSERT INTO `department` VALUES ('19', '宣传部', '2', '1', null);
+INSERT INTO `department` VALUES ('20', '统战部', '2', '1', null);
+INSERT INTO `department` VALUES ('21', '工会', '2', '1', null);
+INSERT INTO `department` VALUES ('22', '学工部（处、大学生资助管理中心）', '2', '1', null);
+INSERT INTO `department` VALUES ('23', '团委', '2', '1', null);
+INSERT INTO `department` VALUES ('24', '招生就业处', '2', '1', null);
+INSERT INTO `department` VALUES ('25', '离退休工作处', '2', '1', null);
+INSERT INTO `department` VALUES ('26', '党办校办（党务政务督查室）', '2', '1', null);
+INSERT INTO `department` VALUES ('27', '科技处', '2', '1', null);
+INSERT INTO `department` VALUES ('28', '新农村发展研究院', '2', '1', null);
+INSERT INTO `department` VALUES ('29', '人事处', '2', '1', null);
+INSERT INTO `department` VALUES ('30', '财务处', '2', '1', null);
+INSERT INTO `department` VALUES ('31', '保卫处', '2', '1', null);
+INSERT INTO `department` VALUES ('32', '国际交流处', '2', '1', null);
+INSERT INTO `department` VALUES ('33', '产业处', '2', '1', null);
+INSERT INTO `department` VALUES ('34', '教务处（教学督导组）', '2', '1', null);
+INSERT INTO `department` VALUES ('35', '高教所', '2', '1', null);
+INSERT INTO `department` VALUES ('36', '研究生院', '2', '1', null);
+INSERT INTO `department` VALUES ('37', '资产与实验室管理处', '2', '1', null);
+INSERT INTO `department` VALUES ('38', 'MPA教育中心', '2', '1', null);
+INSERT INTO `department` VALUES ('39', '信息中心', '2', '1', null);
+INSERT INTO `department` VALUES ('40', '招标与采购中心', '2', '1', null);
+INSERT INTO `department` VALUES ('41', '农业科技园', '2', '1', null);
+INSERT INTO `department` VALUES ('42', '校友工作办公室', '2', '1', null);
+INSERT INTO `department` VALUES ('43', '后勤与校园管理处', '2', '1', null);
+INSERT INTO `department` VALUES ('44', '基本建设处', '2', '1', null);
+INSERT INTO `department` VALUES ('45', '图书馆', '2', '1', null);
+INSERT INTO `department` VALUES ('46', '期刊社', '2', '1', null);
+INSERT INTO `department` VALUES ('47', '档案馆', '2', '1', null);
+INSERT INTO `department` VALUES ('48', '继续教育学院（管理干部学院）', '2', '1', null);
+INSERT INTO `department` VALUES ('49', '后勤服务集团', '2', '1', null);
+INSERT INTO `department` VALUES ('50', '附中', '2', '1', null);
+INSERT INTO `department` VALUES ('51', '医院', '2', '1', null);
+INSERT INTO `department` VALUES ('54', '22', '2', '1', null);
+INSERT INTO `department` VALUES ('69', '33333', '1', '1', null);
+INSERT INTO `department` VALUES ('70', '22', '2', '1', null);
 
 -- ----------------------------
 -- Table structure for gradingunit
@@ -108,7 +110,7 @@ CREATE TABLE `qoption` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `optionname` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of qoption
@@ -138,20 +140,20 @@ CREATE TABLE `quantify` (
   `optionid` int(11) DEFAULT NULL,
   `departmentid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=248 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of quantify
 -- ----------------------------
 INSERT INTO `quantify` VALUES ('1', '2017', '0.5', '12', '1', '1', '1');
 INSERT INTO `quantify` VALUES ('2', '2017', '0.4', '12', '1', '2', '1');
-INSERT INTO `quantify` VALUES ('3', '2017', '0.2', '12', '1', '3', '1');
-INSERT INTO `quantify` VALUES ('4', '2017', '0', '12', '1', '4', '1');
-INSERT INTO `quantify` VALUES ('5', '2017', '0', '0', '1', '5', '1');
-INSERT INTO `quantify` VALUES ('6', '2017', '0', '0', '1', '6', '1');
-INSERT INTO `quantify` VALUES ('7', '2017', '0', '0', '1', '7', '1');
-INSERT INTO `quantify` VALUES ('8', '2017', '0', '0', '1', '8', '1');
-INSERT INTO `quantify` VALUES ('9', '2017', '0', '0', '1', '9', '1');
+INSERT INTO `quantify` VALUES ('3', '2017', '0.2', '13', '1', '3', '1');
+INSERT INTO `quantify` VALUES ('4', '2017', '0', null, '1', '4', '1');
+INSERT INTO `quantify` VALUES ('5', '2017', '0', null, '1', '5', '1');
+INSERT INTO `quantify` VALUES ('6', '2017', '0', null, '1', '6', '1');
+INSERT INTO `quantify` VALUES ('7', '2017', '0', null, '1', '7', '1');
+INSERT INTO `quantify` VALUES ('8', '2017', '0', null, '1', '8', '1');
+INSERT INTO `quantify` VALUES ('9', '2017', '0', null, '1', '9', '1');
 INSERT INTO `quantify` VALUES ('10', '2017', '0', '0', '2', '10', '17');
 INSERT INTO `quantify` VALUES ('11', '2017', '0.4', '0', '2', '7', '17');
 INSERT INTO `quantify` VALUES ('12', '2017', '0.5', '1', '2', '8', '17');
@@ -196,21 +198,21 @@ INSERT INTO `quantify` VALUES ('74', '2018', '0', '0', '2', '14', '49');
 INSERT INTO `quantify` VALUES ('75', '2018', '0', '0', '2', '14', '50');
 INSERT INTO `quantify` VALUES ('76', '2018', '0', '0', '2', '14', '51');
 INSERT INTO `quantify` VALUES ('77', '2018', '0', '0', '2', '14', '54');
-INSERT INTO `quantify` VALUES ('146', '2018', '0', '0', '1', '1', '69');
-INSERT INTO `quantify` VALUES ('147', '2018', '0', '0', '1', '2', '69');
-INSERT INTO `quantify` VALUES ('148', '2018', '0', '0', '1', '3', '69');
-INSERT INTO `quantify` VALUES ('149', '2018', '0', '0', '1', '4', '69');
-INSERT INTO `quantify` VALUES ('150', '2018', '0', '0', '1', '5', '69');
-INSERT INTO `quantify` VALUES ('151', '2018', '0', '0', '1', '6', '69');
-INSERT INTO `quantify` VALUES ('152', '2018', '0', '0', '1', '7', '69');
-INSERT INTO `quantify` VALUES ('153', '2018', '0', '0', '1', '8', '69');
-INSERT INTO `quantify` VALUES ('154', '2018', '0', '0', '1', '9', '69');
+INSERT INTO `quantify` VALUES ('146', '2018', '0', null, '1', '1', '69');
+INSERT INTO `quantify` VALUES ('147', '2018', '0', null, '1', '2', '69');
+INSERT INTO `quantify` VALUES ('148', '2018', '0', null, '1', '3', '69');
+INSERT INTO `quantify` VALUES ('149', '2018', '0', null, '1', '4', '69');
+INSERT INTO `quantify` VALUES ('150', '2018', '0', null, '1', '5', '69');
+INSERT INTO `quantify` VALUES ('151', '2018', '0', null, '1', '6', '69');
+INSERT INTO `quantify` VALUES ('152', '2018', '0', null, '1', '7', '69');
+INSERT INTO `quantify` VALUES ('153', '2018', '0', null, '1', '8', '69');
+INSERT INTO `quantify` VALUES ('154', '2018', '0', null, '1', '9', '69');
 INSERT INTO `quantify` VALUES ('155', '2018', null, null, '2', '7', '70');
 INSERT INTO `quantify` VALUES ('156', '2018', null, null, '2', '8', '70');
 INSERT INTO `quantify` VALUES ('157', '2018', null, null, '2', '9', '70');
 INSERT INTO `quantify` VALUES ('158', '2018', null, null, '2', '10', '70');
 INSERT INTO `quantify` VALUES ('159', '2018', null, null, '2', '14', '70');
-INSERT INTO `quantify` VALUES ('160', '2018', '0', '0', '1', '14', '1');
+INSERT INTO `quantify` VALUES ('160', '2018', '0', null, '1', '14', '1');
 INSERT INTO `quantify` VALUES ('161', '2018', null, null, '1', '14', '2');
 INSERT INTO `quantify` VALUES ('162', '2018', null, null, '1', '14', '3');
 INSERT INTO `quantify` VALUES ('163', '2018', null, null, '1', '14', '4');
@@ -227,6 +229,60 @@ INSERT INTO `quantify` VALUES ('173', '2018', null, null, '1', '14', '14');
 INSERT INTO `quantify` VALUES ('174', '2018', null, null, '1', '14', '15');
 INSERT INTO `quantify` VALUES ('175', '2018', null, null, '1', '14', '16');
 INSERT INTO `quantify` VALUES ('176', '2018', null, null, '1', '14', '69');
+INSERT INTO `quantify` VALUES ('177', '2018', '0', null, '1', '10', '1');
+INSERT INTO `quantify` VALUES ('178', '2018', '0', null, '1', '10', '2');
+INSERT INTO `quantify` VALUES ('179', '2018', '0', null, '1', '10', '3');
+INSERT INTO `quantify` VALUES ('180', '2018', '0', null, '1', '10', '4');
+INSERT INTO `quantify` VALUES ('181', '2018', '0', null, '1', '10', '5');
+INSERT INTO `quantify` VALUES ('182', '2018', '0', null, '1', '10', '6');
+INSERT INTO `quantify` VALUES ('183', '2018', '0', null, '1', '10', '7');
+INSERT INTO `quantify` VALUES ('184', '2018', '0', null, '1', '10', '8');
+INSERT INTO `quantify` VALUES ('185', '2018', '0', null, '1', '10', '9');
+INSERT INTO `quantify` VALUES ('186', '2018', '0', null, '1', '10', '10');
+INSERT INTO `quantify` VALUES ('187', '2018', '0', null, '1', '10', '11');
+INSERT INTO `quantify` VALUES ('188', '2018', '0', null, '1', '10', '12');
+INSERT INTO `quantify` VALUES ('189', '2018', '0', null, '1', '10', '13');
+INSERT INTO `quantify` VALUES ('190', '2018', '0', null, '1', '10', '14');
+INSERT INTO `quantify` VALUES ('191', '2018', '0', null, '1', '10', '15');
+INSERT INTO `quantify` VALUES ('192', '2018', '0', null, '1', '10', '16');
+INSERT INTO `quantify` VALUES ('193', '2018', '0', null, '1', '10', '69');
+INSERT INTO `quantify` VALUES ('194', '2018', '0', '0', '2', '1', '17');
+INSERT INTO `quantify` VALUES ('195', '2018', '0', '0', '2', '1', '18');
+INSERT INTO `quantify` VALUES ('196', '2018', '0', '0', '2', '1', '19');
+INSERT INTO `quantify` VALUES ('197', '2018', '0', '0', '2', '1', '20');
+INSERT INTO `quantify` VALUES ('198', '2018', '0', '0', '2', '1', '21');
+INSERT INTO `quantify` VALUES ('199', '2018', '0', '0', '2', '1', '22');
+INSERT INTO `quantify` VALUES ('200', '2018', '0', '0', '2', '1', '23');
+INSERT INTO `quantify` VALUES ('201', '2018', '0', '0', '2', '1', '24');
+INSERT INTO `quantify` VALUES ('202', '2018', '0', '0', '2', '1', '25');
+INSERT INTO `quantify` VALUES ('203', '2018', '0', '0', '2', '1', '26');
+INSERT INTO `quantify` VALUES ('204', '2018', '0', '0', '2', '1', '27');
+INSERT INTO `quantify` VALUES ('205', '2018', '0', '0', '2', '1', '28');
+INSERT INTO `quantify` VALUES ('206', '2018', '0', '0', '2', '1', '29');
+INSERT INTO `quantify` VALUES ('207', '2018', '0', '0', '2', '1', '30');
+INSERT INTO `quantify` VALUES ('208', '2018', '0', '0', '2', '1', '31');
+INSERT INTO `quantify` VALUES ('209', '2018', '0', '0', '2', '1', '32');
+INSERT INTO `quantify` VALUES ('210', '2018', '0', '0', '2', '1', '33');
+INSERT INTO `quantify` VALUES ('211', '2018', '0', '0', '2', '1', '34');
+INSERT INTO `quantify` VALUES ('212', '2018', '0', '0', '2', '1', '35');
+INSERT INTO `quantify` VALUES ('213', '2018', '0', '0', '2', '1', '36');
+INSERT INTO `quantify` VALUES ('214', '2018', '0', '0', '2', '1', '37');
+INSERT INTO `quantify` VALUES ('215', '2018', '0', '0', '2', '1', '38');
+INSERT INTO `quantify` VALUES ('216', '2018', '0', '0', '2', '1', '39');
+INSERT INTO `quantify` VALUES ('217', '2018', '0', '0', '2', '1', '40');
+INSERT INTO `quantify` VALUES ('218', '2018', '0', '0', '2', '1', '41');
+INSERT INTO `quantify` VALUES ('219', '2018', '0', '0', '2', '1', '42');
+INSERT INTO `quantify` VALUES ('220', '2018', '0', '0', '2', '1', '43');
+INSERT INTO `quantify` VALUES ('221', '2018', '0', '0', '2', '1', '44');
+INSERT INTO `quantify` VALUES ('222', '2018', '0', '0', '2', '1', '45');
+INSERT INTO `quantify` VALUES ('223', '2018', '0', '0', '2', '1', '46');
+INSERT INTO `quantify` VALUES ('224', '2018', '0', '0', '2', '1', '47');
+INSERT INTO `quantify` VALUES ('225', '2018', '0', '0', '2', '1', '48');
+INSERT INTO `quantify` VALUES ('226', '2018', '0', '0', '2', '1', '49');
+INSERT INTO `quantify` VALUES ('227', '2018', '0', '0', '2', '1', '50');
+INSERT INTO `quantify` VALUES ('228', '2018', '0', '0', '2', '1', '51');
+INSERT INTO `quantify` VALUES ('229', '2018', '0', '0', '2', '1', '54');
+INSERT INTO `quantify` VALUES ('230', '2018', '0', '0', '2', '1', '70');
 
 -- ----------------------------
 -- Table structure for role
@@ -259,24 +315,6 @@ CREATE TABLE `sumgrade` (
 -- ----------------------------
 -- Records of sumgrade
 -- ----------------------------
-
--- ----------------------------
--- Table structure for unitmanage
--- ----------------------------
-DROP TABLE IF EXISTS `unitmanage`;
-CREATE TABLE `unitmanage` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `unitName` varchar(200) DEFAULT NULL,
-  `unitKind` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of unitmanage
--- ----------------------------
-INSERT INTO `unitmanage` VALUES ('1', '软件学院', '教学服务类');
-INSERT INTO `unitmanage` VALUES ('2', '农学院', '教学服务类');
-INSERT INTO `unitmanage` VALUES ('3', '农学院', '教学服务类');
 
 -- ----------------------------
 -- Table structure for user
