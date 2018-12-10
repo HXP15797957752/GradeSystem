@@ -52,6 +52,7 @@
       <li><a href="unit-score-statistics.html"><span class="am-icon-map-marker"></span> 领导班级子评分统计</a></li>
       <li><a href="chief-score-statistics.html"><span class="am-icon-map-marker"></span> 正职评分统计</a></li>
       <li><a href="subchief-score-statistics.html"><span class="am-icon-map-marker"></span> 副职评分统计</a></li>
+	  <li><a href="/GradeSystem/quantify/quantifyInit.do"><span class="am-icon-map-marker"></span>定量初始化设置</a></li>
       <li><a href="/GradeSystem/quantify/quantifyIndex.do"><span class="am-icon-map-marker"></span> 评分比例设置</a></li>
       <li><a href="/GradeSystem/quantify/quantifyUpdate.do"><span class="am-icon-map-marker"></span> 评分更新设置</a></li>
       <li><a href="${APP_PATH }/admin/set-assessment-group.jsp"><span class="am-icon-table"></span> 考核分组设置</a></li>

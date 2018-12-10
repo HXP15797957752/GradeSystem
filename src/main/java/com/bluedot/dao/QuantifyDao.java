@@ -15,4 +15,5 @@ public interface QuantifyDao {
 	public Quantify searchOneQuantify(Quantify quantify);
 	public void updateQuantifyProportionAll(Quantify quantify);
 	public void updateQuantifyGradeAll(Quantify quantify);
+	public void initYear(Integer year);
 }
