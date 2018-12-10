@@ -8,6 +8,14 @@ public class Department {
 	private int departmentId;
 	private String departmentName;
 	private int gradingUnitId;
+	private String userName;
+	
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public int getDepartmentId() {
 		return departmentId;
 	}
@@ -26,6 +34,9 @@ public class Department {
 	public void setGradingUnitId(int gradingUnitId) {
 		this.gradingUnitId = gradingUnitId;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "Department [departmentId=" + departmentId + ", departmentName=" + departmentName + ", gradingUnitId="
+				+ gradingUnitId + "]";
+	}
 }

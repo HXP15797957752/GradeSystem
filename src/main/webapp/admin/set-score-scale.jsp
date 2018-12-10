@@ -230,8 +230,9 @@
 <!--   教学评分选项start-->
       <div class="am-tab-panel am-fade" id="tab4">                         
           <div class="am-u-sm-12">
-            	<div class="am-g am-margin-top">
-            		<form class="am-form">
+           <div class="am-g am-margin-top">
+              <form class="am-form" action="/GradeSystem/quantify/addOneOption.do">
+              	<input type="hidden" value="1" name="addUnitId">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
 		          <tr>
@@ -241,7 +242,7 @@
 		          <tbody>
 			          <tr>
 			          	<td>
-				          	<select name="teacherId">
+				          	<select name="optionId">
 				          		<c:forEach items="${teacherOptions}" var="teacherOption">
 				          			<option value="${teacherOption.id }">${teacherOption.optionName }</option>
 				          		</c:forEach>
@@ -261,7 +262,8 @@
       <div class="am-tab-panel am-fade" id="tab5">                         
           <div class="am-u-sm-12">
             <div class="am-g am-margin-top">
-               <form class="am-form">
+              <form class="am-form" action="/GradeSystem/quantify/addOneOption.do">
+               <input type="hidden" value="2" name="addUnitId">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
 		          <tr>
@@ -271,7 +273,7 @@
 		          <tbody>
 			          <tr>
 			          	<td><!-- <input type="text" style="width:90%;border:none;"placeholder="请输入增加管理服务评分选项名" name="user9"> -->
-			          		<select id="manageOption" name="manageId"> 
+			          		<select id="manageOption" name="optionId"> 
 			          			<c:forEach items="${manageOptions}" var="manageOption">
 			          				<option value="${manageOption.id }">${manageOption.optionName}</option>
 			          			</c:forEach>
@@ -290,7 +292,8 @@
       <!--   评分选项start-->
       <div class="am-tab-panel am-fade" id="tab6">                         
           <div class="am-u-sm-12">
-            	<div class="am-g am-margin-top">
+            <div class="am-g am-margin-top">
+              <form class="am-form">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
 		          <tr>
@@ -310,6 +313,7 @@
 			          </c:forEach>
 		          </tbody>
 		        </table>
+		     </form>
 		      </div>
           </div>  
       </div>
@@ -318,7 +322,7 @@
       <div class="am-tab-panel am-fade" id="tab7">                         
           <div class="am-u-sm-12">
             	<div class="am-g am-margin-top">
-                <form class="am-form" action="/GradeSystem/quantify/addoption.do">
+                <form class="am-form" action="/GradeSystem/quantify/addoption.do" method="post">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
 		          <tr>

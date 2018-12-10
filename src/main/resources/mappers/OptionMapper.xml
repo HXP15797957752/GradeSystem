@@ -20,4 +20,13 @@
   	<delete id="deleteOption" parameterType="com.bluedot.po.Option">
   		delete from qoption where id = #{id,jdbcType=INTEGER}
   	</delete>
+  	<select id="searchHTOption" resultType="com.bluedot.po.Option">
+  		select id,optionname from qoption where id in (select distinct optionid as id from quantify where unitid = 1)
+  	</select>
+  	<select id="searchHMOption" resultType="com.bluedot.po.Option">
+  		select id,optionname from qoption where id in (select distinct optionid as id from quantify where unitid = 2)
+  	</select>
+  	<delete id="deleteQuantifyByOptionId" parameterType="java.lang.Integer">
+  		delete from quantify where optionid = #{id,jdbcType=INTEGER}
+  	</delete>
 </mapper>

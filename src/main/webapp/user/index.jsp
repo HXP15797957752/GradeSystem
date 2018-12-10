@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+   pageContext.setAttribute("APP_PATH",request.getContextPath());
+%>
 <!doctype html>
 <html class="no-js">
 <head>
@@ -12,18 +15,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <link rel="icon" type="image/png" href="/GradeSystem/i/favicon.png">
-  <link rel="apple-touch-icon-precomposed" href="/GradeSystem/i/app-icon72x72@2x.png">
+  <link rel="icon" type="image/png" href="${APP_PATH}/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="${APP_PATH}/i/app-icon72x72@2x.png">
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-  <link rel="stylesheet" href="/GradeSystem/css/amazeui.min.css"/>
-  <link rel="stylesheet" href="/GradeSystem/css/admin.css">
+  <link rel="stylesheet" href="${APP_PATH}/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="${APP_PATH}/css/admin.css">
 </head>
 <body>
-<!--[if lte IE 9]>
-<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
-  以获得更好的体验！</p>
-<![endif]-->
-
 <header class="am-topbar admin-header">
   <div class="am-topbar-brand">
     <strong>江西农业大学</strong> <small>年度考核评分系统</small>
@@ -34,18 +32,11 @@
   <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 
     <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-      <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
-      <li class="am-dropdown" data-am-dropdown>
-        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
-        </a>
-        <ul class="am-dropdown-content">
-          <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
-          <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
-        </ul>
+         <li class="am-dropdown" data-am-dropdown>       
+        
+		<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;"> <span class="am-icon-users"></span> 用户 </a>   
       </li>
-      <li><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+      <li><li><a href="${APP_PATH  }/user/loginout.do"><span class="am-icon-power-off"></span> 退出</a></li></li>
     </ul>
   </div>
 </header>
@@ -54,12 +45,10 @@
   <!-- sidebar start -->
   <div class="admin-sidebar">
     <ul class="am-list admin-sidebar-list">
-           <li><a href="admin-index.html"><span class="am-icon-home"></span> 首页</a></li>
-           <li><a href="/GradeSystem/admin-user.html"><span class="am-icon-check"></span> 个人资料</a></li>
-           <li><a href="unit-grade.html"><span class="am-icon-map-marker"></span> 单位民主测评统计</a></li>
-           <li><a href="school-grade.html"><span class="am-icon-map-marker"></span> 学校民主测评统计</a></li>
+      <li><a href="${APP_PATH }/user/index.jsp"><span class="am-icon-home"></span> 首页</a></li>
+      <li><a href="<c:url value='/user/usermessage.jsp'/>"><span class="am-icon-check"></span> 个人资料</a></li>
+      <li><a href="grade-table.html"><span class="am-icon-map-marker"></span> 民主测评统计</a></li>
     </ul>
-
 
     <div class="am-panel am-panel-default admin-sidebar-panel">
       <div class="am-panel-bd">
@@ -338,10 +327,9 @@
 <![endif]-->
 
 <!--[if (gte IE 9)|!(IE)]><!-->
-<script src="/GradeSystem/js/jquery.min.js"></script>
+<!-- <script src="/GradeSystem/js/jquery.min.js"></script> -->
 <script src="/GradeSystem/js/amazeui.min.js"></script>
 <!--<![endif]-->
 <script src="/GradeSystem/js/app.js"></script>
 </body>
 </html>
-

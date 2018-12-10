@@ -13,6 +13,17 @@ public class User {
     private String email;
     
     private String phone;
+    
+    private int roleId;
+
+    
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
 
 	public Integer getId() {
 		return id;

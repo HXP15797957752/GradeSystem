@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <!doctype html>
 <html class="no-js">
 <head>
@@ -133,7 +134,7 @@
 		<!-- sidebar end -->
 
 		<!-- content start -->
-		 <form action="/GradeSystem/quantify/quantifyIndex.do" method="post">
+		 <form action="/GradeSystem/quantify/quantifyGrade.do" method="post">
 		<div class="admin-content">
 			<div class="am-cf am-padding">
 				<div class="am-fl am-cf">
@@ -142,73 +143,41 @@
 			</div>
 
 			<div class="am-g">
-                <div class="am-u-sm-12">
+                <div class="am-u-sm-13">
                     <!-- <h2 class="am-text-center am-text-xxxl am-margin-top-lg">404. Not Found</h2> -->
                     <!-- <p class="am-text-center">测 评 要 素</p> -->
                     <table class="am-table am-table-bordered am-table-centered am-table-radius am-table-striped" style="table-layout:fixed;text-align: center;">
 						<tbody id="tbo1">
 							<tr>
-								<td colspan="12" class="am-text-center">
+								<td colspan="${1+1+2+fn:length(options) }" class="am-text-center">
 									江西农业大学2017年度教学科研单位定量评分统计表（处级领导班子）</td>
 							</tr>
 							<tr>
-								<td rowspan="3">序号</td>
-								<td rowspan="3">组别</td>
-								<td rowspan="3">考核单位</td>
-								<td>教学</td>
-								<td>科研</td>
-								<td>学科与研究生</td>
-								<td>人才</td>
-								<td>学生工作</td>				
-								<td>就业（考研）</td>
-								<td colspan="2">党团与廉政</td>
-								<td>综治</td>
+								<td rowspan="2">序号</td>
+								<td rowspan="2">组别</td>
+								<td rowspan="2" colspan="2">考核单位</td>
+								<c:forEach items="${options }" var="option">
+									<td>${option.optionName }</td>
+								</c:forEach>
 							</tr>
 							<tr>
-								<td rowspan="2">评分</td>
-								<td rowspan="2">评分</td>
-								<td rowspan="2">评分</td>
-								<td rowspan="2">评分</td>
-								<td rowspan="2">评分</td>
-								<td rowspan="2">评分</td>
-								<td>党团</td>
-								<td>党风廉政建设</td>
-								<td rowspan="2">评分</td>
+								<c:forEach items="${options }" var="option">
+									<td>评分</td>
+								</c:forEach>
 							</tr>
-							<tr>
-								<td>评分</td>
-								<td>评分</td>
-							</tr>
-							<tr>
-							   <td><input type="text" style="width:90%;border:none;" name="id" value="1" readOnly="true"></td>
-							   <td><input type="text" style="width:90%;border:none;" name="year" value="1" readOnly="true"></td>
-							   <td><input type="text" style="width:90%;border:none;" name="user1" value="农学院" readOnly="true"></td>
-							   <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="proportion"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="grade"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="unitID"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="optionID"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="departmentID"></td>
-							   <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user6"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user7"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user8"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user9"></td>
-							</tr>
-							<tr>
-							   <td><input type="text" style="width:90%;border:none;" name="id" value="2" readOnly="true"></td>
-							   <td><input type="text" style="width:90%;border:none;" name="year" value="2" readOnly="true"></td>
-							   <td><input type="text" style="width:90%;border:none;" name="user1" value="软件学院" readOnly="true"></td>
-							   <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="proportion"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="grade"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="unitID"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="optionID"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="departmentID"></td>
-							   <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user6"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user7"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user8"></td>
-						       <td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="user9"></td>
-							</tr>
+							<c:forEach items="${departments}" var="department">
+								 <tr>
+								   <td><input type="text" style="width:90%;border:none;" name="id" value="1" readOnly="true"></td>
+								   <td><input type="text" style="width:90%;border:none;" name="departmentId" value="${department.departmentId }" readOnly="true"></td>
+								   <td colspan="2"><input type="text" style="width:90%;border:none;" name="departmentName" value="${department.departmentName }" readOnly="true"></td>
+								   <c:forEach items="${options }" var="option">
+										<td><input type="text" style="width:90%;border:none;"placeholder="请输入" name="grades"></td>
+									</c:forEach>
+								  </tr>
+							</c:forEach>
 						</tbody>
                		</table>
+               		<input type="hidden" name="type" value="1">
                </div>
                </div>
             	<div class="am-margin">

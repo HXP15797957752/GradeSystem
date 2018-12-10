@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!doctype html>
-<html class="no-js">
+<%
+   pageContext.setAttribute("APP_PATH",request.getContextPath());
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-  <meta charset="utf-8">
+<meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>首页</title>
   <meta name="description" content="这是一个 index 页面">
@@ -12,19 +14,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <link rel="icon" type="image/png" href="/GradeSystem/i/favicon.png">
-  <link rel="apple-touch-icon-precomposed" href="/GradeSystem/i/app-icon72x72@2x.png">
-  <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-  <link rel="stylesheet" href="/GradeSystem/css/amazeui.min.css"/>
-  <link rel="stylesheet" href="/GradeSystem/css/admin.css">
+  <link rel="icon" type="image/png" href="${APP_PATH}/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="${APP_PATH}/i/app-icon72x72@2x.png">
+  <link rel="stylesheet" href="${APP_PATH}/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="${APP_PATH}/css/admin.css">
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
 </head>
 <body>
-<!--[if lte IE 9]>
-<p class="browsehappy">你正在使用<strong>过时</strong>的浏览器，Amaze UI 暂不支持。 请 <a href="http://browsehappy.com/" target="_blank">升级浏览器</a>
-  以获得更好的体验！</p>
-<![endif]-->
-
-<header class="am-topbar admin-header">
+   <header class="am-topbar admin-header">
   <div class="am-topbar-brand">
     <strong>江西农业大学</strong> <small>年度考核评分系统</small>
   </div>
@@ -34,18 +31,11 @@
   <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 
     <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-      <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
-      <li class="am-dropdown" data-am-dropdown>
-        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
-        </a>
-        <ul class="am-dropdown-content">
-          <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
-          <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
-        </ul>
+      <li class="am-dropdown" data-am-dropdown>       
+        
+		<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;"> <span class="am-icon-users"></span> 管理员 </a>   
       </li>
-      <li><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+      <li><li><a href="${APP_PATH  }/user/loginout.do"><span class="am-icon-power-off"></span> 退出</a></li></li>
     </ul>
   </div>
 </header>
@@ -54,19 +44,23 @@
   <!-- sidebar start -->
   <div class="admin-sidebar">
     <ul class="am-list admin-sidebar-list">
-      <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
-      <li><a href="/GradeSystem/admin-user.html"><span class="am-icon-check"></span> 个人资料</a></li>
-      <li><a href="user-manage.html"><span class="am-icon-map-marker"></span> 用户管理</a></li>
-      <li><a href="unit-manage.html"><span class="am-icon-map-marker"></span> 单位管理</a></li>
-      <li><a href="leader-grade-department.html"><span class="am-icon-map-marker"></span> 领导班子</a></li>
-      <li><a href="leader-grade-cadre.html"><span class="am-icon-map-marker"></span> 正职</a></li>
+      <li><a href="${APP_PATH }/admin/index.jsp"><span class="am-icon-home"></span> 首页</a></li>
+      <li><a href="${APP_PATH }/admin/adminmessage.jsp"><span class="am-icon-check"></span> 个人资料</a></li>
+      <li><a href="${APP_PATH }/admin/user-manage.jsp"><span class="am-icon-map-marker"></span> 用户管理</a></li>
+      <li><a href="/GradeSystem/quantify/groupUser.do"><span class="am-icon-map-marker"></span>单位管理</a></li>
+      <li><a href="grade-table.html"><span class="am-icon-map-marker"></span> 校领导打分统计</a></li>
       <li><a href="unit-score-statistics.html"><span class="am-icon-map-marker"></span> 领导班级子评分统计</a></li>
       <li><a href="chief-score-statistics.html"><span class="am-icon-map-marker"></span> 正职评分统计</a></li>
       <li><a href="subchief-score-statistics.html"><span class="am-icon-map-marker"></span> 副职评分统计</a></li>
       <li><a href="/GradeSystem/quantify/quantifyIndex.do"><span class="am-icon-map-marker"></span> 评分比例设置</a></li>
-      <li><a href="set-assessment-group.html"><span class="am-icon-table"></span> 考核分组设置</a></li>
-      <li><a href="teach-unit.jsp"><span class="am-icon-table"></span> 教学科研单位评分</a></li>
-      <li><a href="manage-unit.html"><span class="am-icon-table"></span> 管理服务单位评分</a></li>
+      <li><a href="/GradeSystem/quantify/quantifyUpdate.do"><span class="am-icon-map-marker"></span> 评分更新设置</a></li>
+      <li><a href="${APP_PATH }/admin/set-assessment-group.jsp"><span class="am-icon-table"></span> 考核分组设置</a></li>
+      <li><a href="/GradeSystem/quantify/teacherUintGrade.do"><span class="am-icon-table"></span> 教学科研单位评分</a></li>
+      <li><a href="/GradeSystem/quantify/managerUintGrade.do"><span class="am-icon-table"></span> 管理服务单位评分</a></li>
+      <li><a href="/GradeSystem/quantify/teacherUnitProportion.do"><span class="am-icon-table"></span> 教学科研单位评分比例设置</a></li>
+      <li><a href="/GradeSystem/quantify/managerUnitProportion.do"><span class="am-icon-table"></span> 管理服务单位评分比例设置</a></li>
+      <li><a href="/GradeSystem/quantify/teacherUnit.do"><span class="am-icon-table"></span> 教学科研单位信息</a></li>
+      <li><a href="/GradeSystem/quantify/managerUnit.do"><span class="am-icon-table"></span> 管理服务单位信息</a></li>
     </ul>
 
     <div class="am-panel am-panel-default admin-sidebar-panel">
@@ -230,7 +224,6 @@
           <div class="am-panel-bd am-collapse am-in am-cf" id="collapse-panel-3">
             <ul class="am-comments-list admin-content-comment">
               <li class="am-comment">
-                <a href="#"><img src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>
                 <div class="am-comment-main">
                   <header class="am-comment-hd">
                     <div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 反馈于 <time>2014-7-12 15:30</time></div>
@@ -241,7 +234,6 @@
               </li>
 
               <li class="am-comment">
-                <a href="#"><img src="http://amui.qiniudn.com/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>
                 <div class="am-comment-main">
                   <header class="am-comment-hd">
                     <div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 反馈于 <time>2014-7-12 15:30</time></div>
@@ -274,19 +266,5 @@
   <hr>
   <p class="am-padding-left">© 2018 江西农业大学.蓝点工作室</p>
 </footer>
-
-<!--[if lt IE 9]>
-<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
-<script src="/GradeSystem/js/polyfill/rem.min.js"></script>
-<script src="/GradeSystem/js/polyfill/respond.min.js"></script>
-<script src="/GradeSystem/js/amazeui.legacy.js"></script>
-<![endif]-->
-
-<!--[if (gte IE 9)|!(IE)]><!-->
-<script src="/GradeSystem/js/jquery.min.js"></script>
-<script src="/GradeSystem/js/amazeui.min.js"></script>
-<!--<![endif]-->
-<script src="/GradeSystem/js/app.js"></script>
 </body>
 </html>

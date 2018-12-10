@@ -14,4 +14,6 @@ public interface DepartmentService {
 	public List<Department> searchTeacherDepartment();
 	public void updateDepartment(Department department);
 	public void deleteDepartment(Department department);
+	public Department searchDepartment(int id);
+	public void updateDepartmentGroup(Department department); 
 }

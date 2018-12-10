@@ -5,31 +5,20 @@ package com.bluedot.po;
  *
  */
 public class ManageOption {
-	private int manageId;
-	private String manageOptionName;
-	private Option option;
-	public int getManageId() {
-		return manageId;
+	private int addOptionId;
+	private int optionId;
+	
+	public int getAddOptionId() {
+		return addOptionId;
 	}
-	public void setManageId(int manageId) {
-		this.manageId = manageId;
+	public void setAddOptionId(int addOptionId) {
+		this.addOptionId = addOptionId;
 	}
-	public String getManageOptionName() {
-		return manageOptionName;
+	public int getOptionId() {
+		return optionId;
 	}
-	public void setManageOptionName(String manageOptionName) {
-		this.manageOptionName = manageOptionName;
-	}
-	public void setOption() {
-		option = new Option();
-		option.setId(manageId);
-		option.setOptionName(manageOptionName);
-	}
-	public Option getOption() {
-		return option;
-	}
-	public void setOption(Option option) {
-		this.option = option;
+	public void setOptionId(int optionId) {
+		this.optionId = optionId;
 	}
 	
 }

@@ -18,6 +18,123 @@
     <select id="getRoles" parameterType="String" resultType="String">
     
         select r.rolename from user u,role r where u.roleId=r.id and u.userName=#{userName}
-      
+        
     </select>
+    
+    <select id="getGroupUser" resultType="com.bluedot.po.User">
+         
+        select * from user where roleId = 2;
+    </select>
+    
+    <!-- selectbyid -->
+    
+    <select id="selectById" parameterType="Integer" resultMap="UserResult">
+         
+        select * from user where id=#{id}
+    </select>
+    
+    <!-- 用户名是否可用 -->
+     <select id="checkUser" parameterType="String" resultType="Long">
+       
+         select count(*) from user where userName=#{userName}
+        
+     </select>
+    <!-- 所有用户 -->
+    <select id="selectAllUser" resultMap="UserResult">
+       select * from user
+    
+    </select>
+    
+    <!-- 查出所有单位 -->
+    <select id="selectAllUnit" resultType="com.bluedot.po.UnitManage">
+         
+        select * from unitmanage
+    </select>
+    
+    <select id="selectUnitById" parameterType="INTEGER"  resultType="com.bluedot.po.UnitManage">
+    
+      select * from unitmanage where id=#{id}
+    </select>
+    
+    <!-- 更新单位 -->
+    <update id="updateUnit" parameterType="com.bluedot.po.UnitManage">
+    
+      update unitmanage 
+      <set>
+        <if test="unitName != null">
+        
+           unitName=#{unitName,jdbcType=VARCHAR},
+        </if>
+      <if test="unitKind != null">
+        
+           unitKind=#{unitKind,jdbcType=VARCHAR},
+        </if>
+      
+      </set>
+      where id=#{id,jdbcType=INTEGER}
+    </update>
+    
+    <update id="adminSave" parameterType="com.bluedot.po.User">
+      
+         update user 
+    <set >
+      <if test="email != null" >
+        email= #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+       phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password =#{password,jdbcType=VARCHAR},
+      </if>
+    </set>    
+    where userName=#{userName,jdbcType=VARCHAR}
+    </update>
+    
+    <update id="updateUser" parameterType="com.bluedot.po.User">
+    
+      update user 
+      <set >
+      <if test="userId != null" >
+        userId= #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+       userName = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password =#{password,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email =#{email,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone =#{phone,jdbcType=VARCHAR},
+      </if>
+    </set>    
+    where id=#{id,jdbcType=INTEGER}
+    </update>
+    <insert id="insertUser" parameterType="com.bluedot.po.User">
+    
+      insert into unitmanage (userId,userName,password,email,phone)
+      values (#{userId,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{phone,jdbcType=VARCHAR})
+    
+    </insert>
+    
+    <!-- 保存单位信息 -->
+      <insert id="insertUnit" parameterType="com.bluedot.po.UnitManage">
+	insert into unitmanage ( unitName,unitKind) values	
+	     ( #{unitName,jdbcType=VARCHAR},#{unitKind,jdbcType=VARCHAR})
+  </insert>
+    
+    <delete id="deleteUser" parameterType="Integer" >
+    
+      delete from user where id=#{id}
+    
+    </delete>
+    <!-- 删除单位 -->
+    
+    <delete id="deleteUnit" parameterType="INTEGER" >
+    
+     delete from unitmanage where id=#{id}
+    </delete>
 </mapper>
