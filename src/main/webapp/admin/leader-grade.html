@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>民主测评统计</title>
+		<title>校领导打分统计</title>
 		<meta name="description" content="这是一个404页面">
 		<meta name="keywords" content="404">
 		<meta name="viewport"
@@ -23,18 +23,27 @@
 	               alert("请选择"); 
 	           }else{
 	               $.ajax({
-	                    url:'http://localhost:8080/GradeSystem/admin/grade-table.html',
-	                    data:{'department':selectValue},
+	                    url:'../schoolgrade/showcadre.do',
+	                    data:{'ofDepartment':selectValue},
 	                    datatype:'json',
 	                    type:'post',
-	                    success:function(data){	                        
-	                       alert("data=="+data);
-	                        var tr = $("<tr><td>"+selectValue+" </td> <td>党委书记</td><td><input type='radio' name='cgrade'/></td><td><input type='radio' name='cgrade'/></td> <td><input type='radio' name='cgrade'/></td><td><input type='radio' name='cgrade'/></td> </tr>");
-	                        $("#personal").append(tr);
+	                    success:function(data){	     
+	                    	console.log(data);
+	                       if(data.length==0){
+	                    	   $("#personal").empty();
+	                    	   alert("该单位今年没有处级干部需要进行考核,仅对单位进行评分！");	                    	   
+	                       }else{
+	                    	   $("#personal").empty();
+	                    	   for(var cadre in data){
+	                    		   var optionname = data[cadre].cadreID;
+	                    		   var addtr = '<tr><td>'+data[cadre].cadreName+'</td><td>'+data[cadre].position+'</td><td><input type="radio" name="'+optionname+'" value="good"/></td><td><input type="radio" name="'+optionname+'" value="lessGood"/></td><td><input type="radio" name="'+optionname+'" value="common"/></td><td><input type="radio" name="'+optionname+'" value="bad"/></td></tr>';
+	                    		   $("#personal").append(addtr);
+	                    	   }
+	                       } 	                       	                       
 	                    }        
 	                })
 	           }
-	       }
+	       };	       	      	       
 	    </script>
 	</head>
 <body>
@@ -114,58 +123,40 @@
 
 			<div class="am-cf am-padding">
 				<div class="am-fl am-cf">
-					<strong class="am-text-primary am-text-lg">江西农业大学</strong> / <small>处级领导班子和领导干部2017年度考核暨第三轮聘（任）期考核民主测评表</small>
+					<strong class="am-text-primary am-text-lg">校领导打分</strong> / <small>处级领导班子和领导干部2017年度考核暨第三轮聘（任）期考核民主测评表</small>
 
 				</div>
 			</div>
 			
-			   <form action="" method="">
+			   <!-- <form action="" method=""> -->
 				<div class="am-u-sm-12">
 					<table class="am-table am-table-bordered am-table-centered am-table-radius am-table-striped" style="table-layout:fixed;">
 					    <tbody>
 
 	                        <tr>
-	                            <td colspan="5" class="am-text-center"> 测 评 要 素</td>
+	                            <td colspan="6" class="am-text-center"> 测 评 要 素</td>
 	                        </tr>
 	                        <tr>
-	                            <td colspan="5" class="am-text-center"><small>思想政治建设，团结协作精神与全局观念，工作能力，工作作风，党风廉政建设，群众观念，依法办事，处理复杂问题的能力，单位工作业绩与面貌等。</small></td>                            
+	                            <td colspan="6" class="am-text-center"><small>思想政治建设，团结协作精神与全局观念，工作能力，工作作风，党风廉政建设，群众观念，依法办事，处理复杂问题的能力，单位工作业绩与面貌等。</small></td>                            
 	                        </tr>
 							<tr>
-								<td rowspan="" class="am-text-middle">测评对象</td>
-								<td colspan="4">综合评价</td>
+								<td colspan="2" class="am-text-center">测评对象</td>
+								<td colspan="4" class="am-text-center">综合评价</td>
 							</tr>
 							<tr>
-								<td>
-							    	<select id="unit" onchange="changeCadre()">
-							    		<option value="请选择">请选择</option>
-							    		<option value="农学院">农学院</option>
-							    		<option value="软件学院">软件学院</option>
-							    		<option value="经管学院">经管学院</option>
-							    		<option value="计算机科学与技术学院">计算机科学与技术学院</option>
-							    		<option value="林学院">林学院</option>
-							    		<option value="政治学院">政治学院</option>
-							    		<option value="理学院">理学院</option>
-							    		<option value="工学院">工学院</option>
-							    		<option value="人文学院">人文学院</option>
-							    		<option value="工学院">工学院</option>
-							    		<option value="外语学院">外语学院</option>
-							    		<option value="职师院">职师院</option>
-							    		<option value="动科院">动科院</option>
-							    		
+								<td colspan="2" class="am-text-center">
+							    	<select id="unit"  onchange="changeCadre()" style=3>
+							    		<option value="请选择">请选择</option>							    									    		
 							    	</select>
-							    </td>
-							    
-								<td><input type="radio" name="grade"/>好（90分）</td>
-								<td><input type="radio" name="grade"/>较好（75分）</td>
-								<td><input type="radio" name="grade"/>一般（60分）</td>
-								<td><input type="radio" name="grade"/>较差（40分）</td>
-							</tr>							
-							<tr>
-								<td colspan="5"><hr/></td>
-							</tr>
+							    </td>							    
+								<td><input type="radio" name="grade" value="good"/>好（90分）</td>
+								<td><input type="radio" name="grade" value="lessGood"/>较好（75分）</td>
+								<td><input type="radio" name="grade" value="common"/>一般（60分）</td>
+								<td><input type="radio" name="grade" value="bad"/>较差（40分）</td>
+							</tr>														
 						</tbody>
                         
-                        <tbody id="personal">
+                        <tbody>
 	                        <tr>
 	                            <td colspan="6" class="am-text-center"> 测 评 要 素</td>
 	                        </tr>
@@ -196,41 +187,14 @@
 	                            <td>一般（60分）</td>
 	                            <td>较差（40分）</td>
 	                        </tr>
-	                        <tr>
-	                            <td>周水平</td>
-	                            <td>党委书记</td>
-	                            <td><input type="radio" name="cgrade"/></td>
-	                            <td><input type="radio" name="cgrade"/></td>
-	                            <td><input type="radio" name="cgrade"/></td>
-	                            <td><input type="radio" name="cgrade"/></td>
-	                        </tr>
-	                        <tr>
-	                            <td>戴仕民</td>
-	                            <td>院长</td>
-	                            <td><input type="radio" name="cgrade"/></td>
-	                            <td><input type="radio" name="cgrade"/></td>
-	                            <td><input type="radio" name="cgrade"/></td>
-	                            <td><input type="radio" name="cgrade"/></td>
-	                        </tr>
-	                        <tr>
-	                            <td>周水平</td>
-	                            <td>党委书记</td>
-	                            <td><input type="radio" name="cgrade"/></td>
-	                            <td><input type="radio" name="cgrade"/></td>
-	                            <td><input type="radio" name="cgrade"/></td>
-	                            <td><input type="radio" name="cgrade"/></td>
-	                        </tr>
-                        </tbody>
-                        <!-- <tbody>
-                        	<tr>
-	                            <td>
-									<button id="btn" type="button" onclick="addtr()" class="am-btn am-btn-primary am-btn-xs">添加</button>
-	                            </td>
-	                        </tr>
-                        </tbody> -->
+	                     </tbody>
+	                     <tbody id="personal">
+	                       
+                        </tbody>                      
                    </table>
-                    <button type="submit" class="am-btn am-btn-primary am-btn-xs">保存提交</button>
-                  </form>
+                    <button class="am-btn am-btn-primary am-btn-xs" onclick='commitVote()' >保存提交</button>
+                   <!--  <button type="submit" class="am-btn am-btn-primary am-btn-xs" onclick="commitVote()">保存提交</button> -->
+                 <!--  </form> -->
                     
 				</div>
 			</div>
@@ -257,6 +221,79 @@
 	<script src="/GradeSystem/js/amazeui.min.js"></script>
 	<!--<![endif]-->
 	<script src="/GradeSystem/js/app.js"></script>
+	<script type="text/javascript">
+	 $(document).ready(function(){
+         
+         $.ajax({
+             url:'../schoolgrade/showdepartment.do',
+             data:{},
+             datatype:'json',
+             type:'post',
+             success:function(data){      
+                 console.log(data);
+                if(data.length==0){
+                    alert("未获取到单位参数，请稍后重试！");
+                }else{
+                   // $("#unit").empty();
+                    for(var department in data){
+                        var addoption = '<option value="'+data[department].departmentId+'">'+data[department].departmentName+'</option>';
+                        $("#unit").append(addoption);
+                    }
+                }                                                   
+             }        
+         })     　　
+       });
+	 
+	 function commitVote(){		
+		 var selectValue = document.getElementById("unit").value;
+		 var unitValue = $('input:radio[name="grade"]:checked').val();
+		 var unitMap = {};
+		 unitMap[selectValue] = unitValue;
+		 var dataMap = {};
+		 var nameKey = "";
+		 var voteResult = "";
+         if(selectValue == "请选择"){
+        	 alert("请选择对应单位后评分提交！");
+        	 return false;
+         }
+		 
+		 if(unitValue==null){
+			 alert("请进行选择评分项后提交！");
+			 return false;
+		 }
+		 
+		 $('input[type="radio"]').each(function(i,obj){// 遍历所有的radio i是顺序 obj是本身
+             if($(obj)[0].checked){ // 判断此radio是不是选中状态 如果是 执行
+                 //alert(obj.name+"=="+obj.value);
+                 if(obj.name!="grade"){
+	                 nameKey = obj.name;
+	                 voteResult = obj.value;
+	                 dataMap[nameKey]  = obj.value;
+                 }
+             }
+         });
+         unitJson = JSON.stringify(unitMap);
+		 dataJson = JSON.stringify(dataMap);
+		// alert(dataJson);
+         
+         
+           $.ajax({
+                url:'../schoolgrade/vote.do',
+                data:{"unitMap":unitJson,"dataMap":dataJson},
+                datatype:'json',
+                type:'post',
+                success:function(data){      
+                    console.log(data);
+                                                            
+                },
+                error:function(err){
+                	alert("error");
+                }
+            });
+
+
+     };
+	</script>
 	
 </body>
 </html>

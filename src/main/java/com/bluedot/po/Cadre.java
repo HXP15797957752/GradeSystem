@@ -22,63 +22,84 @@ public class Cadre {
      * */
     private String position;
     /*
-     * 级别：正处级 副处级
+     * 级别：0正处级  1副处级
      * */
-    private String rank;
+    private Integer rank;
     /*
-     * 所在单位，对应数据库表的unitID
+     * 所在单位部门ID
      * */
-    private Unit unit;
-    public Cadre(Integer cadreID, Integer salaryID, String cadreName, String position, String rank, Unit unit) {
+    private Integer departmentId;
+    /*
+     * 所在单位
+     * */
+    private Department ofDepartment;
+    
+    public Cadre() {
         super();
-        this.cadreID = cadreID;
-        this.salaryID = salaryID;
-        this.cadreName = cadreName;
-        this.position = position;
-        this.rank = rank;
-        this.unit = unit;
     }
+
     public Integer getCadreID() {
         return cadreID;
     }
+
     public void setCadreID(Integer cadreID) {
         this.cadreID = cadreID;
     }
+
     public Integer getSalaryID() {
         return salaryID;
     }
+
     public void setSalaryID(Integer salaryID) {
         this.salaryID = salaryID;
     }
+
     public String getCadreName() {
         return cadreName;
     }
+
     public void setCadreName(String cadreName) {
         this.cadreName = cadreName;
     }
+
     public String getPosition() {
         return position;
     }
+
     public void setPosition(String position) {
         this.position = position;
     }
-    public String getRank() {
+
+    public Integer getRank() {
         return rank;
     }
-    public void setRank(String rank) {
+
+    public void setRank(Integer rank) {
         this.rank = rank;
     }
-    public Unit getUnit() {
-        return unit;
+
+    public Integer getDepartmentId() {
+        return departmentId;
     }
-    public void setUnit(Unit unit) {
-        this.unit = unit;
+
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
+
+    public Department getOfDepartment() {
+        return ofDepartment;
+    }
+
+    public void setOfDepartment(Department ofDepartment) {
+        this.ofDepartment = ofDepartment;
+    }
+
     @Override
     public String toString() {
         return "Cadre [cadreID=" + cadreID + ", salaryID=" + salaryID + ", cadreName=" + cadreName + ", position="
-                + position + ", rank=" + rank + ", unit=" + unit + "]";
+                + position + ", rank=" + rank + ", departmentId=" + departmentId + ", ofDepartment=" + ofDepartment
+                + "]";
     }
-    
+
     
 }

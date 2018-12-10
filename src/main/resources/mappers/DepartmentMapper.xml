@@ -17,4 +17,5 @@
   	<delete id="deleteDepartment" parameterType="com.bluedot.po.Department">
   		delete from department where departmentid = #{departmentId,jdbcType=VARCHAR}
   	</delete>
+  	
 </mapper>

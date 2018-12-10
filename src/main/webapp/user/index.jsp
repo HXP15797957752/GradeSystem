@@ -54,10 +54,12 @@
   <!-- sidebar start -->
   <div class="admin-sidebar">
     <ul class="am-list admin-sidebar-list">
-      <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
-      <li><a href="/GradeSystem/admin-user.html"><span class="am-icon-check"></span> 个人资料</a></li>
-      <li><a href="grade-table.html"><span class="am-icon-map-marker"></span> 民主测评统计</a></li>
+           <li><a href="admin-index.html"><span class="am-icon-home"></span> 首页</a></li>
+           <li><a href="/GradeSystem/admin-user.html"><span class="am-icon-check"></span> 个人资料</a></li>
+           <li><a href="unit-grade.html"><span class="am-icon-map-marker"></span> 单位民主测评统计</a></li>
+           <li><a href="school-grade.html"><span class="am-icon-map-marker"></span> 学校民主测评统计</a></li>
     </ul>
+
 
     <div class="am-panel am-panel-default admin-sidebar-panel">
       <div class="am-panel-bd">
