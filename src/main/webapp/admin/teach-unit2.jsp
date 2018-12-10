@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <!doctype html>
 <html class="no-js">
 <head>
@@ -148,8 +149,8 @@
                     <table class="am-table am-table-bordered am-table-centered am-table-radius am-table-striped" style="table-layout:fixed;text-align: center;">
 						<tbody id="tbo1">
 							<tr>
-								<td colspan="13" class="am-text-center">
-									江西农业大学2017年度教学科研单位定量评分统计表（处级领导班子）</td>
+								<td colspan="${1+1+2+fn:length(options) }" class="am-text-center">
+									江西农业大学${year }年度教学科研单位定量评分统计表（处级领导班子）</td>
 							</tr>
 							<tr>
 								<td rowspan="2" colspan="1">序号</td>

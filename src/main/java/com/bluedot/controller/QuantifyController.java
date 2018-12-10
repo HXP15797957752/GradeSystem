@@ -87,7 +87,7 @@ public class QuantifyController {
 		List<Department> Tdepartments = departmentService.searchTeacherDepartment();
 		List<List<Quantify>> lists = new ArrayList<>();
 		List<Double> listSum = new ArrayList<>();
-		quantifyService.searchAllQuantify(1,lists,listSum);
+		quantifyService.searchAllQuantify(1,lists,listSum,year);
 		request.setAttribute("lists", lists);
 		request.setAttribute("listSum", listSum);
 		request.setAttribute("Toptions", Toptions);
@@ -102,7 +102,7 @@ public class QuantifyController {
 		List<Department> Mdepartments = departmentService.searchManageDepartment();
 		List<List<Quantify>> lists = new ArrayList<>();
 		List<Double> listSum = new ArrayList<>();
-		quantifyService.searchAllQuantify(2,lists,listSum);
+		quantifyService.searchAllQuantify(2,lists,listSum,year);
 		request.setAttribute("lists", lists);
 		request.setAttribute("listSum", listSum);
 		request.setAttribute("Moptions", Moptions);
@@ -131,7 +131,7 @@ public class QuantifyController {
 		quantifyService.addQuantifyGrade(departmentId,grades,type);
 		return "admin/index";
 	}
-	@RequestMapping("managerUintGrade")
+	@RequestMapping("/managerUintGrade")
 	public String ManagerUnitGrade(HttpServletRequest request) {
 		List<Option> options = optionService.searchOption(2);
 		List<Department> departments = departmentService.searchManageDepartment();
@@ -149,18 +149,22 @@ public class QuantifyController {
 	}
 	@RequestMapping("/teacherUnitProportion")
 	public String TeacherUnitProportion(HttpServletRequest request) {
+		Integer year = Calendar.getInstance().get(Calendar.YEAR);
 		List<Option> options = optionService.searchOption(1);
 		List<Department> departments = departmentService.searchTeacherDepartment();
 		request.setAttribute("options", options);
 		request.setAttribute("departments", departments);
+		request.setAttribute("year", year);
 		return "admin/teach-unit2";
 	}
 	@RequestMapping("/managerUnitProportion")
 	public String ManagerUnitProportion(HttpServletRequest request) {
+		Integer year = Calendar.getInstance().get(Calendar.YEAR);
 		List<Option> options = optionService.searchOption(2);
 		List<Department> departments = departmentService.searchManageDepartment();
 		request.setAttribute("options", options);
 		request.setAttribute("departments", departments);
+		request.setAttribute("year", year);
 		return "admin/manage-unit2";
 	}
 	@RequestMapping("/addOneOption")

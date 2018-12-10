@@ -30,12 +30,13 @@ public class QuantifyServiceImpl implements QuantifyService{
 	@Autowired
 	private DepartmentDao departmentDao;
 	@Override
-	public void searchAllQuantify(int type, List<List<Quantify>> lists,List<Double> listSum) {
+	public void searchAllQuantify(int type, List<List<Quantify>> lists,List<Double> listSum, Integer year) {
 		// TODO Auto-generated method stub
 		List<Option> options = null;
 		List<Department>  departments= null;
 		Quantify quantify = new Quantify();
 		DecimalFormat df = new DecimalFormat("#.00");
+		quantify.setYear(year);
 		if(type == 1) {
 			  options = optionDao.searchHTOption();
 			  departments = departmentDao.searchTeacherDepartment();
