@@ -10,10 +10,36 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2018-12-10 10:49:17
+Date: 2018-12-10 22:10:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for cadre
+-- ----------------------------
+DROP TABLE IF EXISTS `cadre`;
+CREATE TABLE `cadre` (
+  `cadreID` int(10) NOT NULL,
+  `salaryID` int(50) NOT NULL,
+  `cadreName` varchar(20) NOT NULL,
+  `position` varchar(20) NOT NULL,
+  `rank` int(20) NOT NULL COMMENT '0表示正处级，1表示副处级',
+  `ofDepartment` int(10) NOT NULL,
+  PRIMARY KEY (`cadreID`),
+  KEY `ofDepartment` (`ofDepartment`),
+  CONSTRAINT `ofDepartment` FOREIGN KEY (`ofDepartment`) REFERENCES `department` (`departmentid`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of cadre
+-- ----------------------------
+INSERT INTO `cadre` VALUES ('1', '20162158', '黄小平', '党委书记', '0', '18');
+INSERT INTO `cadre` VALUES ('2', '20169999', '戴仕明', '院长', '0', '17');
+INSERT INTO `cadre` VALUES ('3', '201621585', '周水平', '党委书记', '0', '1');
+INSERT INTO `cadre` VALUES ('4', '20168999', '杨君', '副院长', '0', '2');
+INSERT INTO `cadre` VALUES ('5', '20165454', '李想', '副处长', '1', '1');
+INSERT INTO `cadre` VALUES ('6', '2016882', '吴欣欣', '主任', '1', '1');
 
 -- ----------------------------
 -- Table structure for department
@@ -145,19 +171,19 @@ CREATE TABLE `quantify` (
 -- ----------------------------
 -- Records of quantify
 -- ----------------------------
-INSERT INTO `quantify` VALUES ('1', '2018', '4', '6', '1', '1', '1');
-INSERT INTO `quantify` VALUES ('2', '2017', '4', '6', '1', '2', '1');
-INSERT INTO `quantify` VALUES ('3', '2017', '4', null, '1', '3', '1');
-INSERT INTO `quantify` VALUES ('4', '2017', '4', null, '1', '4', '1');
-INSERT INTO `quantify` VALUES ('5', '2017', null, null, '1', '5', '1');
-INSERT INTO `quantify` VALUES ('6', '2017', null, null, '1', '6', '1');
-INSERT INTO `quantify` VALUES ('7', '2017', null, null, '1', '7', '1');
-INSERT INTO `quantify` VALUES ('8', '2017', null, null, '1', '8', '1');
-INSERT INTO `quantify` VALUES ('9', '2017', null, null, '1', '9', '1');
-INSERT INTO `quantify` VALUES ('10', '2017', '2', '2', '2', '10', '17');
-INSERT INTO `quantify` VALUES ('11', '2017', '2', '2', '2', '7', '17');
-INSERT INTO `quantify` VALUES ('12', '2017', '2', '2', '2', '8', '17');
-INSERT INTO `quantify` VALUES ('13', '2017', '2', '2', '2', '9', '17');
+INSERT INTO `quantify` VALUES ('1', '2018', '4', '11', '1', '1', '1');
+INSERT INTO `quantify` VALUES ('2', '2018', '4', '6', '1', '2', '1');
+INSERT INTO `quantify` VALUES ('3', '2018', '4', null, '1', '3', '1');
+INSERT INTO `quantify` VALUES ('4', '2018', '4', null, '1', '4', '1');
+INSERT INTO `quantify` VALUES ('5', '2018', null, null, '1', '5', '1');
+INSERT INTO `quantify` VALUES ('6', '2018', null, null, '1', '6', '1');
+INSERT INTO `quantify` VALUES ('7', '2018', null, null, '1', '7', '1');
+INSERT INTO `quantify` VALUES ('8', '2018', null, null, '1', '8', '1');
+INSERT INTO `quantify` VALUES ('9', '2018', null, null, '1', '9', '1');
+INSERT INTO `quantify` VALUES ('10', '2018', '2', '2', '2', '10', '17');
+INSERT INTO `quantify` VALUES ('11', '2018', '2', '2', '2', '7', '17');
+INSERT INTO `quantify` VALUES ('12', '2018', '2', '2', '2', '8', '17');
+INSERT INTO `quantify` VALUES ('13', '2018', '2', '2', '2', '9', '17');
 INSERT INTO `quantify` VALUES ('22', '2018', '2', '2', '2', '10', '54');
 INSERT INTO `quantify` VALUES ('23', '2018', '2', '2', '2', '7', '54');
 INSERT INTO `quantify` VALUES ('24', '2018', '2', '2', '2', '8', '54');
@@ -290,15 +316,72 @@ INSERT INTO `quantify` VALUES ('230', '2018', '2', '2', '2', '1', '70');
 DROP TABLE IF EXISTS `quantifygrade`;
 CREATE TABLE `quantifygrade` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `year` int(255) DEFAULT NULL,
+  `year` int(11) DEFAULT NULL,
   `departmentId` int(11) DEFAULT NULL,
-  `sumGrade` int(255) DEFAULT NULL,
+  `sumGrade` double(255,0) DEFAULT NULL,
+  `departmentName` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=344 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of quantifygrade
 -- ----------------------------
+INSERT INTO `quantifygrade` VALUES ('1', '2017', '1', '14', '农学院');
+INSERT INTO `quantifygrade` VALUES ('2', '2017', '1', '15', '农学院');
+INSERT INTO `quantifygrade` VALUES ('290', '2018', '1', '68', '农学院');
+INSERT INTO `quantifygrade` VALUES ('291', '2018', '2', '0', '林学院（园林与艺术学院）');
+INSERT INTO `quantifygrade` VALUES ('292', '2018', '3', '0', '工学院');
+INSERT INTO `quantifygrade` VALUES ('293', '2018', '4', '0', '生物科学与工程学院');
+INSERT INTO `quantifygrade` VALUES ('294', '2018', '5', '0', '动物科学技术学院');
+INSERT INTO `quantifygrade` VALUES ('295', '2018', '6', '0', '国土资源与环境学院');
+INSERT INTO `quantifygrade` VALUES ('296', '2018', '7', '0', '经济管理学院');
+INSERT INTO `quantifygrade` VALUES ('297', '2018', '8', '0', '食品科学与工程学院');
+INSERT INTO `quantifygrade` VALUES ('298', '2018', '9', '0', '计算机与信息工程学院');
+INSERT INTO `quantifygrade` VALUES ('299', '2018', '10', '0', '人文与公共管理学院');
+INSERT INTO `quantifygrade` VALUES ('300', '2018', '11', '0', '马克思主义（政治）学院');
+INSERT INTO `quantifygrade` VALUES ('301', '2018', '12', '0', '外国语学院');
+INSERT INTO `quantifygrade` VALUES ('302', '2018', '13', '0', '软件学院');
+INSERT INTO `quantifygrade` VALUES ('303', '2018', '14', '0', '职业师范（技术）学院');
+INSERT INTO `quantifygrade` VALUES ('304', '2018', '15', '0', '理学院');
+INSERT INTO `quantifygrade` VALUES ('305', '2018', '16', '0', '军体部（武装部）');
+INSERT INTO `quantifygrade` VALUES ('306', '2018', '69', '0', '33333');
+INSERT INTO `quantifygrade` VALUES ('307', '2018', '17', '20', '纪委（监察、审计）');
+INSERT INTO `quantifygrade` VALUES ('308', '2018', '18', '4', '组织部（机关党委、党校）');
+INSERT INTO `quantifygrade` VALUES ('309', '2018', '19', '0', '宣传部');
+INSERT INTO `quantifygrade` VALUES ('310', '2018', '20', '0', '统战部');
+INSERT INTO `quantifygrade` VALUES ('311', '2018', '21', '0', '工会');
+INSERT INTO `quantifygrade` VALUES ('312', '2018', '22', '0', '学工部（处、大学生资助管理中心）');
+INSERT INTO `quantifygrade` VALUES ('313', '2018', '23', '0', '团委');
+INSERT INTO `quantifygrade` VALUES ('314', '2018', '24', '0', '招生就业处');
+INSERT INTO `quantifygrade` VALUES ('315', '2018', '25', '0', '离退休工作处');
+INSERT INTO `quantifygrade` VALUES ('316', '2018', '26', '0', '党办校办（党务政务督查室）');
+INSERT INTO `quantifygrade` VALUES ('317', '2018', '27', '0', '科技处');
+INSERT INTO `quantifygrade` VALUES ('318', '2018', '28', '0', '新农村发展研究院');
+INSERT INTO `quantifygrade` VALUES ('319', '2018', '29', '0', '人事处');
+INSERT INTO `quantifygrade` VALUES ('320', '2018', '30', '0', '财务处');
+INSERT INTO `quantifygrade` VALUES ('321', '2018', '31', '0', '保卫处');
+INSERT INTO `quantifygrade` VALUES ('322', '2018', '32', '0', '国际交流处');
+INSERT INTO `quantifygrade` VALUES ('323', '2018', '33', '0', '产业处');
+INSERT INTO `quantifygrade` VALUES ('324', '2018', '34', '0', '教务处（教学督导组）');
+INSERT INTO `quantifygrade` VALUES ('325', '2018', '35', '0', '高教所');
+INSERT INTO `quantifygrade` VALUES ('326', '2018', '36', '0', '研究生院');
+INSERT INTO `quantifygrade` VALUES ('327', '2018', '37', '0', '资产与实验室管理处');
+INSERT INTO `quantifygrade` VALUES ('328', '2018', '38', '0', 'MPA教育中心');
+INSERT INTO `quantifygrade` VALUES ('329', '2018', '39', '0', '信息中心');
+INSERT INTO `quantifygrade` VALUES ('330', '2018', '40', '0', '招标与采购中心');
+INSERT INTO `quantifygrade` VALUES ('331', '2018', '41', '0', '农业科技园');
+INSERT INTO `quantifygrade` VALUES ('332', '2018', '42', '0', '校友工作办公室');
+INSERT INTO `quantifygrade` VALUES ('333', '2018', '43', '0', '后勤与校园管理处');
+INSERT INTO `quantifygrade` VALUES ('334', '2018', '44', '0', '基本建设处');
+INSERT INTO `quantifygrade` VALUES ('335', '2018', '45', '0', '图书馆');
+INSERT INTO `quantifygrade` VALUES ('336', '2018', '46', '0', '期刊社');
+INSERT INTO `quantifygrade` VALUES ('337', '2018', '47', '0', '档案馆');
+INSERT INTO `quantifygrade` VALUES ('338', '2018', '48', '0', '继续教育学院（管理干部学院）');
+INSERT INTO `quantifygrade` VALUES ('339', '2018', '49', '0', '后勤服务集团');
+INSERT INTO `quantifygrade` VALUES ('340', '2018', '50', '0', '附中');
+INSERT INTO `quantifygrade` VALUES ('341', '2018', '51', '0', '医院');
+INSERT INTO `quantifygrade` VALUES ('342', '2018', '54', '0', '22');
+INSERT INTO `quantifygrade` VALUES ('343', '2018', '70', '0', '22');
 
 -- ----------------------------
 -- Table structure for role
@@ -357,36 +440,8 @@ INSERT INTO `user` VALUES ('2', '123', '胡部长', '123', null, null, '1');
 INSERT INTO `user` VALUES ('3', '123', '组长1', '123', null, null, '2');
 INSERT INTO `user` VALUES ('4', '123', '组长2', '123', null, null, '2');
 
-
-
 -- ----------------------------
--- Table structure for `cadre`
--- ----------------------------
-DROP TABLE IF EXISTS `cadre`;
-CREATE TABLE `cadre` (
-  `cadreID` int(10) NOT NULL,
-  `salaryID` int(50) NOT NULL,
-  `cadreName` varchar(20) NOT NULL,
-  `position` varchar(20) NOT NULL,
-  `rank` int(20) NOT NULL COMMENT '0表示正处级，1表示副处级',
-  `ofDepartment` int(10) NOT NULL,
-  PRIMARY KEY (`cadreID`),
-  KEY `ofDepartment` (`ofDepartment`),
-  CONSTRAINT `ofDepartment` FOREIGN KEY (`ofDepartment`) REFERENCES `department` (`departmentid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of cadre
--- ----------------------------
-INSERT INTO `cadre` VALUES ('1', '20162158', '黄小平', '党委书记', '0', '18');
-INSERT INTO `cadre` VALUES ('2', '20169999', '戴仕明', '院长', '0', '17');
-INSERT INTO `cadre` VALUES ('3', '201621585', '周水平', '党委书记', '0', '1');
-INSERT INTO `cadre` VALUES ('4', '20168999', '杨君', '副院长', '0', '2');
-INSERT INTO `cadre` VALUES ('5', '20165454', '李想', '副处长', '1', '1');
-INSERT INTO `cadre` VALUES ('6', '2016882', '吴欣欣', '主任', '1', '1');
-
--- ----------------------------
--- Table structure for `vote_cadre`
+-- Table structure for vote_cadre
 -- ----------------------------
 DROP TABLE IF EXISTS `vote_cadre`;
 CREATE TABLE `vote_cadre` (
@@ -420,7 +475,7 @@ INSERT INTO `vote_cadre` VALUES ('12', '2018', '5', '李想', '4', '000000000000
 INSERT INTO `vote_cadre` VALUES ('13', '2018', '6', '吴欣欣', '4', '00000000000000000001', '00000000000000000000', '00000000000000000001', '00000000000000000000');
 
 -- ----------------------------
--- Table structure for `vote_department`
+-- Table structure for vote_department
 -- ----------------------------
 DROP TABLE IF EXISTS `vote_department`;
 CREATE TABLE `vote_department` (
@@ -458,7 +513,7 @@ INSERT INTO `vote_department` VALUES ('24', '2018', '4', '生物科学与工程�
 INSERT INTO `vote_department` VALUES ('25', '2018', '1', '农学院', '1', '00000000000000000001', '00000000000000000000', '00000000000000000001', '00000000000000000003');
 
 -- ----------------------------
--- Table structure for `vote_type`
+-- Table structure for vote_type
 -- ----------------------------
 DROP TABLE IF EXISTS `vote_type`;
 CREATE TABLE `vote_type` (
