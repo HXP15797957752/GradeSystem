@@ -2,6 +2,7 @@ package com.bluedot.service.impl;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,13 @@ public class QuantifyServiceImpl implements QuantifyService{
 	private QuantifyDao quantifyDao;
 	@Autowired
 	private DepartmentDao departmentDao;
+	
+	@Override
+	public void initYear() {
+		// TODO Auto-generated method stub
+		Integer year = Calendar.getInstance().get(Calendar.YEAR);
+		quantifyDao.initYear(year);
+	}
 	@Override
 	public void searchAllQuantify(int type, List<List<Quantify>> lists,List<Double> listSum, Integer year) {
 		// TODO Auto-generated method stub

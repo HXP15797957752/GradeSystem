@@ -24,4 +24,8 @@
    <update id="updateQuantifyGradeAll" parameterType="com.bluedot.po.Quantify">
    		update quantify set grade = #{grade,jdbcType=DOUBLE} where optionid = #{optionID,jdbcType=INTEGER} and unitid = #{unitID,jdbcType=INTEGER}
    </update>
+   <update id="initYear">
+   		update quantify set year = #{year,jdbcType=INTEGER}
+   </update>
+   
 </mapper>

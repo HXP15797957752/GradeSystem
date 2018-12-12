@@ -14,4 +14,5 @@ public interface QuantifyService {
 	public void addOneGrade(Integer departmentId, Double [] grades, Integer type);
 	public void addOneProportion(Integer departmentId, Double [] proportions, Integer type);
 	public void  searchAllQuantify(int type, List<List<Quantify>> lists,List<Double> listSum, Integer year);
+	public void initYear();
 }

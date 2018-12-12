@@ -17,10 +17,12 @@ import com.bluedot.po.AddOptions;
 import com.bluedot.po.Department;
 import com.bluedot.po.Option;
 import com.bluedot.po.Quantify;
+import com.bluedot.po.QuantifyYearGrade;
 import com.bluedot.po.User;
 import com.bluedot.service.DepartmentService;
 import com.bluedot.service.OptionService;
 import com.bluedot.service.QuantifyService;
+import com.bluedot.service.QuantifyYearGradeService;
 import com.bluedot.service.UserService;
 
 
@@ -41,6 +43,8 @@ public class QuantifyController {
 	private DepartmentService departmentService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private QuantifyYearGradeService quantifyYearGradeService;
 	/**
 	 * 定量模块index
 	 */
@@ -57,6 +61,29 @@ public class QuantifyController {
 		request.setAttribute("manageDepartments", manageDepartment);
 		request.setAttribute("teacherDepartments", teacherDepartment);
 		return "admin/set-score-scale";
+	}
+	@RequestMapping("/quantifyInit")
+	public String QuantifyInit(HttpServletRequest request) {
+		List<QuantifyYearGrade> quantifyYearGrades = quantifyYearGradeService.searchQuantifyYearGrade();
+		request.setAttribute("quantifyYears", quantifyYearGrades);
+		return "admin/quantify-init";
+	}
+	@RequestMapping("/searchYearGrade")
+	public String SearchYearGrade(HttpServletRequest request, Integer year ) {
+		List<QuantifyYearGrade> quantifyYearGrades = quantifyYearGradeService.searchYearGrade(year);
+		request.setAttribute("quantifyYears", quantifyYearGrades);
+		request.setAttribute("year", year);
+		return "admin/quantify-year";
+	}
+	@RequestMapping("/quantifySetting")
+	public String QunatifySetting(HttpServletRequest request) {
+		quantifyYearGradeService.saveYearGrade();
+		return "admin/index";
+	}
+	@RequestMapping("/initYear")
+	public String InitYear(HttpServletRequest request) {
+		quantifyService.initYear();
+		return "admin/index";
 	}
 	@RequestMapping("/groupUser")
 	public String GroupUser(HttpServletRequest request) {

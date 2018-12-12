@@ -63,13 +63,13 @@
 	        <i class="am-icon-area-chart am-margin-left-sm"></i> 定量设置 <i class="am-icon-angle-right am-fr am-margin-right"></i>
 	    </a>
 	    <ul class="am-list am-collapse admin-sidebar-sub" id="dx-set-nav">
+	        <li><a href="/GradeSystem/quantify/quantifyInit.do"><i class="am-icon-location-arrow am-margin-left-sm"></i>定量初始化设置</a></li>
 	        <li><a href="/GradeSystem/quantify/quantifyIndex.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 评分比例设置</a></li>
       		<li><a href="/GradeSystem/quantify/quantifyUpdate.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 评分更新设置</a></li>
       		<li><a href="/GradeSystem/quantify/teacherUnitProportion.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学科研单位评分比例设置</a></li>
       		<li><a href="/GradeSystem/quantify/managerUnitProportion.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理服务单位评分比例设置</a></li>
 	    </ul>
 	  </li>
-	  <li><a href="/GradeSystem/quantify/quantifyInit.do"><span class="am-icon-map-marker"></span>定量初始化设置</a></li>
 	  <li class="am-panel">
 	    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#dx-grade-nav'}">
 	        <i class="am-icon-bars am-margin-left-sm"></i> 定量统计<i class="am-icon-angle-right am-fr am-margin-right"></i>
@@ -90,9 +90,7 @@
 	        <li><a href="chief-score-statistics.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 正职年度评分 </a></li>
 	        <li><a href="subchief-score-statistics.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 副职年度评分</a></li>
 	    </ul>
-	  </li>
-      
-      
+	  </li>      
     </ul>
 
     <div class="am-panel am-panel-default admin-sidebar-panel">
