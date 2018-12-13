@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.bluedot.po.Cadre;
 import com.bluedot.po.Department;
+import com.bluedot.po.QuantifyYearGrade;
 
 /**
  * 定性评分Dao接口
@@ -25,4 +26,6 @@ public interface QualitativeDao {
     public Cadre getCadreById(Integer id);
 
     public List<Department> queryDepartmentByType(int type);
+    
+    public QuantifyYearGrade queryDepartmentQuantifyGrade(QuantifyYearGrade guantifyYearGrade);
 }

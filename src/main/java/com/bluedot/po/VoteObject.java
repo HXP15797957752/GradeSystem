@@ -33,6 +33,18 @@ public class VoteObject {
      * 较差
      * */
     private Integer bad;
+    private Double sum;
+    
+    public VoteObject() {}    
+    public VoteObject(Integer good, Integer lessGood, Integer common, Integer bad, Double sum) {
+        super();
+        this.good = good;
+        this.lessGood = lessGood;
+        this.common = common;
+        this.bad = bad;
+        this.sum = sum;
+    }
+
     public Integer getVoteID() {
         return voteID;
     }
@@ -76,11 +88,18 @@ public class VoteObject {
     public void setBad(Integer bad) {
         this.bad = bad;
     }
+    public Double getSum() {
+        return sum;
+    }
+    public void setSum(Double sum) {
+        this.sum = sum;
+    }
     @Override
     public String toString() {
         return "VoteObject [voteID=" + voteID + ", year=" + year + ", type=" + type + ", good=" + good + ", lessGood="
-                + lessGood + ", common=" + common + ", bad=" + bad + "]";
+                + lessGood + ", common=" + common + ", bad=" + bad + ", sum=" + sum + "]";
     }
+    
    
     
 }

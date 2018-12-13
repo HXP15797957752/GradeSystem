@@ -126,7 +126,7 @@
 		  <button type="submit" class="am-btn am-btn-primary am-btn-xs" onclick="exportUnit()">导出处级干部信息模板</button>
 	  </div>
 	  <div class="am-u-md-3">
-		  <button  class="am-btn am-btn-primary am-btn-block" onclick="openUploadFileDialog()">导入处级干部信息</button>
+		  <button  type="" class="am-btn am-btn-primary am-btn-xs" onclick="openUploadFileDialog()">导入处级干部信息</button>
 	   </div>
 
       <div class="am-u-sm-12">
@@ -134,7 +134,7 @@
         <table class="am-table am-table-bordered am-table-radius am-table-striped">
           <thead>
           <tr>
-            <th>序号</th><th>工作编号</th><th>姓名</th><th>职位</th><th>级别</th><th>所在部门</th><th>操作</th>
+            <th>序号</th><th>工资编号</th><th>姓名</th><th>职位</th><th>级别</th><th>所在部门</th><th>操作</th>
           </tr>
           </thead>
           <tbody id="pluscadre">
@@ -186,7 +186,9 @@ $(document).ready(function(){
            }else{
                for(var cadre in data){
             	   var cid = data[cadre].cadreID;
-                   var addtr = '<tr><td>'+cid+'</td><td>'+data[cadre].salaryID+'</td><td>'+data[cadre].cadreName+'</td><td>'+data[cadre].position+'</td><td>'+data[cadre].rank+'</td><td>'+data[cadre].ofDepartment.departmentName+'</td><td><button  class="am-btn am-btn-primary am-btn-block">修改</button></td></tr>'
+            	   var rank  = data[cadre].rank==0?"正处级":"副处级";
+
+                   var addtr = '<tr><td>'+cid+'</td><td>'+data[cadre].salaryID+'</td><td>'+data[cadre].cadreName+'</td><td>'+data[cadre].position+'</td><td>'+rank+'</td><td>'+data[cadre].ofDepartment.departmentName+'</td><td><button  class="am-btn am-btn-primary am-btn-xs">修改</button></td></tr>'
 
                    $("#pluscadre").append(addtr);
                }
@@ -206,7 +208,8 @@ $(document).ready(function(){
            }else{
                for(var cadre in data){
             	   var cid = data[cadre].cadreID;
-                   var addtr = '<tr><td>'+cid+'</td><td>'+data[cadre].salaryID+'</td><td>'+data[cadre].cadreName+'</td><td>'+data[cadre].position+'</td><td>'+data[cadre].rank+'</td><td>'+data[cadre].ofDepartment.departmentName+'</td><td><button  class="am-btn am-btn-primary am-btn-block">修改</button></td></tr>'
+            	   var rank  = data[cadre].rank==0?"正处级":"副处级";
+                   var addtr = '<tr><td>'+cid+'</td><td>'+data[cadre].salaryID+'</td><td>'+data[cadre].cadreName+'</td><td>'+data[cadre].position+'</td><td>'+rank+'</td><td>'+data[cadre].ofDepartment.departmentName+'</td><td><button  class="am-btn am-btn-primary am-btn-xs">修改</button></td></tr>'
  
                    $("#subcadre").append(addtr);
                }
@@ -214,6 +217,10 @@ $(document).ready(function(){
         }        
     })     
   });
+  
+  function updateCadre(){
+			  
+  }
 </script>
 
 

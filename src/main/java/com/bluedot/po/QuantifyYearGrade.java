@@ -11,7 +11,13 @@ public class QuantifyYearGrade {
 	private int departmentId;
 	private String departmentName;
 	
-	public String getDepartmentName() {
+	public QuantifyYearGrade() {
+        super();
+    }
+    public QuantifyYearGrade( double sumGrade) {
+        this.sumGrade = sumGrade;
+    }
+    public String getDepartmentName() {
 		return departmentName;
 	}
 	public void setDepartmentName(String departmentName) {

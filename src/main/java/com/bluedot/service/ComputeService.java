@@ -1,4 +1,9 @@
 package com.bluedot.service;
+
+import java.util.List;
+
+import com.bluedot.po.GradeDepartmentView;
+
 /**
  * 计算service接口类
  * @author hxp
@@ -6,4 +11,9 @@ package com.bluedot.service;
  */
 public interface ComputeService {
 
+    List<GradeDepartmentView> loadTeachYearScore();
+
+    List<GradeDepartmentView> loadManageYearScore();
+
+  
 }

@@ -41,4 +41,7 @@
          select departmentid departmentId, departmentname departmentName, gradingunitid gradingUnitId from department where gradingunitid=#{gradingunitid}
     </select>
     
+    <select id="queryDepartmentQuantifyGrade" parameterType="QuantifyYearGrade" resultType="QuantifyYearGrade">
+    	select  id, year, departmentId, sumGrade, departmentName from quantifygrade where year=#{year} and departmentId=#{departmentId} 
+    </select>
 </mapper>

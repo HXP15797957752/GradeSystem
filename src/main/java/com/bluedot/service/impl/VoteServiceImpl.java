@@ -88,7 +88,7 @@ public class VoteServiceImpl implements VoteService {
     @Override
     public void  addVoteToDepartment(Map dataMap,int type) {
         for (Object id : dataMap.keySet()) {
-            VoteDepartment voteDepartment = new VoteDepartment();
+            VoteDepartment voteDepartment = new VoteDepartment(0,0,0,0,0.0);
             voteDepartment.setType(type);
             voteDepartment.setYear(localYear);
             String voteResult =(String) dataMap.get(id);
@@ -111,7 +111,10 @@ public class VoteServiceImpl implements VoteService {
             }
             //查询数据库是否有该年份 该投票类型 该部门 的记录，有则在原来的记录上更新，没有则直接插入
             VoteDepartment  queryVoteDepartment = voteDao.queryVoteDepartmentRecord(voteDepartment);
+            Double sum = (double) 0;
             if (null==queryVoteDepartment) {
+                sum = 0.9*voteDepartment.getGood() + 0.75*voteDepartment.getLessGood() + 0.6*voteDepartment.getCommon() + 0.4*voteDepartment.getBad();
+                voteDepartment.setSum(sum);
                 voteDao.addVoteDepartmentRecord(voteDepartment);
             }else {
                 int good = (voteDepartment.getGood()==null?0:voteDepartment.getGood())+(queryVoteDepartment.getGood()==null?0:queryVoteDepartment.getGood());
@@ -123,6 +126,8 @@ public class VoteServiceImpl implements VoteService {
                 voteDepartment.setLessGood(lessGood);
                 voteDepartment.setCommon(common);
                 voteDepartment.setBad(bad);
+                sum = 9*voteDepartment.getGood() + 7.5*voteDepartment.getLessGood() + 6*voteDepartment.getCommon() + 4*voteDepartment.getBad();
+                voteDepartment.setSum(sum);
                 voteDao.updateVoteDepartmentRecord(voteDepartment);
             }            
         }                  
@@ -134,12 +139,12 @@ public class VoteServiceImpl implements VoteService {
     @Override
     public void  addVoteToCadre(Map dataMap,int type) {
         for (Object id : dataMap.keySet()) {
-            VoteCadre voteCadre = new VoteCadre();
+            VoteCadre voteCadre = new VoteCadre(0,0,0,0,0.0);
             voteCadre.setType(type);
             voteCadre.setYear(localYear);
             String voteResult =(String) dataMap.get(id);
             voteCadre.setCadreID(Integer.valueOf(id.toString()));
-            //通过CadreID获取CadreName
+            //通过CadreID获取CadreName 
             String  cadreName = qualitativeDao.getCadreById(Integer.valueOf(id.toString())).getCadreName();
             voteCadre.setCadreName(cadreName);
             //将投票结果设置到对应的属性
@@ -157,7 +162,10 @@ public class VoteServiceImpl implements VoteService {
             }
             //查询数据库是否有该年份 该投票类型 该部门 的记录，有则在原来的记录上更新，没有则直接插入
             VoteCadre  queryVoteCadre = voteDao.queryVoteCadreRecord(voteCadre);
+            Double sum = (double) 0;
             if (null==queryVoteCadre) {
+                sum = 9*voteCadre.getGood() + 7.5*voteCadre.getLessGood() + 6*voteCadre.getCommon() + 4*voteCadre.getBad();
+                voteCadre.setSum(sum);
                 voteDao.addVoteCadreRecord(voteCadre);
             }else {
                 int good = (voteCadre.getGood()==null?0:voteCadre.getGood())+(queryVoteCadre.getGood()==null?0:queryVoteCadre.getGood());
@@ -169,6 +177,8 @@ public class VoteServiceImpl implements VoteService {
                 voteCadre.setLessGood(lessGood);
                 voteCadre.setCommon(common);
                 voteCadre.setBad(bad);
+                sum = 9*voteCadre.getGood() + 7.5*voteCadre.getLessGood() + 6*voteCadre.getCommon() + 4*voteCadre.getBad();
+                voteCadre.setSum(sum); 
                 voteDao.updateVoteCadreRecord(voteCadre);
             }            
         }                  

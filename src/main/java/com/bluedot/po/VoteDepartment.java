@@ -13,6 +13,10 @@ public class VoteDepartment extends VoteObject{
      * 单位姓名
      * */
     private String departmentName;
+    public VoteDepartment() {super();}
+    public VoteDepartment(Integer good, Integer lessGood, Integer common, Integer bad, Double sum) {
+        super(good, lessGood, common, bad, sum);
+    }
     public Integer getDepartmentID() {
         return departmentID;
     }

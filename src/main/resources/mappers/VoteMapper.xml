@@ -2,23 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.bluedot.dao.VoteDao">
 	<select id="queryVoteCadreRecord" parameterType="int" resultType="VoteCadre">
-        select voteID, year, cadreID, cadreName, type, good, lessGood,common,bad from vote_cadre
+        select voteID, year, cadreID, cadreName, type, good, lessGood,common,bad, sum from vote_cadre
         where cadreID=#{cadreID} and year=#{year} and type=#{type}
     </select>
     
     <select id="queryVoteDepartmentRecord" parameterType="int" resultType="VoteDepartment">
-        select voteID, year, departmentID, departmentName, type, good, lessGood,common,bad from vote_department 
+        select voteID, year, departmentID, departmentName, type, good, lessGood,common,bad, sum from vote_department 
         where departmentID=#{departmentID} and year=#{year} and type=#{type}
     </select>
     
     <insert id="addVoteDepartmentRecord" parameterType="VoteDepartment">
-    	insert into vote_department (year, departmentID, departmentName, type, good, lessGood, common, bad)
-    	 values(#{year}, #{departmentID}, #{departmentName}, #{type}, #{good}, #{lessGood}, #{common}, #{bad})
+    	insert into vote_department (year, departmentID, departmentName, type, good, lessGood, common, bad, sum)
+    	 values(#{year}, #{departmentID}, #{departmentName}, #{type}, #{good}, #{lessGood}, #{common}, #{bad}, #{sum})
     </insert>
     
     <insert id="addVoteCadreRecord" parameterType="VoteCadre">
-    	insert into vote_cadre (year, cadreID, cadreName, type, good, lessGood, common, bad)
-    	 values(#{year}, #{cadreID}, #{cadreName}, #{type}, #{good}, #{lessGood}, #{common}, #{bad})
+    	insert into vote_cadre (year, cadreID, cadreName, type, good, lessGood, common, bad, sum)
+    	 values(#{year}, #{cadreID}, #{cadreName}, #{type}, #{good}, #{lessGood}, #{common}, #{bad}, #{sum})
     </insert>
     
     <update id="updateVoteDepartmentRecord" parameterType="VoteDepartment">
@@ -28,7 +28,7 @@
 	        <if test="lessGood != null">lessGood = #{lessGood},</if>
 	        <if test="common != null">common = #{common},</if>
 	        <if test="bad != null">bad = #{bad},</if>
-	
+			<if test="sum != null">sum = #{sum},</if>
 	    </trim>
     </update>
    
@@ -39,7 +39,7 @@
 	        <if test="lessGood != null">lessGood = #{lessGood},</if>
 	        <if test="common != null">common = #{common},</if>
 	        <if test="bad != null">bad = #{bad},</if>
-	
+			<if test="sum != null">sum = #{sum},</if>
 	    </trim>
     </update>
     

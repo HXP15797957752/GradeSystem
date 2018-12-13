@@ -96,105 +96,22 @@
         <table class="am-table am-table-bordered am-table-radius am-table-striped">
           <thead>
           <tr>
-            <th rowspan="4">序号</th><th rowspan="4">单位名称</th><th colspan="14">定性评分(40%)</th><th colspan="2">定量评分(60%)</th><th rowspan="4">年度考核总得分</th>
+            <th rowspan="4">序号</th><th rowspan="4">单位名称</th><th colspan="14">定性评分(40%)</th><th colspan="2" rowspan="3">定量评分(60%)</th><th rowspan="4">年度考核总得分</th>
           </tr>
           <tr>
-            <th colspan="2">校领导评分</th><th colspan="6">单位测评</th><th colspan="6">学校民主测评</th><th rowspan="4">年度考核总得分</th>
+            <th colspan="2">校领导评分</th><th colspan="6">单位测评</th><th colspan="6">学校民主测评</th>
           </tr>
           <tr>
-            <th>得分</th><th>折算得分(10%)</th><th colspan="4">综合评价票数</th><th colspan="2">群众评分</th><th colspan="4">综合评价票数</th><th colspan="2">群众评分</th>
+            <th rowspan="2">得分</th><th rowspan="2">折算得分(10%)</th><th colspan="4">综合评价票数</th><th colspan="2">群众评分</th><th colspan="4">综合评价票数</th><th colspan="2">群众评分</th>
           </tr>
           <tr>
             <th>好(90分)</th><th>较好(75分)</th><th>一般(60分)</th><th>较差(40分)</th><th>得分</th><th>折算得分(20%)</th>
-            <th>好(90分)</th><th>较好(75分)</th><th>一般(60分)</th><th>较差(40分)</th><th>得分</th><th>折算得分(20%)</th>
+            <th>好(90分)</th><th>较好(75分)</th><th>一般(60分)</th><th>较差(40分)</th><th>得分</th><th>折算得分(10%)</th>
             <th>得分</th><th>折算得分(60%)</th>
           </tr>
           </thead>
-          <tbody>
-	          <tr>
-	          	<td>1</td>
-	          	<td>农学院</td>
-	          	<td>88.500</td> 
-	          	<td>8.8500</td>
-	            <td>8</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>1</td>
-	            <td>82.000</td>
-	            <td>16.400</td>
-	            <td>9</td>
-	            <td>0</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>85.000</td>
-	            <td>8.500</td>
-	            <td>95.500</td>
-	            <td>57.300</td>
-	            <td>91.050</td>
-	          </tr>
-	          <tr>
-	          	<td>1</td>
-	          	<td>农学院</td>
-	          	<td>88.500</td> 
-	          	<td>8.8500</td>
-	            <td>8</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>1</td>
-	            <td>82.000</td>
-	            <td>16.400</td>
-	            <td>9</td>
-	            <td>0</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>85.000</td>
-	            <td>8.500</td>
-	            <td>95.500</td>
-	            <td>57.300</td>
-	            <td>91.050</td>
-	          </tr>
-	          <tr>
-	          	<td>1</td>
-	          	<td>农学院</td>
-	          	<td>88.500</td> 
-	          	<td>8.8500</td>
-	            <td>8</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>1</td>
-	            <td>82.000</td>
-	            <td>16.400</td>
-	            <td>9</td>
-	            <td>0</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>85.000</td>
-	            <td>8.500</td>
-	            <td>95.500</td>
-	            <td>57.300</td>
-	            <td>91.050</td>
-	          </tr>
-	          <tr>
-	          	<td>1</td>
-	          	<td>农学院</td>
-	          	<td>88.500</td> 
-	          	<td>8.8500</td>
-	            <td>8</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>1</td>
-	            <td>82.000</td>
-	            <td>16.400</td>
-	            <td>9</td>
-	            <td>0</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>85.000</td>
-	            <td>8.500</td>
-	            <td>95.500</td>
-	            <td>57.300</td>
-	            <td>91.050</td>
-	          </tr>
+          <tbody id="tbo">
+	          
           </tbody>
         </table>
       </div>
@@ -224,5 +141,28 @@
 <script src="/GradeSystem/js/amazeui.min.js"></script>
 <!--<![endif]-->
 <script src="/GradeSystem/js/app.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	    
+	    $.ajax({
+	        url:'../yearscore/loadteach.do',
+	        data:{},
+	        datatype:'json',
+	        type:'post',
+	        success:function(data){      
+	            console.log(data);
+	           if(data.length==0){
+	               alert("未获取到评分数据，请稍后重试！");
+	           }else{
+	               for(var gradeview in data){
+	                   var addtr = '<tr><td>'+data[gradeview].viewID+'</td><td>'+data[gradeview].departmentName+'</td><td>'+data[gradeview].leaderScore+'</td><td>'+data[gradeview].leaderScore_rate+'</td><td>'+data[gradeview].departmentInnerVote.good+'</td><td>'+data[gradeview].departmentInnerVote.lessGood+'</td><td>'+data[gradeview].departmentInnerVote.common+'</td><td>'+data[gradeview].departmentInnerVote.bad+'</td><td>'+data[gradeview].departmentInnerVote.sum+'</td><td>'+data[gradeview].departmentInnerScore_rate+'</td><td>'+data[gradeview].schoolVote.good+'</td><td>'+data[gradeview].schoolVote.lessGood+'</td><td>'+data[gradeview].schoolVote.common+'</td><td>'+data[gradeview].schoolVote.bad+'</td><td>'+data[gradeview].schoolVote.sum+'</td><td>'+data[gradeview].schoolVoteScore_rate+'</td><td>'+data[gradeview].quantifyScore+'</td><td>'+data[gradeview].quantifySocre_rate+'</td><td>'+data[gradeview].departmentYearScore+'</td></tr>'
+	
+	                   $("#tbo").append(addtr);
+	               }
+	           }                                                   
+	        }        
+	    })     　　
+	  });
+</script>
 </body>
 </html>
