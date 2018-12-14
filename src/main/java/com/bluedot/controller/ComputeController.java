@@ -7,7 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bluedot.po.GradeCadreView;
 import com.bluedot.po.GradeDepartmentView;
+import com.bluedot.po.GradeSubCadreView;
 import com.bluedot.service.ComputeService;
 
 /**
@@ -36,6 +38,25 @@ public class ComputeController {
     @ResponseBody
     public List<GradeDepartmentView> loadManageYearScore(){
         List<GradeDepartmentView> viewList = computeService.loadManageYearScore();
+        return viewList;
+    }
+    
+    /*
+     * 显示正职年度总分
+     * */
+    @RequestMapping("/loadcadre")
+    @ResponseBody
+    public List<GradeCadreView> loadCadreYearSocre(){
+        List<GradeCadreView>  viewList =computeService.loadCadreYearScore();
+        return viewList;
+    }
+    /*
+     * 显示副职年度总分
+     * */
+    @RequestMapping("/loadsubcadre")
+    @ResponseBody
+    public List<GradeSubCadreView> loadSubCadreYearScore(){
+        List<GradeSubCadreView> viewList = computeService.loadSubCadreYearScore();
         return viewList;
     }
 }

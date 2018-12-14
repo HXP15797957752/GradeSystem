@@ -108,99 +108,8 @@
             <th>得分</th><th>折算得分(30%)</th>
           </tr>
           </thead>
-          <tbody>
-	          <tr>
-	          	<td><input type="checkbox" name="option1"></td>
-	          	<td>1</td>
-	          	<td>农学院</td>
-	          	<td>周水平</td> 
-	          	<td>8</td>
-	            <td>8</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>1</td>
-	            <td>82.000</td>
-	            <td>16</td>
-	            <td>9</td>
-	            <td>0</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>85.000</td>
-	            <td>8.500</td>
-	            <td>95.500</td>
-	            <td>57.300</td>
-	            <td>91.050</td>
-	            <td>100</td>
-	          </tr>
-	          <tr>
-	          	<td><input type="checkbox" name="option1"></td>
-	          	<td>1</td>
-	          	<td>农学院</td>
-	          	<td>周水平</td> 
-	          	<td>8</td>
-	            <td>8</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>1</td>
-	            <td>82.000</td>
-	            <td>16</td>
-	            <td>9</td>
-	            <td>0</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>85.000</td>
-	            <td>8.500</td>
-	            <td>95.500</td>
-	            <td>57.300</td>
-	            <td>91.050</td>
-	            <td>100</td>
-	          </tr>
-	          <tr>
-	          	<td><input type="checkbox" name="option1"></td>
-	          	<td>1</td>
-	          	<td>农学院</td>
-	          	<td>周水平</td> 
-	          	<td>8</td>
-	            <td>8</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>1</td>
-	            <td>82.000</td>
-	            <td>16</td>
-	            <td>9</td>
-	            <td>0</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>85.000</td>
-	            <td>8.500</td>
-	            <td>95.500</td>
-	            <td>57.300</td>
-	            <td>91.050</td>
-	            <td>100</td>
-	          </tr>
-	          <tr>
-	          	<td><input type="checkbox" name="option1"></td>
-	          	<td>1</td>
-	          	<td>农学院</td>
-	          	<td>周水平</td> 
-	          	<td>8</td>
-	            <td>8</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>1</td>
-	            <td>82.000</td>
-	            <td>16</td>
-	            <td>9</td>
-	            <td>0</td>
-	            <td>0</td>
-	            <td>1</td>
-	            <td>85.000</td>
-	            <td>8.500</td>
-	            <td>95.500</td>
-	            <td>57.300</td>
-	            <td>91.050</td>
-	            <td>100</td>
-	          </tr>
+          <tbody id="tbo">
+	          
           </tbody>
         </table>
       </div>
@@ -230,5 +139,28 @@
 <script src="/GradeSystem/js/amazeui.min.js"></script>
 <!--<![endif]-->
 <script src="/GradeSystem/js/app.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+	    
+	    $.ajax({
+	        url:'../yearscore/loadcadre.do',
+	        data:{},
+	        datatype:'json',
+	        type:'post',
+	        success:function(data){      
+	            console.log(data);
+	           if(data.length==0){
+	               alert("未获取到评分数据，请稍后重试！");
+	           }else{
+	               for(var gradeview in data){
+	                   var addtr = '<tr><td><input type="checkbox" name="'+data[gradeview].viewID+'"></td><td>'+data[gradeview].viewID+'</td><td>'+data[gradeview].departmentName+'</td><td>'+data[gradeview].cadreName+'</td><td>'+data[gradeview].departmentInnerVote.good+'</td><td>'+data[gradeview].departmentInnerVote.lessGood+'</td><td>'+data[gradeview].departmentInnerVote.common+'</td><td>'+data[gradeview].departmentInnerVote.bad+'</td><td>'+data[gradeview].departmentInnerVote.sum+'</td><td>'+data[gradeview].departmentInnerScore_rate+'</td><td>'+data[gradeview].schoolVote.good+'</td><td>'+data[gradeview].schoolVote.lessGood+'</td><td>'+data[gradeview].schoolVote.common+'</td><td>'+data[gradeview].schoolVote.bad+'</td><td>'+data[gradeview].schoolVote.sum+'</td><td>'+data[gradeview].schoolVoteScore_rate+'</td><td>'+data[gradeview].departmentYearGrade+'</td><td>'+data[gradeview].departmentYearGrade_rate+'</td><td>'+data[gradeview].leaderScore+'</td><td>'+data[gradeview].leaderScore_rate+'</td><td>'+data[gradeview].cadre_year_score+'</td></tr>'
+	
+	                   $("#tbo").append(addtr);
+	               }
+	           }                                                   
+	        }        
+	    })     　　
+	  });
+</script>
 </body>
 </html>

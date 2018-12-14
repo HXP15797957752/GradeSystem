@@ -33,7 +33,7 @@ public class VoteObject {
      * 较差
      * */
     private Integer bad;
-    private Double sum;
+    private Double sum; 
     
     public VoteObject() {}    
     public VoteObject(Integer good, Integer lessGood, Integer common, Integer bad, Double sum) {

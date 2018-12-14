@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bluedot.dao.ComputeDao" >
+   
+    <insert id="saveDepartmentYearScoreRecord" parameterType="DepartmentYearScoreRecord">
+    	insert into department_year_score (year, departmentID, departmentName, yearScore ) 
+    	   values(#{year}, #{departmentID}, #{departmentName}, #{yearScore})
+    </insert>
+   
+    <insert id="saveCadreYearScoreRecord" parameterType="CadreYearScoreRecord">
+    	insert into cadre_year_score (year, cadreID, cadreName, rank, departmentName, yearScore) 
+    	   values(#{year}, #{cadreID}, #{cadreName}, #{rank}, #{departmentName}, #{yearScore})
+    </insert>
+    
+    <select id="queryDepartmentYearScoreRecord" parameterType="int" resultType="DepartmentYearScoreRecord">
+    	select id, year, departmentID, departmentName, yearScore from department_year_score where year=#{year}
+    </select>
+    
+    <select id="queryCadreYearScoreRecord" parameterType="int" resultType="CadreYearScoreRecord">
+    	select id, year, cadreID, cadreName, rank, departmentName, yearScore from cadre_year_score where year=#{year}
+    </select>
+    
+    <select id="queryDepartmentYearScoreRecordByIDAndYear" parameterType="DepartmentYearScoreRecord" resultType="DepartmentYearScoreRecord">
+    	select id, year, departmentID, departmentName, yearScore from department_year_score where year=#{year} and departmentID=#{departmentID}
+    </select>
+    
+    <select id="queryCadreYearScoreRecordByIDAndYear" parameterType="CadreYearScoreRecord" resultType="CadreYearScoreRecord">
+    	select id, year, cadreID, cadreName, rank, departmentName, yearScore from cadre_year_score where year=#{year} and cadreID=#{cadreID}
+    </select>
+    
+</mapper>

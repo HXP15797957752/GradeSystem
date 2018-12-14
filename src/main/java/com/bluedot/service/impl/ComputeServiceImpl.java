@@ -7,11 +7,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bluedot.dao.ComputeDao;
 import com.bluedot.dao.QualitativeDao;
 import com.bluedot.dao.VoteDao;
+import com.bluedot.po.Cadre;
+import com.bluedot.po.CadreYearScoreRecord;
 import com.bluedot.po.Department;
+import com.bluedot.po.DepartmentYearScoreRecord;
+import com.bluedot.po.GradeCadreView;
 import com.bluedot.po.GradeDepartmentView;
+import com.bluedot.po.GradeSubCadreView;
 import com.bluedot.po.QuantifyYearGrade;
+import com.bluedot.po.VoteCadre;
 import com.bluedot.po.VoteDepartment;
 import com.bluedot.service.ComputeService;
 /**
@@ -25,6 +32,8 @@ public class ComputeServiceImpl implements ComputeService {
     private QualitativeDao qualitativeDao;
     @Autowired
     private VoteDao voteDao;
+    @Autowired
+    private ComputeDao computeDao;
     
     /*
      * 计算教学单位年度总分，并返回一个list给controller
@@ -77,12 +86,15 @@ public class ComputeServiceImpl implements ComputeService {
             view.setQuantifySocre_rate(quantify_score.getSumGrade()*GradeDepartmentView.QUANTIFY_TO_TEACH_RATE);
             //计算并设置教学单位年度考核总分
             view.setDepartmentYearScore(view.getLeaderScore_rate()+view.getDepartmentInnerScore_rate()+view.getSchoolVoteScore_rate()+view.getQuantifySocre_rate());
+            //将单位年度总分保存到数据库
+            computeDao.saveDepartmentYearScoreRecord(new DepartmentYearScoreRecord((Integer)LocalDate.now().getYear(),
+                    id, view.getDepartmentName(), view.getDepartmentYearScore()));
             viewList.add(view);
         }
         return viewList;
     }
     /*
-     * 计算管理单位年度总分，并返回一个list给controller
+     * 计算管理单位年度总分并存数据库，并返回一个list给controller
      * */
     @Override
     public List<GradeDepartmentView> loadManageYearScore() {
@@ -132,6 +144,107 @@ public class ComputeServiceImpl implements ComputeService {
             view.setQuantifySocre_rate(quantify_score.getSumGrade()*GradeDepartmentView.QUANTIFY_TO_MANAGE_RATE);
             //计算并设置教学单位年度考核总分
             view.setDepartmentYearScore(view.getLeaderScore_rate()+view.getDepartmentInnerScore_rate()+view.getSchoolVoteScore_rate()+view.getQuantifySocre_rate());
+          //将单位年度总分保存到数据库
+            computeDao.saveDepartmentYearScoreRecord(new DepartmentYearScoreRecord((Integer)LocalDate.now().getYear(),
+                    id, view.getDepartmentName(), view.getDepartmentYearScore()));
+            viewList.add(view);
+        }
+        return viewList;
+    }
+    /*
+     * 计算正职年度总分并存数据库，并返回一个list给controller
+     * */
+    @Override
+    public List<GradeCadreView> loadCadreYearScore(){
+        //用于返回的List
+        List<GradeCadreView> viewList = new ArrayList<GradeCadreView>();
+        //获取所有正职集合
+        List<Cadre> cadreList = qualitativeDao.queryAllPlusCadre(0);
+        for(Cadre cadre:cadreList) {
+            //创建正职视图类对象并为成员变量赋值
+            GradeCadreView view = new GradeCadreView();
+            view.setViewID(cadre.getCadreID());
+            Department department = cadre.getOfDepartment();
+            view.setDepartmentName(department.getDepartmentName());
+            view.setCadreName(cadre.getCadreName());
+            VoteCadre  cadreVote = new VoteCadre();
+            cadreVote.setType(2);
+            cadreVote.setYear(LocalDate.now().getYear());
+            cadreVote.setCadreID(cadre.getCadreID());
+            //查询并赋值单位内部测评对象
+            VoteCadre queryCadreVote = voteDao.queryVoteCadreRecord(cadreVote);
+            VoteCadre cadreVoteView = queryCadreVote == null?new VoteCadre(0,0,0,0,0.0):queryCadreVote;
+            view.setDepartmentInnerVote(cadreVoteView);
+            view.setDepartmentInnerScore_rate(cadreVoteView.getSum()*GradeCadreView.DEPARTMENT_INNER_RATE);
+            //查询并设置学校民主测评
+            cadreVote.setType(6);
+            VoteCadre querySchoolCadreVote = voteDao.queryVoteCadreRecord(cadreVote);
+            VoteCadre cadreSchoolVoteView = (querySchoolCadreVote == null?new VoteCadre(0,0,0,0,0.0):querySchoolCadreVote);
+            view.setSchoolVote(cadreSchoolVoteView);
+            view.setSchoolVoteScore_rate(cadreSchoolVoteView.getSum()*GradeCadreView.SCHOOL_TO_CADRE_RATE);
+            //查询并设置本单位年度考核得分
+            DepartmentYearScoreRecord ds = computeDao.queryDepartmentYearScoreRecordByIDAndYear(new DepartmentYearScoreRecord((Integer)LocalDate.now()
+                    .getYear(), cadre.getDepartmentId()));
+            Double yearScore = (ds==null?0.0:ds.getYearScore());
+            view.setDepartmentYearGrade(yearScore);
+            view.setDepartmentYearGrade_rate(yearScore*GradeCadreView.DEPARTMENT_YEAR_SCORE_RATE);
+            //查询并设置校领导评分
+            cadreVote.setType(8);
+            VoteCadre queryLeaderCadreVote = voteDao.queryVoteCadreRecord(cadreVote);
+            VoteCadre cadreLeaderVoteView = queryLeaderCadreVote == null?new VoteCadre(0,0,0,0,0.0):queryLeaderCadreVote;
+            view.setLeaderScore(cadreLeaderVoteView.getSum());
+            view.setLeaderScore_rate(cadreLeaderVoteView.getSum()*GradeCadreView.LEADER_TO_CADRE_RATE);
+            //计算正职干部考核总分
+            view.setCadre_year_score(view.getDepartmentInnerScore_rate()+view.getSchoolVoteScore_rate()+
+                    view.getDepartmentYearGrade_rate()+view.getLeaderScore_rate());
+            computeDao.saveCadreYearScoreRecord(new CadreYearScoreRecord((Integer)LocalDate.now().getYear(), cadre.getCadreID(), cadre.getCadreName(),
+                    cadre.getRank(), cadre.getOfDepartment().getDepartmentName(), view.getCadre_year_score()));
+            viewList.add(view);
+        }
+        return viewList;
+    }
+    /*
+     * 计算副职年度总分并存数据库，并返回一个list给controller
+     * */
+    @Override
+    public List<GradeSubCadreView> loadSubCadreYearScore() {
+      //用于返回的List
+        List<GradeSubCadreView> viewList = new ArrayList<GradeSubCadreView>();
+        //获取所有正职集合
+        List<Cadre> cadreList = qualitativeDao.queryAllPlusCadre(1);
+        for(Cadre cadre:cadreList) {
+            //创建正职视图类对象并为成员变量赋值
+            GradeSubCadreView view = new GradeSubCadreView();
+            view.setViewID(cadre.getCadreID());
+            Department department = cadre.getOfDepartment();
+            view.setDepartmentName(department.getDepartmentName());
+            view.setCadreName(cadre.getCadreName());
+            VoteCadre  cadreVote = new VoteCadre();
+            cadreVote.setType(3);
+            cadreVote.setYear(LocalDate.now().getYear());
+            cadreVote.setCadreID(cadre.getCadreID());
+            //查询并赋值单位内部测评对象
+            VoteCadre queryCadreVote = voteDao.queryVoteCadreRecord(cadreVote);
+            VoteCadre cadreVoteView = (queryCadreVote == null?new VoteCadre(0,0,0,0,0.0):queryCadreVote);
+            view.setDepartmentInnerVote(cadreVoteView);
+            view.setDepartmentInnerScore_rate(cadreVoteView.getSum()*GradeSubCadreView.DEPARTMENT_INNER_RATE);
+            //查询并设置单位正职对副职测评
+            cadreVote.setType(4);
+            VoteCadre queryCadreToSubcadreVote = voteDao.queryVoteCadreRecord(cadreVote);
+            VoteCadre cadreToSubcadreVote = (queryCadreToSubcadreVote == null?new VoteCadre(0,0,0,0,0.0):queryCadreToSubcadreVote);
+            view.setCadreVote(cadreToSubcadreVote);
+            view.setCadreScore_rate(cadreToSubcadreVote.getSum()*GradeSubCadreView.CADRE_TO_SUBCADRE_RATE);
+            //查询并设置本单位年度考核得分
+            DepartmentYearScoreRecord ds = computeDao.queryDepartmentYearScoreRecordByIDAndYear(new DepartmentYearScoreRecord((Integer)LocalDate.now()
+                    .getYear(), cadre.getDepartmentId()));
+            Double yearScore = (ds==null?0.0:ds.getYearScore());
+            view.setDepartmentYearGrade(yearScore);
+            view.setDepartmentYearGrade_rate(yearScore*GradeSubCadreView.DEPARTMENT_YEAR_SCORE_RATE);
+            
+            //计算副职干部考核总分
+            view.setSubCadre_year_score(view.getDepartmentInnerScore_rate()+view.getDepartmentYearGrade_rate()+view.getCadreScore_rate());
+            computeDao.saveCadreYearScoreRecord(new CadreYearScoreRecord((Integer)LocalDate.now().getYear(), cadre.getCadreID(), cadre.getCadreName(),
+                    cadre.getRank(), cadre.getOfDepartment().getDepartmentName(), view.getSubCadre_year_score()));
             viewList.add(view);
         }
         return viewList;
