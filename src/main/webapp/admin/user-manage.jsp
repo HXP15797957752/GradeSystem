@@ -6,9 +6,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>用户管理</title>
+ <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>单位管理</title>
   <meta name="description" content="这是一个 index 页面">
   <meta name="keywords" content="index">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -19,12 +19,13 @@
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
   <link rel="stylesheet" href="${APP_PATH}/css/amazeui.min.css"/>
   <link rel="stylesheet" href="${APP_PATH}/css/admin.css">
-   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+  <link rel="stylesheet" type="text/css" href="${APP_PATH}/js/jquery-easyui-1.5.5.4/easyui.css">
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+	<script type="text/javascript" src="${APP_PATH}/js/jquery-easyui-1.5.5.4/jquery.easyui.min.js"></script>
 	<script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script> 
-	
 </head>
 <body>
-<header class="am-topbar admin-header">
+   <header class="am-topbar admin-header">
   <div class="am-topbar-brand">
     <strong>江西农业大学</strong> <small>年度考核评分系统</small>
   </div>
@@ -111,6 +112,7 @@
       </div>
     </div>-->
   </div>
+  <!-- sidebar end -->
   <!-- sidebar end -->
    <div  class="am-modal  am-modal-alert"  tabindex="-1" id="userUpdateModal" >
              <div  class="am-modal-dialog">

@@ -189,7 +189,7 @@
                 <div class="am-u-sm-12">
                     <!-- <h2 class="am-text-center am-text-xxxl am-margin-top-lg">404. Not Found</h2> -->
                     <!-- <p class="am-text-center">测 评 要 素</p> -->
-                    <table class="am-table am-table-bordered am-table-centered am-table-radius am-table-striped" style="table-layout:fixed;text-align: center;">
+                    <table id="teachExcel" class="am-table am-table-bordered am-table-centered am-table-radius am-table-striped" style="table-layout:fixed;text-align: center;">
 						<tbody id="tbo1">
 							<tr>
 								<td colspan="${1+1+1+fn:length(Toptions)*2+1 }" class="am-text-center">
@@ -245,7 +245,7 @@
                </form>             
 			</div>
 			<div class="am-margin">
-				<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="javascript:window.location.href='${APP_PATH }/quantify/teachExcel.do'">导出excel</button>
+				<button id="teachExcelButton" type="button" class="am-btn am-btn-primary am-btn-xs">导出excel</button>
 			</div>
 		</div>
 		<!-- content end -->
@@ -259,5 +259,19 @@
 	<script src="${APP_PATH }/js/amazeui.min.js"></script>
 	<!--<![endif]-->
 	<script src="${APP_PATH }/js/app.js"></script>
+	<script src="${APP_PATH }/js/jquery.table2excel.js"></script>
+	<script>
+		$("#teachExcelButton").click(function(){
+			console.log(1)
+			$("#teachExcel").table2excel({
+		        exclude: ".noExl",
+		        name: "Excel Document Name",
+		        filename: "${year}教学科研类定量表",
+		        exclude_img: true,
+		        exclude_links: true,
+		        exclude_inputs: true
+		    });
+		})
+	</script>
 </body>
 </html>

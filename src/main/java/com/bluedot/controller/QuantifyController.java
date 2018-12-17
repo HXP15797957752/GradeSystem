@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bluedot.po.AddOptions;
 import com.bluedot.po.Department;
@@ -34,6 +36,10 @@ import com.bluedot.service.UserService;
 @Controller
 @RequestMapping("/quantify")
 public class QuantifyController {
+	@Value("单位定量评分表")
+	private String sheetUnittName;
+	@Value("单位定量评分表.xls")
+	private String excelUnitName;
 	
 	@Autowired
 	private QuantifyService quantifyService;
@@ -76,10 +82,14 @@ public class QuantifyController {
 		return "admin/quantify-year";
 	}
 	@RequestMapping("/manageExcel")
+	@ResponseBody
 	public String manageExcel(HttpServletRequest request) {
+		
+		
 		return "admin/index";
 	}
 	@RequestMapping("/teachExcel")
+	@ResponseBody
 	public String teachExcel(HttpServletRequest request) {
 		return "admin/index";
 	}
