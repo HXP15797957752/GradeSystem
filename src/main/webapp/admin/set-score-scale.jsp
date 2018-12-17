@@ -16,11 +16,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <link rel="icon" type="image/png" href="/GradeSystem/i/favicon.png">
-  <link rel="apple-touch-icon-precomposed" href="/GradeSystem/i/app-icon72x72@2x.png">
+  <link rel="icon" type="image/png" href="${APP_PATH }/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="${APP_PATH }/i/app-icon72x72@2x.png">
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-  <link rel="stylesheet" href="/GradeSystem/css/amazeui.min.css"/>
-  <link rel="stylesheet" href="/GradeSystem/css/admin.css">
+  <link rel="stylesheet" href="${APP_PATH }/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="${APP_PATH }/css/admin.css">
 </head>
 <body>
 <!--[if lte IE 9]>
@@ -217,7 +217,7 @@
       <div class="am-tab-panel am-fade" id="tab3">                         
           <div class="am-u-sm-12">
             	<div class="am-g am-margin-top">
-                <form class="am-form" action="/GradeSystem/quantify/addDepartment.do">
+                <form class="am-form" action="${APP_PATH }/quantify/addDepartment.do">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
 		          <tr>
@@ -252,7 +252,7 @@
       <div class="am-tab-panel am-fade" id="tab4">                         
           <div class="am-u-sm-12">
            <div class="am-g am-margin-top">
-              <form class="am-form" action="/GradeSystem/quantify/addOneOption.do">
+              <form class="am-form" action="${APP_PATH }/quantify/addOneOption.do">
               	<input type="hidden" value="1" name="addUnitId">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
@@ -283,7 +283,7 @@
       <div class="am-tab-panel am-fade" id="tab5">                         
           <div class="am-u-sm-12">
             <div class="am-g am-margin-top">
-              <form class="am-form" action="/GradeSystem/quantify/addOneOption.do">
+              <form class="am-form" action="${APP_PATH }/quantify/addOneOption.do">
                <input type="hidden" value="2" name="addUnitId">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
@@ -385,7 +385,7 @@
 	function deleteOption(object){
 		var tr1 = object.parentNode.parentNode;
 		$.ajax({
-			url : "/GradeSystem/quantify/deleteOption.do",
+			url : "${APP_PATH }/quantify/deleteOption.do",
     		Type : "post",
     		data :{
     			id :tr1.cells[0].childNodes[0].value
@@ -401,7 +401,7 @@
     function DeleteDepartment(object){
     	var tr1 = object.parentNode.parentNode;
     	$.ajax({
-    		url : "/GradeSystem/quantify/deleteDepartment.do",
+    		url : "${APP_PATH }/quantify/deleteDepartment.do",
     		Type : "post",
     		data :{
     			departmentId :tr1.cells[0].childNodes[0].value
@@ -417,7 +417,7 @@
     function updateOption(object){
     	var tr1 = object.parentNode.parentNode;
     	$.ajax({
-    		url : "/GradeSystem/quantify/updateOption.do",
+    		url : "${APP_PATH }/quantify/updateOption.do",
     		type : "post",
     		data :{
 				id :tr1.cells[0].childNodes[0].value,
@@ -437,7 +437,7 @@
 		alert(tr1.cells[1].childNodes[0].value);
 		alert(tr1.cells[2].getElementsByTagName("select")[0].value); */
 	 	$.ajax({
-			url : "/GradeSystem/quantify/updateDepartment.do",
+			url : "${APP_PATH }/quantify/updateDepartment.do",
 			type : "post",
 			data :{
 				departmentId :tr1.cells[0].childNodes[0].value,
@@ -453,9 +453,9 @@
 		}); 
 	}
 </script>
-<script src="/GradeSystem/js/jquery.min.js"></script>
-<script src="/GradeSystem/js/amazeui.min.js"></script>
+<script src="${APP_PATH }/js/jquery.min.js"></script>
+<script src="${APP_PATH }/js/amazeui.min.js"></script>
 <!--<![endif]-->
-<script src="/GradeSystem/js/app.js"></script>
+<script src="${APP_PATH }/js/app.js"></script>
 </body>
 </html>

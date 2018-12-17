@@ -16,11 +16,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <meta name="renderer" content="webkit">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
-  <link rel="icon" type="image/png" href="/GradeSystem/i/favicon.png">
-  <link rel="apple-touch-icon-precomposed" href="/GradeSystem/i/app-icon72x72@2x.png">
+  <link rel="icon" type="image/png" href="${APP_PATH }/i/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="${APP_PATH }/i/app-icon72x72@2x.png">
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-  <link rel="stylesheet" href="/GradeSystem/css/amazeui.min.css"/>
-  <link rel="stylesheet" href="/GradeSystem/css/admin.css">
+  <link rel="stylesheet" href="${APP_PATH }/css/amazeui.min.css"/>
+  <link rel="stylesheet" href="${APP_PATH }/css/admin.css">
 </head>
 <body>
 <!--[if lte IE 9]>
@@ -167,7 +167,7 @@
        <div class="am-tab-panel am-fade" id="tab2">                         
           <div class="am-u-sm-12">
            <div class="am-g am-margin-top">
-              <form class="am-form" action="/GradeSystem/quantify/searchYearGrade.do" method="post">
+              <form class="am-form" action="${APP_PATH }/quantify/searchYearGrade.do" method="post">
               	<input type="hidden" value="1" name="addUnitId">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
@@ -216,7 +216,7 @@
 <script type="text/javascript">
 	function initButton(){
 		$.ajax({
-			url : "/GradeSystem/quantify/initYear.do",
+			url : "${APP_PATH }/quantify/initYear.do",
     		Type : "post",
     		data :{},
     		dataType :"json",
@@ -229,7 +229,7 @@
 	}
     function saveButton(){
     	$.ajax({
-    		url : "/GradeSystem/quantify/quantifySetting.do",
+    		url : "${APP_PATH }/quantify/quantifySetting.do",
     		Type : "post",
     		data :{},
     		dataType :"json",
@@ -241,9 +241,9 @@
     	})
     }
 </script>
-<script src="/GradeSystem/js/jquery.min.js"></script>
-<script src="/GradeSystem/js/amazeui.min.js"></script>
+<script src="${APP_PATH }/js/jquery.min.js"></script>
+<script src="${APP_PATH }/js/amazeui.min.js"></script>
 <!--<![endif]-->
-<script src="/GradeSystem/js/app.js"></script>
+<script src="${APP_PATH }/js/app.js"></script>
 </body>
 </html>

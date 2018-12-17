@@ -17,12 +17,12 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="renderer" content="webkit">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<link rel="icon" type="image/png" href="/GradeSystem/i/favicon.png">
+<link rel="icon" type="image/png" href="${APP_PATH }/i/favicon.png">
 <link rel="apple-touch-icon-precomposed"
-	href="/GradeSystem/i/app-icon72x72@2x.png">
+	href="${APP_PATH }/i/app-icon72x72@2x.png">
 <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-<link rel="stylesheet" href="/GradeSystem/css/amazeui.min.css" />
-<link rel="stylesheet" href="/GradeSystem/css/admin.css">
+<link rel="stylesheet" href="${APP_PATH }/css/amazeui.min.css" />
+<link rel="stylesheet" href="${APP_PATH }/css/admin.css">
 <script>
 	function addtr(){
 		var tbodyEle = document.getElementById("tbo1");
@@ -176,7 +176,7 @@
 
 		<!-- content start -->
 		<div class="admin-content">
-		  <form action="/GradeSystem/quantify/quantifyGrade.do" method="post">
+		  <form action="${APP_PATH }/quantify/quantifyGrade.do" method="post">
 			<div class="am-cf am-padding">
 				<div class="am-fl am-cf">
 					<strong class="am-text-primary am-text-lg">管理服务</strong> / <small>定量评分统计表（处级领导班子）</small>
@@ -252,9 +252,9 @@
 <![endif]-->
 
 	<!--[if (gte IE 9)|!(IE)]><!-->
-	<script src="/GradeSystem/js/jquery.min.js"></script>
-	<script src="/GradeSystem/js/amazeui.min.js"></script>
+	<script src="${APP_PATH }/js/jquery.min.js"></script>
+	<script src="${APP_PATH }/js/amazeui.min.js"></script>
 	<!--<![endif]-->
-	<script src="/GradeSystem/js/app.js"></script>
+	<script src="${APP_PATH }/js/app.js"></script>
 </body>
 </html>
