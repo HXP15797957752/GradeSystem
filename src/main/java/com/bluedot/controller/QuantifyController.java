@@ -36,10 +36,6 @@ import com.bluedot.service.UserService;
 @Controller
 @RequestMapping("/quantify")
 public class QuantifyController {
-	@Value("单位定量评分表")
-	private String sheetUnittName;
-	@Value("单位定量评分表.xls")
-	private String excelUnitName;
 	
 	@Autowired
 	private QuantifyService quantifyService;
@@ -80,18 +76,6 @@ public class QuantifyController {
 		request.setAttribute("quantifyYears", quantifyYearGrades);
 		request.setAttribute("year", year);
 		return "admin/quantify-year";
-	}
-	@RequestMapping("/manageExcel")
-	@ResponseBody
-	public String manageExcel(HttpServletRequest request) {
-		
-		
-		return "admin/index";
-	}
-	@RequestMapping("/teachExcel")
-	@ResponseBody
-	public String teachExcel(HttpServletRequest request) {
-		return "admin/index";
 	}
 	@RequestMapping("/quantifySetting")
 	public String qunatifySetting(HttpServletRequest request) {
