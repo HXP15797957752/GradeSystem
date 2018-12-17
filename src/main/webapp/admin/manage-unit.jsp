@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
+<%
+   pageContext.setAttribute("APP_PATH",request.getContextPath());
+%>
 <!doctype html>
 <html class="no-js">
 <head>
@@ -104,33 +107,71 @@
 	<div class="am-cf admin-main">
 		<!-- sidebar start -->
 		<div class="admin-sidebar">
-			<ul class="am-list admin-sidebar-list">
-			      <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
-      <li><a href="/GradeSystem/admin-user.html"><span class="am-icon-check"></span> 个人资料</a></li>
-      <li><a href="set-score-scale.html"><span class="am-icon-map-marker"></span> 评分比例设置</a></li>
-      <li><a href="set-assessment-group.html"><span class="am-icon-table"></span> 考核分组设置</a></li>
-      <li><a href="teach-unit.html"><span class="am-icon-table"></span> 教学科研单位评分</a></li>
-      <li><a href="manage-unit.html"><span class="am-icon-table"></span> 管理服务单位评分</a></li>
-		    </ul>
+    <ul class="am-list admin-sidebar-list">
+      <li><a href="${APP_PATH }/admin/index.jsp"><i class="am-icon-home am-margin-left-sm"></i> 首页</a></li>
+      <li><a href="${APP_PATH }/admin/adminmessage.jsp"><i class="am-icon-check am-margin-left-sm"></i> 个人资料</a></li>
+      <li><a href="${APP_PATH }/admin/user-manage.jsp"><i class="am-icon-user am-margin-left-sm"></i> 用户管理</a></li>
+      <li><a href="${APP_PATH }/admin/cadre-info.jsp"><i class="am-icon-archive am-margin-left-sm"></i> 处级干部信息</a></li>
+      <li><a href="${APP_PATH }/quantify/groupUser.do"><i class="am-icon-bookmark  am-margin-left-sm"></i> 单位分组设置</a></li>
+      <li class="am-panel">
+	    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#leader-nav'}">
+	        <i class="am-icon-paint-brush am-margin-left-sm"></i> 校领导打分 <i class="am-icon-angle-right am-fr am-margin-right"></i>
+	    </a>
+	    <ul class="am-list am-collapse admin-sidebar-sub" id="leader-nav">
+	        <li><a href="leader-grade-cadre.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 正职评分 </a></li>
+	        <li><a href="leader-grade-department.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 领导班子评分 </a></li>
+	    </ul>
+	  </li>
+	  <li class="am-panel">
+	    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#dx-set-nav'}">
+	        <i class="am-icon-area-chart am-margin-left-sm"></i> 定量设置 <i class="am-icon-angle-right am-fr am-margin-right"></i>
+	    </a>
+	    <ul class="am-list am-collapse admin-sidebar-sub" id="dx-set-nav">
+	        <li><a href="${APP_PATH }/quantify/quantifyInit.do"><i class="am-icon-location-arrow am-margin-left-sm"></i>定量初始化设置</a></li>
+	        <li><a href="${APP_PATH }/quantify/quantifyIndex.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 评分比例设置</a></li>
+      		<li><a href="${APP_PATH }/quantify/quantifyUpdate.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 评分更新设置</a></li>
+      		<li><a href="${APP_PATH }/quantify/teacherUnitProportion.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学科研单位评分比例设置</a></li>
+      		<li><a href="${APP_PATH }/quantify/managerUnitProportion.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理服务单位评分比例设置</a></li>
+	    </ul>
+	  </li>
+	  <li class="am-panel">
+	    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#dx-grade-nav'}">
+	        <i class="am-icon-bars am-margin-left-sm"></i> 定量统计<i class="am-icon-angle-right am-fr am-margin-right"></i>
+	    </a>
+	    <ul class="am-list am-collapse admin-sidebar-sub" id="dx-grade-nav">
+	        <li><a href="${APP_PATH }/quantify/teacherUintGrade.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学科研单位评分</a></li>
+	        <li><a href="${APP_PATH }/quantify/managerUintGrade.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理服务单位评分</a></li>      
+	        <li><a href="${APP_PATH }/quantify/teacherUnit.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学科研单位信息</a></li>
+	        <li><a href="${APP_PATH }/quantify/managerUnit.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理服务单位信息</a></li>
+	    </ul>
+	  </li>
+	  <li class="am-panel">
+	    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#yearall-nav'}">
+	        <i class="am-icon-users am-margin-left-sm"></i> 年度评分汇总统计 <i class="am-icon-angle-right am-fr am-margin-right"></i>
+	    </a>
+	    <ul class="am-list am-collapse admin-sidebar-sub" id="yearall-nav">
+	        <li><a href="teach-unit-score-statistics.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学单位年度评分 </a></li>
+	        <li><a href="manage-unit-score-statistics.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理单位年度评分 </a></li>
+	        <li><a href="chief-score-statistics.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 正职年度评分 </a></li>
+	        <li><a href="subchief-score-statistics.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 副职年度评分</a></li>
+	    </ul>
+	  </li>      
+    </ul>
 
-			<div class="am-panel am-panel-default admin-sidebar-panel">
-				<div class="am-panel-bd">
-					<p>
-						<span class="am-icon-bookmark"></span> 公告
-					</p>
-					<p>时光静好，与君语；细水流年，与君同。—— Amaze UI</p>
-				</div>
-			</div>
+    <div class="am-panel am-panel-default admin-sidebar-panel">
+      <div class="am-panel-bd">
+        <p><span class="am-icon-bookmark"></span> 公告</p>
+        <p>单位民主测评必须于2018-12-22之前完成，请相关人员督促到位。—— 组织部</p>
+      </div>
+    </div>
 
-			<div class="am-panel am-panel-default admin-sidebar-panel">
-				<div class="am-panel-bd">
-					<p>
-						<span class="am-icon-tag"></span> wiki
-					</p>
-					<p>Welcome to the Amaze UI wiki!</p>
-				</div>
-			</div>
-		</div>
+    <!--<div class="am-panel am-panel-default admin-sidebar-panel">
+      <div class="am-panel-bd">
+        <p><span class="am-icon-tag"></span> jxau</p>
+        <p>Welcome to the JXAU!</p>
+      </div>
+    </div>-->
+  </div>
 		<!-- sidebar end -->
 
 		<!-- content start -->
