@@ -49,7 +49,7 @@ public class QuantifyController {
 	 * 定量模块index
 	 */
 	@RequestMapping("/quantifyIndex")
-	public String QuantifyIndex(HttpServletRequest request) {
+	public String quantifyIndex(HttpServletRequest request) {
 		List<Option> options = optionService.searchAllOption();
 		List<Option> manageOptions = optionService.searchManageOption();
 		List<Option> teacherOptions = optionService.searchTeacherOption();
@@ -63,30 +63,38 @@ public class QuantifyController {
 		return "admin/set-score-scale";
 	}
 	@RequestMapping("/quantifyInit")
-	public String QuantifyInit(HttpServletRequest request) {
+	public String quantifyInit(HttpServletRequest request) {
 		List<QuantifyYearGrade> quantifyYearGrades = quantifyYearGradeService.searchQuantifyYearGrade();
 		request.setAttribute("quantifyYears", quantifyYearGrades);
 		return "admin/quantify-init";
 	}
 	@RequestMapping("/searchYearGrade")
-	public String SearchYearGrade(HttpServletRequest request, Integer year ) {
+	public String searchYearGrade(HttpServletRequest request, Integer year ) {
 		List<QuantifyYearGrade> quantifyYearGrades = quantifyYearGradeService.searchYearGrade(year);
 		request.setAttribute("quantifyYears", quantifyYearGrades);
 		request.setAttribute("year", year);
 		return "admin/quantify-year";
 	}
+	@RequestMapping("/manageExcel")
+	public String manageExcel(HttpServletRequest request) {
+		return "admin/index";
+	}
+	@RequestMapping("/teachExcel")
+	public String teachExcel(HttpServletRequest request) {
+		return "admin/index";
+	}
 	@RequestMapping("/quantifySetting")
-	public String QunatifySetting(HttpServletRequest request) {
+	public String qunatifySetting(HttpServletRequest request) {
 		quantifyYearGradeService.saveYearGrade();
 		return "admin/index";
 	}
 	@RequestMapping("/initYear")
-	public String InitYear(HttpServletRequest request) {
+	public String initYear(HttpServletRequest request) {
 		quantifyService.initYear();
 		return "admin/index";
 	}
 	@RequestMapping("/groupUser")
-	public String GroupUser(HttpServletRequest request) {
+	public String groupUser(HttpServletRequest request) {
 		List<Department> manageDepartment = departmentService.searchManageDepartment();
 		List<Department> teacherDepartment = departmentService.searchTeacherDepartment();
 		List<User> user = userService.getGroupUser();
@@ -96,7 +104,7 @@ public class QuantifyController {
 		return "admin/group-department";
 	}
 	@RequestMapping("/quantifyUpdate")
-	public String QuantifyUpdate(HttpServletRequest request) {
+	public String quantifyUpdate(HttpServletRequest request) {
 		List<Option> Toptions = optionService.searchOption(1);
 		List<Department> Tdepartments = departmentService.searchTeacherDepartment();
 		List<Option> Moptions = optionService.searchOption(2);
@@ -108,7 +116,7 @@ public class QuantifyController {
 		return "admin/set-score-scale1";
 	}
 	@RequestMapping("/teacherUnit")
-	public String TeacherUnit(HttpServletRequest request) {
+	public String teacherUnit(HttpServletRequest request) {
 		Integer year = Calendar.getInstance().get(Calendar.YEAR);
 		List<Option> Toptions = optionService.searchOption(1);
 		List<Department> Tdepartments = departmentService.searchTeacherDepartment();
@@ -123,7 +131,7 @@ public class QuantifyController {
 		return "admin/teach-unitShow";
 	}
 	@RequestMapping("/managerUnit")
-	public String ManagerUnit(HttpServletRequest request) {
+	public String managerUnit(HttpServletRequest request) {
 		Integer year = Calendar.getInstance().get(Calendar.YEAR);
 		List<Option> Moptions = optionService.searchOption(2);
 		List<Department> Mdepartments = departmentService.searchManageDepartment();
@@ -138,28 +146,28 @@ public class QuantifyController {
 		return "admin/manage-unitShow";
 	}
 	@RequestMapping("/addOneProportion")
-	public String AddOneProportion(HttpServletRequest request,Integer departmentId, Double [] proportions, Integer type) {
+	public String addOneProportion(HttpServletRequest request,Integer departmentId, Double [] proportions, Integer type) {
 		quantifyService.addOneProportion(departmentId, proportions, type);
 		return "admin/index";
 	}
 	@RequestMapping("/addOneGrade")
-	public String AddOneGrade(HttpServletRequest request,Integer departmentId, Double [] grades, Integer type) {
+	public String addOneGrade(HttpServletRequest request,Integer departmentId, Double [] grades, Integer type) {
 		quantifyService.addOneGrade(departmentId, grades, type);
 		return "admin/index";
 	}
 	
 	@RequestMapping("/quantifyProportion")
-	public String QuantifyProportion(HttpServletRequest request,Integer [] departmentId, Double [] proportions,Integer type) {
+	public String quantifyProportion(HttpServletRequest request,Integer [] departmentId, Double [] proportions,Integer type) {
 		quantifyService.addQuantifyProportion(departmentId,proportions,type);
 		return "admin/index";
 	}
 	@RequestMapping("/quantifyGrade")
-	public String QuantifyGrade(HttpServletRequest request,Integer [] departmentId, Double [] grades,Integer type) {
+	public String quantifyGrade(HttpServletRequest request,Integer [] departmentId, Double [] grades,Integer type) {
 		quantifyService.addQuantifyGrade(departmentId,grades,type);
 		return "admin/index";
 	}
 	@RequestMapping("/managerUintGrade")
-	public String ManagerUnitGrade(HttpServletRequest request) {
+	public String managerUnitGrade(HttpServletRequest request) {
 		List<Option> options = optionService.searchOption(2);
 		List<Department> departments = departmentService.searchManageDepartment();
 		request.setAttribute("options", options);
@@ -167,7 +175,7 @@ public class QuantifyController {
 		return "admin/manage-unit";
 	}
 	@RequestMapping("/teacherUintGrade")
-	public String TeacherUnitGrade(HttpServletRequest request) {
+	public String teacherUnitGrade(HttpServletRequest request) {
 		List<Option> options = optionService.searchOption(1);
 		List<Department> departments = departmentService.searchTeacherDepartment();
 		request.setAttribute("options", options);
@@ -175,7 +183,7 @@ public class QuantifyController {
 		return "admin/teach-unit";
 	}
 	@RequestMapping("/teacherUnitProportion")
-	public String TeacherUnitProportion(HttpServletRequest request) {
+	public String teacherUnitProportion(HttpServletRequest request) {
 		Integer year = Calendar.getInstance().get(Calendar.YEAR);
 		List<Option> options = optionService.searchOption(1);
 		List<Department> departments = departmentService.searchTeacherDepartment();
@@ -185,7 +193,7 @@ public class QuantifyController {
 		return "admin/teach-unit2";
 	}
 	@RequestMapping("/managerUnitProportion")
-	public String ManagerUnitProportion(HttpServletRequest request) {
+	public String managerUnitProportion(HttpServletRequest request) {
 		Integer year = Calendar.getInstance().get(Calendar.YEAR);
 		List<Option> options = optionService.searchOption(2);
 		List<Department> departments = departmentService.searchManageDepartment();
@@ -195,32 +203,32 @@ public class QuantifyController {
 		return "admin/manage-unit2";
 	}
 	@RequestMapping("/addOneOption")
-	public String AddOneOption(HttpServletRequest request,AddOptions addOption) {
+	public String addOneOption(HttpServletRequest request,AddOptions addOption) {
 		optionService.insertOneOption(addOption);
 		return "admin/index";
 	}
 	@RequestMapping("/addDepartment")
-	public String AddDepartment(HttpServletRequest request,Department department) {
+	public String addDepartment(HttpServletRequest request,Department department) {
 		departmentService.insertDepartment(department);
 		return "admin/index";
 	}
 	@RequestMapping("/updateDepartment")
-	public String UpdateDepartment(HttpServletRequest request,HttpServletResponse response, Department department) throws IOException {
+	public String updateDepartment(HttpServletRequest request,HttpServletResponse response, Department department) throws IOException {
 		departmentService.updateDepartment(department);
 		return "admin/index";
 	}
 	@RequestMapping("/updateDepartmentGroup")
-	public String UpdateDepartmentGroup(HttpServletRequest request,HttpServletResponse response, Department department) throws IOException {
+	public String updateDepartmentGroup(HttpServletRequest request,HttpServletResponse response, Department department) throws IOException {
 		departmentService.updateDepartmentGroup(department);
 		return "admin/index";
 	}
 	@RequestMapping("/updateOption")
-	public String Updateoption(HttpServletRequest request, Option option) {
+	public String updateoption(HttpServletRequest request, Option option) {
 		optionService.updateOption(option);
 		return "admin/index";
 	}
 	@RequestMapping("/deleteDepartment")
-	public String DeleteDepartment(HttpServletRequest request, Department department) {
+	public String deleteDepartment(HttpServletRequest request, Department department) {
 		departmentService.deleteDepartment(department);
 		return "admin/index";
 	}
@@ -230,7 +238,7 @@ public class QuantifyController {
 		return "admin/index";
 	}
 	@RequestMapping("/addoption")
-	public String AddOption(HttpServletRequest request,Option option) {
+	public String addOption(HttpServletRequest request,Option option) {
 		optionService.insertOption(option);
 		return "admin/index";
 	}

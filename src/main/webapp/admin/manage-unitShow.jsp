@@ -244,8 +244,7 @@
 			</div>
 
 			<div class="am-margin">
-				<button type="button" class="am-btn am-btn-primary am-btn-xs"  onclick="javascript:window.location.href='scan-manage-unit.html'">提交保存</button>
-				<button type="button" class="am-btn am-btn-primary am-btn-xs">放弃保存</button>
+				<button type="button" class="am-btn am-btn-primary am-btn-xs"  onclick="javascript:window.location.href='${APP_PATH }/quantify/manageExcel.do'">导出excel</button>
 			</div>
 		</div>
 		<!-- content end -->
