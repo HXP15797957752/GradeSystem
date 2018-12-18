@@ -47,23 +47,54 @@
   <!-- sidebar start -->
   <div class="admin-sidebar">
     <ul class="am-list admin-sidebar-list">
-              <li><a href="${APP_PATH }/admin/index.jsp"><span class="am-icon-home"></span> 首页</a></li>
-		      <li><a href="${APP_PATH }/admin/adminmessage.jsp"><span class="am-icon-check"></span> 个人资料</a></li>
-		      <li><a href="${APP_PATH }/admin/user-manage.jsp"><span class="am-icon-map-marker"></span> 用户管理</a></li>
-		      <li><a href="${APP_PATH }/admin/unit-manage.jsp"><span class="am-icon-map-marker"></span> 单位管理</a></li>
-		      <li><a href="grade-table.html"><span class="am-icon-map-marker"></span> 校领导打分统计</a></li>
-		      <li><a href="unit-score-statistics.html"><span class="am-icon-map-marker"></span> 领导班级子评分统计</a></li>
-		      <li><a href="chief-score-statistics.html"><span class="am-icon-map-marker"></span> 正职评分统计</a></li>
-		      <li><a href="subchief-score-statistics.html"><span class="am-icon-map-marker"></span> 副职评分统计</a></li>
-		      <li><a href="/GradeSystem/quantify/quantifyIndex.do"><span class="am-icon-map-marker"></span> 评分比例设置</a></li>
-		      <li><a href="/GradeSystem/quantify/quantifyUpdate.do"><span class="am-icon-map-marker"></span> 评分更新设置</a></li>
-		      <li><a href="${APP_PATH }/admin/set-assessment-group.jsp"><span class="am-icon-table"></span> 考核分组设置</a></li>
-		      <li><a href="/GradeSystem/quantify/teacherUintGrade.do"><span class="am-icon-table"></span> 教学科研单位评分</a></li>
-		      <li><a href="/GradeSystem/quantify/managerUintGrade.do"><span class="am-icon-table"></span> 管理服务单位评分</a></li>
-		      <li><a href="/GradeSystem/quantify/teacherUnitProportion.do"><span class="am-icon-table"></span> 教学科研单位评分比例设置</a></li>
-		      <li><a href="/GradeSystem/quantify/managerUnitProportion.do"><span class="am-icon-table"></span> 管理服务单位评分比例设置</a></li>
-		      <li><a href="/GradeSystem/quantify/teacherUnit.do"><span class="am-icon-table"></span> 教学科研单位信息</a></li>
-		      <li><a href="/GradeSystem/quantify/managerUnit.do"><span class="am-icon-table"></span> 管理服务单位信息</a></li>
+      <li><a href="${APP_PATH }/admin/index.jsp"><i class="am-icon-home am-margin-left-sm"></i> 首页</a></li>
+      <li><a href="${APP_PATH }/admin/adminmessage.jsp"><i class="am-icon-check am-margin-left-sm"></i> 个人资料</a></li>
+      <li><a href="${APP_PATH }/admin/user-manage.jsp"><i class="am-icon-user am-margin-left-sm"></i> 用户管理</a></li>
+      <li><a href="${APP_PATH }/admin/cadre-info.jsp"><i class="am-icon-archive am-margin-left-sm"></i> 处级干部信息</a></li>
+      <li><a href="${APP_PATH }/quantify/groupUser.do"><i class="am-icon-bookmark  am-margin-left-sm"></i> 单位分组设置</a></li>
+      <li class="am-panel">
+	    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#leader-nav'}">
+	        <i class="am-icon-paint-brush am-margin-left-sm"></i> 校领导打分 <i class="am-icon-angle-right am-fr am-margin-right"></i>
+	    </a>
+	    <ul class="am-list am-collapse admin-sidebar-sub" id="leader-nav">
+	        <li><a href="${APP_PATH }/admin/leader-grade-cadre.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 正职评分 </a></li>
+	        <li><a href="${APP_PATH }/admin/leader-grade-department.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 领导班子评分 </a></li>
+	    </ul>
+	  </li>
+	  <li class="am-panel">
+	    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#dx-set-nav'}">
+	        <i class="am-icon-area-chart am-margin-left-sm"></i> 定量设置 <i class="am-icon-angle-right am-fr am-margin-right"></i>
+	    </a>
+	    <ul class="am-list am-collapse admin-sidebar-sub" id="dx-set-nav">
+	        <li><a href="${APP_PATH }/quantify/quantifyInit.do"><i class="am-icon-location-arrow am-margin-left-sm"></i>定量初始化设置</a></li>
+	        <li><a href="${APP_PATH }/quantify/quantifyIndex.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 评分比例设置</a></li>
+      		<li><a href="${APP_PATH }/quantify/quantifyUpdate.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 评分更新设置</a></li>
+      		<li><a href="${APP_PATH }/quantify/teacherUnitProportion.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学科研单位评分比例设置</a></li>
+      		<li><a href="${APP_PATH }/quantify/managerUnitProportion.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理服务单位评分比例设置</a></li>
+	    </ul>
+	  </li>
+	  <li class="am-panel">
+	    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#dx-grade-nav'}">
+	        <i class="am-icon-bars am-margin-left-sm"></i> 定量统计<i class="am-icon-angle-right am-fr am-margin-right"></i>
+	    </a>
+	    <ul class="am-list am-collapse admin-sidebar-sub" id="dx-grade-nav">
+	        <li><a href="${APP_PATH }/quantify/teacherUintGrade.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学科研单位评分</a></li>
+	        <li><a href="${APP_PATH }/quantify/managerUintGrade.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理服务单位评分</a></li>      
+	        <li><a href="${APP_PATH }/quantify/teacherUnit.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学科研单位信息</a></li>
+	        <li><a href="${APP_PATH }/quantify/managerUnit.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理服务单位信息</a></li>
+	    </ul>
+	  </li>
+	  <li class="am-panel">
+	    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#yearall-nav'}">
+	        <i class="am-icon-users am-margin-left-sm"></i> 年度评分汇总统计 <i class="am-icon-angle-right am-fr am-margin-right"></i>
+	    </a>
+	    <ul class="am-list am-collapse admin-sidebar-sub" id="yearall-nav">
+	        <li><a href="${APP_PATH }/admin/teach-unit-score-statistics.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学单位年度评分 </a></li>
+	        <li><a href="${APP_PATH }/admin/manage-unit-score-statistics.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理单位年度评分 </a></li>
+	        <li><a href="${APP_PATH }/admin/chief-score-statistics.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 正职年度评分 </a></li>
+	        <li><a href="${APP_PATH }/admin/subchief-score-statistics.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 副职年度评分</a></li>
+	    </ul>
+	  </li>      
     </ul>
 
     <div class="am-panel am-panel-default admin-sidebar-panel">

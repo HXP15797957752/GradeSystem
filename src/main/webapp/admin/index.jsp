@@ -54,8 +54,8 @@
 	        <i class="am-icon-paint-brush am-margin-left-sm"></i> 校领导打分 <i class="am-icon-angle-right am-fr am-margin-right"></i>
 	    </a>
 	    <ul class="am-list am-collapse admin-sidebar-sub" id="leader-nav">
-	        <li><a href="leader-grade-cadre.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 正职评分 </a></li>
-	        <li><a href="leader-grade-department.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 领导班子评分 </a></li>
+	        <li><a href="${APP_PATH }/admin/leader-grade-cadre.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 正职评分 </a></li>
+	        <li><a href="${APP_PATH }/admin/leader-grade-department.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 领导班子评分 </a></li>
 	    </ul>
 	  </li>
 	  <li class="am-panel">
@@ -86,10 +86,10 @@
 	        <i class="am-icon-users am-margin-left-sm"></i> 年度评分汇总统计 <i class="am-icon-angle-right am-fr am-margin-right"></i>
 	    </a>
 	    <ul class="am-list am-collapse admin-sidebar-sub" id="yearall-nav">
-	        <li><a href="teach-unit-score-statistics.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学单位年度评分 </a></li>
-	        <li><a href="manage-unit-score-statistics.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理单位年度评分 </a></li>
-	        <li><a href="chief-score-statistics.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 正职年度评分 </a></li>
-	        <li><a href="subchief-score-statistics.html"><i class="am-icon-location-arrow am-margin-left-sm"></i> 副职年度评分</a></li>
+	        <li><a href="${APP_PATH }/admin/teach-unit-score-statistics.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学单位年度评分 </a></li>
+	        <li><a href="${APP_PATH }/admin/manage-unit-score-statistics.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理单位年度评分 </a></li>
+	        <li><a href="${APP_PATH }/admin/chief-score-statistics.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 正职年度评分 </a></li>
+	        <li><a href="${APP_PATH }/admin/subchief-score-statistics.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 副职年度评分</a></li>
 	    </ul>
 	  </li>      
     </ul>
@@ -118,10 +118,10 @@
     </div>
 
     <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
-      <li><a href="set-score-scale.html" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>评分比例设置<br/></a></li>
-      <li><a href="set-assessment-group.html" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>考核分组设置<br/></a></li>
-      <li><a href="scan-teach-unit.html" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>教学科研单位评分<br/></a></li>
-      <li><a href="scan-manage-unit.html" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>管理服务单位评分<br/></a></li>
+      <li><a href="#" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>评分比例设置<br/></a></li>
+      <li><a href="#" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>考核分组设置<br/></a></li>
+      <li><a href="#" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>教学科研单位评分<br/></a></li>
+      <li><a href="#" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>管理服务单位评分<br/></a></li>
     </ul>
 
     <div class="am-g">

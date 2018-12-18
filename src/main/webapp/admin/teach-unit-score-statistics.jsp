@@ -1,4 +1,9 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+   pageContext.setAttribute("APP_PATH",request.getContextPath());
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html class="no-js">
 <head>
   <meta charset="utf-8">
@@ -51,13 +56,54 @@
   <!-- sidebar start -->
   <div class="admin-sidebar">
     <ul class="am-list admin-sidebar-list">
-      <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
-      <li><a href="/GradeSystem/admin-user.html"><span class="am-icon-check"></span> 个人资料</a></li>
-      <li><a href="/GradeSystem/admin-user.html"><span class="am-icon-home"></span> 用户管理</a></li>
-      <li><a href="set-score-scale.html"><span class="am-icon-map-marker"></span> 评分比例设置</a></li>
-      <li><a href="set-assessment-group.html"><span class="am-icon-table"></span> 考核分组设置</a></li>
-      <li><a href="teach-unit.html"><span class="am-icon-table"></span> 教学科研单位评分</a></li>
-      <li><a href="manage-unit.html"><span class="am-icon-table"></span> 管理服务单位评分</a></li>
+      <li><a href="${APP_PATH }/admin/index.jsp"><i class="am-icon-home am-margin-left-sm"></i> 首页</a></li>
+      <li><a href="${APP_PATH }/admin/adminmessage.jsp"><i class="am-icon-check am-margin-left-sm"></i> 个人资料</a></li>
+      <li><a href="${APP_PATH }/admin/user-manage.jsp"><i class="am-icon-user am-margin-left-sm"></i> 用户管理</a></li>
+      <li><a href="${APP_PATH }/admin/cadre-info.jsp"><i class="am-icon-archive am-margin-left-sm"></i> 处级干部信息</a></li>
+      <li><a href="${APP_PATH }/quantify/groupUser.do"><i class="am-icon-bookmark  am-margin-left-sm"></i> 单位分组设置</a></li>
+      <li class="am-panel">
+	    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#leader-nav'}">
+	        <i class="am-icon-paint-brush am-margin-left-sm"></i> 校领导打分 <i class="am-icon-angle-right am-fr am-margin-right"></i>
+	    </a>
+	    <ul class="am-list am-collapse admin-sidebar-sub" id="leader-nav">
+	        <li><a href="${APP_PATH }/admin/leader-grade-cadre.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 正职评分 </a></li>
+	        <li><a href="${APP_PATH }/admin/leader-grade-department.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 领导班子评分 </a></li>
+	    </ul>
+	  </li>
+	  <li class="am-panel">
+	    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#dx-set-nav'}">
+	        <i class="am-icon-area-chart am-margin-left-sm"></i> 定量设置 <i class="am-icon-angle-right am-fr am-margin-right"></i>
+	    </a>
+	    <ul class="am-list am-collapse admin-sidebar-sub" id="dx-set-nav">
+	        <li><a href="${APP_PATH }/quantify/quantifyInit.do"><i class="am-icon-location-arrow am-margin-left-sm"></i>定量初始化设置</a></li>
+	        <li><a href="${APP_PATH }/quantify/quantifyIndex.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 评分比例设置</a></li>
+      		<li><a href="${APP_PATH }/quantify/quantifyUpdate.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 评分更新设置</a></li>
+      		<li><a href="${APP_PATH }/quantify/teacherUnitProportion.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学科研单位评分比例设置</a></li>
+      		<li><a href="${APP_PATH }/quantify/managerUnitProportion.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理服务单位评分比例设置</a></li>
+	    </ul>
+	  </li>
+	  <li class="am-panel">
+	    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#dx-grade-nav'}">
+	        <i class="am-icon-bars am-margin-left-sm"></i> 定量统计<i class="am-icon-angle-right am-fr am-margin-right"></i>
+	    </a>
+	    <ul class="am-list am-collapse admin-sidebar-sub" id="dx-grade-nav">
+	        <li><a href="${APP_PATH }/quantify/teacherUintGrade.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学科研单位评分</a></li>
+	        <li><a href="${APP_PATH }/quantify/managerUintGrade.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理服务单位评分</a></li>      
+	        <li><a href="${APP_PATH }/quantify/teacherUnit.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学科研单位信息</a></li>
+	        <li><a href="${APP_PATH }/quantify/managerUnit.do"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理服务单位信息</a></li>
+	    </ul>
+	  </li>
+	  <li class="am-panel">
+	    <a data-am-collapse="{parent: '#collapase-nav-1', target: '#yearall-nav'}">
+	        <i class="am-icon-users am-margin-left-sm"></i> 年度评分汇总统计 <i class="am-icon-angle-right am-fr am-margin-right"></i>
+	    </a>
+	    <ul class="am-list am-collapse admin-sidebar-sub" id="yearall-nav">
+	        <li><a href="${APP_PATH }/admin/teach-unit-score-statistics.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 教学单位年度评分 </a></li>
+	        <li><a href="${APP_PATH }/admin/manage-unit-score-statistics.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 管理单位年度评分 </a></li>
+	        <li><a href="${APP_PATH }/admin/chief-score-statistics.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 正职年度评分 </a></li>
+	        <li><a href="${APP_PATH }/admin/subchief-score-statistics.jsp"><i class="am-icon-location-arrow am-margin-left-sm"></i> 副职年度评分</a></li>
+	    </ul>
+	  </li>      
     </ul>
 
     <div class="am-panel am-panel-default admin-sidebar-panel">
@@ -142,8 +188,7 @@
 <!--<![endif]-->
 <script src="/GradeSystem/js/app.js"></script>
 <script type="text/javascript">
-	$(document).ready(function(){
-	    
+	$(document).ready(function(){	    
 	    $.ajax({
 	        url:'../yearscore/loadteach.do',
 	        data:{},
@@ -155,8 +200,7 @@
 	               alert("未获取到评分数据，请稍后重试！");
 	           }else{
 	               for(var gradeview in data){
-	                   var addtr = '<tr><td>'+data[gradeview].viewID+'</td><td>'+data[gradeview].departmentName+'</td><td>'+data[gradeview].leaderScore+'</td><td>'+data[gradeview].leaderScore_rate+'</td><td>'+data[gradeview].departmentInnerVote.good+'</td><td>'+data[gradeview].departmentInnerVote.lessGood+'</td><td>'+data[gradeview].departmentInnerVote.common+'</td><td>'+data[gradeview].departmentInnerVote.bad+'</td><td>'+data[gradeview].departmentInnerVote.sum+'</td><td>'+data[gradeview].departmentInnerScore_rate+'</td><td>'+data[gradeview].schoolVote.good+'</td><td>'+data[gradeview].schoolVote.lessGood+'</td><td>'+data[gradeview].schoolVote.common+'</td><td>'+data[gradeview].schoolVote.bad+'</td><td>'+data[gradeview].schoolVote.sum+'</td><td>'+data[gradeview].schoolVoteScore_rate+'</td><td>'+data[gradeview].quantifyScore+'</td><td>'+data[gradeview].quantifySocre_rate+'</td><td>'+data[gradeview].departmentYearScore+'</td></tr>'
-	
+	                   var addtr = '<tr><td>'+data[gradeview].viewID+'</td><td>'+data[gradeview].departmentName+'</td><td>'+data[gradeview].leaderScore+'</td><td>'+data[gradeview].leaderScore_rate+'</td><td>'+data[gradeview].departmentInnerVote.good+'</td><td>'+data[gradeview].departmentInnerVote.lessGood+'</td><td>'+data[gradeview].departmentInnerVote.common+'</td><td>'+data[gradeview].departmentInnerVote.bad+'</td><td>'+data[gradeview].departmentInnerVote.sum+'</td><td>'+data[gradeview].departmentInnerScore_rate+'</td><td>'+data[gradeview].schoolVote.good+'</td><td>'+data[gradeview].schoolVote.lessGood+'</td><td>'+data[gradeview].schoolVote.common+'</td><td>'+data[gradeview].schoolVote.bad+'</td><td>'+data[gradeview].schoolVote.sum+'</td><td>'+data[gradeview].schoolVoteScore_rate+'</td><td>'+data[gradeview].quantifyScore+'</td><td>'+data[gradeview].quantifySocre_rate+'</td><td>'+data[gradeview].departmentYearScore+'</td></tr>';	
 	                   $("#tbo").append(addtr);
 	               }
 	           }                                                   
