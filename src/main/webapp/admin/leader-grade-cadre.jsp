@@ -204,8 +204,8 @@
 	<script src="${APP_PATH}/js/app.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function(){	        
-	        $.ajax({
-	            url:'../schoolgrade/showpluscadre.do',
+	        $.ajax({ 
+	            url:'${APP_PATH}/schoolgrade/showpluscadre.do',
 	            data:{"rank":0},
 	            datatype:'json',
 	            type:'post',
@@ -237,7 +237,7 @@
 	        });
 	        dataJson = JSON.stringify(dataMap);	        
 	          $.ajax({
-	               url:'../schoolgrade/votecadre.do',
+	               url:'${APP_PATH}/schoolgrade/votecadre.do',
 	               data:{"dataMap":dataJson,"type":8},
 	               datatype:'json',
 	               type:'post',

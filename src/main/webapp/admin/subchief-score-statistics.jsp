@@ -187,13 +187,13 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 	    $.ajax({
-	        url:'../yearscore/loadsubcadre.do',
+	        url:'${APP_PATH}/yearscore/loadsubcadre.do',
 	        data:{},
 	        datatype:'json',
 	        type:'post',
 	        success:function(data){      
 	            console.log(data);
-	           if(data.length==0){
+	           if(data.length==0){  
 	               alert("未获取到评分数据，请稍后重试！");
 	           }else{
 	               for(var gradeview in data){ 

@@ -188,7 +188,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){ 
 	    $.ajax({
-	        url:'../yearscore/loadcadre.do',
+	        url:'${APP_PATH}/yearscore/loadcadre.do',
 	        data:{}, 
 	        datatype:'json',
 	        type:'post',

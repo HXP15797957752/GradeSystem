@@ -1,4 +1,9 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+      pageContext.setAttribute("APP_PATH", request.getContextPath());
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html class="no-js">
 <head>
 <meta charset="utf-8">
@@ -10,12 +15,12 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="renderer" content="webkit">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<link rel="icon" type="image/png" href="/GradeSystem/i/favicon.png">
+<link rel="icon" type="image/png" href="${APP_PATH}/i/favicon.png">
 <link rel="apple-touch-icon-precomposed"
-	href="/GradeSystem/i/app-icon72x72@2x.png">
+	href="${APP_PATH}/i/app-icon72x72@2x.png">
 <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-<link rel="stylesheet" href="/GradeSystem/css/amazeui.min.css" />
-<link rel="stylesheet" href="/GradeSystem/css/admin.css">
+<link rel="stylesheet" href="${APP_PATH}/css/amazeui.min.css" />
+<link rel="stylesheet" href="${APP_PATH}/css/admin.css">
 </head>
 <body>
 	<!--[if lte IE 9]>
@@ -61,13 +66,11 @@
 		<!-- sidebar start -->
 		<div class="admin-sidebar">
 			<ul class="am-list admin-sidebar-list">
-			      <li><a href="index.html"><span class="am-icon-home"></span> 首页</a></li>
-      <li><a href="/GradeSystem/admin-user.html"><span class="am-icon-check"></span> 个人资料</a></li>
-      <li><a href="set-score-scale.html"><span class="am-icon-map-marker"></span> 评分比例设置</a></li>
-      <li><a href="set-assessment-group.html"><span class="am-icon-table"></span> 考核分组设置</a></li>
-      <li><a href="teach-unit.html"><span class="am-icon-table"></span> 教学科研单位评分</a></li>
-      <li><a href="manage-unit.html"><span class="am-icon-table"></span> 管理服务单位评分</a></li>
-		    </ul>
+      <li><a href="${APP_PATH }/user/index.jsp"><span class="am-icon-home"></span> 首页</a></li>
+      <li><a href="<c:url value='/user/usermessage.jsp'/>"><span class="am-icon-check"></span> 个人资料</a></li>
+      <li><a href="${APP_PATH}/user/unit-grade.jsp"><span class="am-icon-map-marker"></span> 单位民主测评统计</a></li>
+      <li><a href="${APP_PATH}/user/school-grade.jsp"><span class="am-icon-map-marker"></span> 学校民主测评统计</a></li>
+    </ul>
 
 			<div class="am-panel am-panel-default admin-sidebar-panel">
 				<div class="am-panel-bd">
@@ -220,15 +223,15 @@
 <![endif]-->
 
 	<!--[if (gte IE 9)|!(IE)]><!-->
-	<script src="/GradeSystem/js/jquery.min.js"></script>
-	<script src="/GradeSystem/js/amazeui.min.js"></script>
+	<script src="${APP_PATH}/js/jquery.min.js"></script>
+	<script src="${APP_PATH}/js/amazeui.min.js"></script>
 	<!--<![endif]-->
-	<script src="/GradeSystem/js/app.js"></script>
+	<script src="${APP_PATH}/js/app.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
         
         $.ajax({
-            url:'../schoolgrade/showdepartmentbytype.do',
+            url:'${APP_PATH}/schoolgrade/showdepartmentbytype.do',
             data:{"type":1},
             datatype:'json',
             type:'post',
@@ -248,7 +251,7 @@
         })     
         
         $.ajax({
-            url:'../schoolgrade/showdepartmentbytype.do',
+            url:'${APP_PATH}/schoolgrade/showdepartmentbytype.do',
             data:{"type":2},
             datatype:'json',
             type:'post',
@@ -265,10 +268,10 @@
                    }
                }                                                   
             }        
-        })     　
+        });     
         
         $.ajax({
-            url:'../schoolgrade/showpluscadre.do',
+            url:'${APP_PATH}/schoolgrade/showpluscadre.do',
             data:{"rank":0},
             datatype:'json',
             type:'post',
@@ -289,9 +292,7 @@
                    }
                }                                                   
             }        
-        })
-        
-        　
+        })       　
       });
 	
 	
@@ -307,15 +308,15 @@
         });
         dataJson = JSON.stringify(dataMap);        
           $.ajax({
-               url:'../schoolgrade/votedepartment.do',
+               url:'${APP_PATH}/schoolgrade/votedepartment.do',
                data:{"dataMap":dataJson,"type":5},
                datatype:'json',
                type:'post',
                success:function(data){      
-            	   alert("保存成功！");                                                          
+            	   alert("本次单位投票记录保存成功！");                                                          
                },
                error:function(err){
-               	 alert("提交失败！");
+               	 alert("本次单位投票记录提交失败！");
                }
            });
     };
@@ -331,15 +332,15 @@
        });
        dataJson = JSON.stringify(dataMap);      
          $.ajax({
-              url:'../schoolgrade/votedepartment.do',
+              url:'${APP_PATH}/schoolgrade/votedepartment.do',
               data:{"dataMap":dataJson,"type":5},
               datatype:'json',
               type:'post',
               success:function(data){      
-           	   alert("保存成功！");                                                          
+           	   alert("本次单位投票记录保存成功！");                                                          
               },
               error:function(err){
-              	 alert("提交失败！");
+              	 alert("本次单位投票记录提交失败！");
               }
           });
    };
@@ -356,15 +357,15 @@
        });
        dataJson = JSON.stringify(dataMap);      
          $.ajax({
-              url:'../schoolgrade/votecadre.do',
+              url:'${APP_PATH}/schoolgrade/votecadre.do',
               data:{"dataMap":dataJson,"type":6},
               datatype:'json',
               type:'post',
               success:function(data){      
-           	   alert("保存成功！");                                                          
+           	   alert("本次干部投票记录保存成功！");                                                          
               },
               error:function(err){
-              	 alert("提交失败！");
+              	 alert("本次干部投票记录提交失败！");
               }
           });
    };
@@ -381,15 +382,15 @@
      });
      dataJson = JSON.stringify(dataMap);    
        $.ajax({
-            url:'../schoolgrade/votecadre.do',
+            url:'${APP_PATH}/schoolgrade/votecadre.do',
             data:{"dataMap":dataJson,"type":6},
             datatype:'json',
             type:'post',
             success:function(data){      
-         	   alert("保存成功！");                                                          
+         	   alert("本次干部投票记录保存成功！");                                                          
             },
             error:function(err){
-            	 alert("提交失败！");
+            	 alert("本次干部投票记录提交失败！");
             }
         });
  };

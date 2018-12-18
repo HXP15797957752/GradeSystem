@@ -206,12 +206,12 @@
 	<script type="text/javascript">
 	$(document).ready(function(){      
         $.ajax({
-            url:'../schoolgrade/showdepartment.do',
+            url:'${APP_PATH}/schoolgrade/showdepartment.do',
             data:{},
             datatype:'json',
             type:'post',
             success:function(data){      
-                console.log(data);
+                console.log(data); 
                if(data.length==0){
                    alert("未获取到单位参数，请稍后重试！");
                }else{
@@ -240,7 +240,7 @@
         dataJson = JSON.stringify(dataMap);
         
           $.ajax({
-               url:'../schoolgrade/votedepartment.do',
+               url:'${APP_PATH}/schoolgrade/votedepartment.do',
                data:{"dataMap":dataJson,"type":7},
                datatype:'json',
                type:'post',

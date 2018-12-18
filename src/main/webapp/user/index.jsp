@@ -47,8 +47,8 @@
     <ul class="am-list admin-sidebar-list">
       <li><a href="${APP_PATH }/user/index.jsp"><span class="am-icon-home"></span> 首页</a></li>
       <li><a href="<c:url value='/user/usermessage.jsp'/>"><span class="am-icon-check"></span> 个人资料</a></li>
-      <li><a href="unit-grade.html"><span class="am-icon-map-marker"></span> 单位民主测评统计</a></li>
-      <li><a href="school-grade.html"><span class="am-icon-map-marker"></span> 学校民主测评统计</a></li>
+      <li><a href="${APP_PATH}/user/unit-grade.jsp"><span class="am-icon-map-marker"></span> 单位民主测评统计</a></li>
+      <li><a href="${APP_PATH}/user/school-grade.jsp"><span class="am-icon-map-marker"></span> 学校民主测评统计</a></li>
     </ul>
 
     <div class="am-panel am-panel-default admin-sidebar-panel">

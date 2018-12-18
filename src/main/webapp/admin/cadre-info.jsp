@@ -206,7 +206,7 @@
 $(document).ready(function(){
     
     $.ajax({
-        url:'../schoolgrade/showpluscadre.do',
+        url:'${APP_PATH}/schoolgrade/showpluscadre.do',
         data:{"rank":0},
         datatype:'json',
         type:'post',
@@ -228,7 +228,7 @@ $(document).ready(function(){
     }) 
     
     $.ajax({
-        url:'../schoolgrade/showpluscadre.do',
+        url:'${APP_PATH}/schoolgrade/showpluscadre.do',
         data:{"rank":1},
         datatype:'json',
         type:'post',

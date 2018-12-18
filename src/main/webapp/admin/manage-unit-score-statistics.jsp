@@ -190,7 +190,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){	    
 	    $.ajax({
-	        url:'../yearscore/loadmanage.do',
+	        url:'${APP_PATH}/yearscore/loadmanage.do',
 	        data:{},
 	        datatype:'json',
 	        type:'post',

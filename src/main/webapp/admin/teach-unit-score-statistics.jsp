@@ -190,7 +190,7 @@
 <script type="text/javascript">
 	$(document).ready(function(){	    
 	    $.ajax({
-	        url:'../yearscore/loadteach.do',
+	        url:'${APP_PATH}/yearscore/loadteach.do',
 	        data:{},
 	        datatype:'json',
 	        type:'post',
@@ -198,7 +198,7 @@
 	            console.log(data);
 	           if(data.length==0){
 	               alert("未获取到评分数据，请稍后重试！");
-	           }else{
+	           }else{  
 	               for(var gradeview in data){
 	                   var addtr = '<tr><td>'+data[gradeview].viewID+'</td><td>'+data[gradeview].departmentName+'</td><td>'+data[gradeview].leaderScore+'</td><td>'+data[gradeview].leaderScore_rate+'</td><td>'+data[gradeview].departmentInnerVote.good+'</td><td>'+data[gradeview].departmentInnerVote.lessGood+'</td><td>'+data[gradeview].departmentInnerVote.common+'</td><td>'+data[gradeview].departmentInnerVote.bad+'</td><td>'+data[gradeview].departmentInnerVote.sum+'</td><td>'+data[gradeview].departmentInnerScore_rate+'</td><td>'+data[gradeview].schoolVote.good+'</td><td>'+data[gradeview].schoolVote.lessGood+'</td><td>'+data[gradeview].schoolVote.common+'</td><td>'+data[gradeview].schoolVote.bad+'</td><td>'+data[gradeview].schoolVote.sum+'</td><td>'+data[gradeview].schoolVoteScore_rate+'</td><td>'+data[gradeview].quantifyScore+'</td><td>'+data[gradeview].quantifySocre_rate+'</td><td>'+data[gradeview].departmentYearScore+'</td></tr>';	
 	                   $("#tbo").append(addtr);

@@ -1,4 +1,9 @@
-<!doctype html>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+      pageContext.setAttribute("APP_PATH", request.getContextPath());
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html class="no-js">
     <head>
         <meta charset="utf-8">
@@ -10,12 +15,12 @@
             content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <meta name="renderer" content="webkit">
         <meta http-equiv="Cache-Control" content="no-siteapp" />
-        <link rel="icon" type="image/png" href="/GradeSystem/i/favicon.png">
+        <link rel="icon" type="image/png" href="${APP_PATH}/i/favicon.png">
         <link rel="apple-touch-icon-precomposed"
-            href="/GradeSystem/i/app-icon72x72@2x.png">
+            href="${APP_PATH}/i/app-icon72x72@2x.png">
         <meta name="apple-mobile-web-app-title" content="Amaze UI" />
-        <link rel="stylesheet" href="/GradeSystem/css/amazeui.min.css" />
-        <link rel="stylesheet" href="/GradeSystem/css/admin.css">
+        <link rel="stylesheet" href="${APP_PATH}/css/amazeui.min.css" />
+        <link rel="stylesheet" href="${APP_PATH}/css/admin.css">
         <script type="text/javascript">
            function changeCadre(){
                var selectValue = document.getElementById("unit").value;
@@ -23,7 +28,7 @@
                    alert("请选择"); 
                }else{
                    $.ajax({
-                        url:'http://localhost:8080/GradeSystem/schoolgrade/showcadre.do',
+                        url:'${APP_PATH}/schoolgrade/showcadre.do',
                         data:{'ofDepartment':selectValue},
                         datatype:'json',
                         type:'post',
@@ -100,11 +105,11 @@
         <!-- sidebar start -->
         <div class="admin-sidebar">
             <ul class="am-list admin-sidebar-list">
-                  <li><a href="admin-index.html"><span class="am-icon-home"></span> 首页</a></li>
-                  <li><a href="/GradeSystem/admin-user.html"><span class="am-icon-check"></span> 个人资料</a></li>
-                  <li><a href="unit-grade.html"><span class="am-icon-map-marker"></span> 单位民主测评统计</a></li>
-                  <li><a href="school-grade.html"><span class="am-icon-map-marker"></span> 学校民主测评统计</a></li>
-            </ul>
+		      <li><a href="${APP_PATH }/user/index.jsp"><span class="am-icon-home"></span> 首页</a></li>
+		      <li><a href="<c:url value='/user/usermessage.jsp'/>"><span class="am-icon-check"></span> 个人资料</a></li>
+		      <li><a href="${APP_PATH}/user/unit-grade.jsp"><span class="am-icon-map-marker"></span> 单位民主测评统计</a></li>
+		      <li><a href="${APP_PATH}/user/school-grade.jsp"><span class="am-icon-map-marker"></span> 学校民主测评统计</a></li>
+		    </ul>
 
             <div class="am-panel am-panel-default admin-sidebar-panel">
                 <div class="am-panel-bd">
@@ -214,14 +219,13 @@
     <!--<![endif]-->
     <script src="/GradeSystem/js/app.js"></script>
     <script type="text/javascript">
-     $(document).ready(function(){
-         
+     $(document).ready(function(){         
          $.ajax({
-             url:'http://localhost:8080/GradeSystem/schoolgrade/showdepartment.do',
+             url:'${APP_PATH}/schoolgrade/showdepartment.do',
              data:{},
              datatype:'json',
              type:'post',
-             success:function(data){      
+             success:function(data){       
                  console.log(data);
                 if(data.length==0){
                     alert("未获取到单位参数，请稍后重试！");
@@ -264,45 +268,45 @@
          departmentJson = JSON.stringify(departmentMap);
          
          $.ajax({
-             url:'../schoolgrade/votedepartment.do',
+             url:'${APP_PATH}/schoolgrade/votedepartment.do',
              data:{"dataMap":departmentJson,"type":1},
              datatype:'json',
              type:'post',
              success:function(data){      
-          	   alert("保存成功！");                                                          
+          	   alert("单位记录保存成功！");                                                          
              },
              error:function(err){
-             	 alert("提交失败！");
+             	 alert("单位记录提交失败！");
              }
          });
          
          pluscadreJson = JSON.stringify(pluscadreMap);
          
          $.ajax({
-             url:'../schoolgrade/votecadre.do',
+             url:'${APP_PATH}/schoolgrade/votecadre.do',
              data:{"dataMap":pluscadreJson,"type":2},
              datatype:'json',
              type:'post',
              success:function(data){      
-          	   alert("保存成功！");                                                          
+          	   alert("正职记录保存成功！");                                                          
              },
              error:function(err){
-             	 alert("提交失败！");
+             	 alert("正职记录提交失败！");
              }
          });
          
          subcadreJson = JSON.stringify(subcadreMap);
          
          $.ajax({
-             url:'../schoolgrade/votecadre.do',
+             url:'${APP_PATH}/schoolgrade/votecadre.do',
              data:{"dataMap":subcadreJson,"type":3},
              datatype:'json',
              type:'post',
              success:function(data){      
-          	   alert("保存成功！");                                                          
+          	   alert("副职记录保存成功！");                                                          
              },
              error:function(err){
-             	 alert("提交失败！");
+             	 alert("副职记录提交失败！");
              }
          });
           
@@ -336,45 +340,45 @@
         departmentJson = JSON.stringify(departmentMap);
         
         $.ajax({
-            url:'../schoolgrade/votedepartment.do',
+            url:'${APP_PATH}/schoolgrade/votedepartment.do',
             data:{"dataMap":departmentJson,"type":1},
             datatype:'json',
             type:'post',
             success:function(data){      
-         	   alert("保存成功！");                                                          
+         	   alert("单位记录保存成功！");                                                          
             },
             error:function(err){
-            	 alert("提交失败！");
+            	 alert("单位记录提交失败！");
             }
         });
         
         pluscadreJson = JSON.stringify(pluscadreMap);
         
         $.ajax({
-            url:'../schoolgrade/votecadre.do',
+            url:'${APP_PATH}/schoolgrade/votecadre.do',
             data:{"dataMap":pluscadreJson,"type":2},
             datatype:'json',
             type:'post',
             success:function(data){      
-         	   alert("保存成功！");                                                          
+         	   alert("正职记录保存成功！");                                                          
             },
             error:function(err){
-            	 alert("提交失败！");
+            	 alert("正职记录提交失败！");
             }
         });
         
         subcadreJson = JSON.stringify(subcadreMap);
         
         $.ajax({
-            url:'../schoolgrade/votecadre.do',
+            url:'${APP_PATH}/schoolgrade/votecadre.do',
             data:{"dataMap":subcadreJson,"type":4},
             datatype:'json',
             type:'post',
             success:function(data){      
-         	   alert("保存成功！");                                                          
+         	   alert("副职记录保存成功！");                                                          
             },
             error:function(err){
-            	 alert("提交失败！");
+            	 alert("副职记录提交失败！");
             }
         });
          
