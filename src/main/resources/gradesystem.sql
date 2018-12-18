@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50540
 File Encoding         : 65001
 
-Date: 2018-12-10 22:10:01
+Date: 2018-12-17 15:41:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -40,6 +40,45 @@ INSERT INTO `cadre` VALUES ('3', '201621585', '周水平', '党委书记', '0', 
 INSERT INTO `cadre` VALUES ('4', '20168999', '杨君', '副院长', '0', '2');
 INSERT INTO `cadre` VALUES ('5', '20165454', '李想', '副处长', '1', '1');
 INSERT INTO `cadre` VALUES ('6', '2016882', '吴欣欣', '主任', '1', '1');
+
+-- ----------------------------
+-- Table structure for cadre_year_score
+-- ----------------------------
+DROP TABLE IF EXISTS `cadre_year_score`;
+CREATE TABLE `cadre_year_score` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `year` int(11) NOT NULL,
+  `cadreID` int(11) NOT NULL,
+  `cadreName` varchar(255) NOT NULL,
+  `rank` int(10) unsigned zerofill NOT NULL COMMENT '0为正处级 1为副处级',
+  `departmentName` varchar(255) NOT NULL,
+  `yearScore` double NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of cadre_year_score
+-- ----------------------------
+INSERT INTO `cadre_year_score` VALUES ('9', '2018', '1', '黄某', '0000000000', '组织部（机关党委、党校）', '16.7');
+INSERT INTO `cadre_year_score` VALUES ('10', '2018', '2', '戴仕明', '0000000000', '纪委（监察、审计）', '15');
+INSERT INTO `cadre_year_score` VALUES ('11', '2018', '3', '周水平', '0000000000', '农学院', '19.95');
+INSERT INTO `cadre_year_score` VALUES ('12', '2018', '4', '杨君', '0000000000', '林学院（园林与艺术学院）', '10.25');
+INSERT INTO `cadre_year_score` VALUES ('13', '2018', '5', '李想', '0000000001', '农学院', '13.25');
+INSERT INTO `cadre_year_score` VALUES ('14', '2018', '6', '吴欣欣', '0000000001', '农学院', '6.5');
+INSERT INTO `cadre_year_score` VALUES ('15', '2018', '5', '李想', '0000000001', '农学院', '13.25');
+INSERT INTO `cadre_year_score` VALUES ('16', '2018', '6', '吴欣欣', '0000000001', '农学院', '6.5');
+INSERT INTO `cadre_year_score` VALUES ('17', '2018', '1', '黄某', '0000000000', '组织部（机关党委、党校）', '16.7');
+INSERT INTO `cadre_year_score` VALUES ('18', '2018', '2', '戴仕明', '0000000000', '纪委（监察、审计）', '15');
+INSERT INTO `cadre_year_score` VALUES ('19', '2018', '3', '周水平', '0000000000', '农学院', '19.95');
+INSERT INTO `cadre_year_score` VALUES ('20', '2018', '4', '杨君', '0000000000', '林学院（园林与艺术学院）', '10.25');
+INSERT INTO `cadre_year_score` VALUES ('21', '2018', '1', '黄某', '0000000000', '组织部（机关党委、党校）', '22.1');
+INSERT INTO `cadre_year_score` VALUES ('22', '2018', '2', '戴仕明', '0000000000', '纪委（监察、审计）', '15');
+INSERT INTO `cadre_year_score` VALUES ('23', '2018', '3', '周水平', '0000000000', '农学院', '19.95');
+INSERT INTO `cadre_year_score` VALUES ('24', '2018', '4', '杨君', '0000000000', '林学院（园林与艺术学院）', '10.25');
+INSERT INTO `cadre_year_score` VALUES ('25', '2018', '5', '李想', '0000000001', '农学院', '14');
+INSERT INTO `cadre_year_score` VALUES ('26', '2018', '6', '吴欣欣', '0000000001', '农学院', '7.1');
+INSERT INTO `cadre_year_score` VALUES ('27', '2018', '5', '李想', '0000000001', '农学院', '14');
+INSERT INTO `cadre_year_score` VALUES ('28', '2018', '6', '吴欣欣', '0000000001', '农学院', '7.1');
 
 -- ----------------------------
 -- Table structure for department
@@ -112,6 +151,23 @@ INSERT INTO `department` VALUES ('69', '33333', '1', null);
 INSERT INTO `department` VALUES ('70', '22', '2', null);
 
 -- ----------------------------
+-- Table structure for department_year_score
+-- ----------------------------
+DROP TABLE IF EXISTS `department_year_score`;
+CREATE TABLE `department_year_score` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `year` int(10) unsigned zerofill NOT NULL,
+  `departmentID` int(10) unsigned zerofill NOT NULL,
+  `departmentName` varchar(255) NOT NULL,
+  `yearScore` double unsigned zerofill NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of department_year_score
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for gradingunit
 -- ----------------------------
 DROP TABLE IF EXISTS `gradingunit`;
@@ -166,7 +222,7 @@ CREATE TABLE `quantify` (
   `optionid` int(11) DEFAULT NULL,
   `departmentid` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=248 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=231 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of quantify
