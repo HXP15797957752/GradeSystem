@@ -36,18 +36,11 @@
   <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 
     <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-      <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
-      <li class="am-dropdown" data-am-dropdown>
-        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
-        </a>
-        <ul class="am-dropdown-content">
-          <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
-          <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
-        </ul>
+      <li class="am-dropdown" data-am-dropdown>       
+        
+		<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;"> <span class="am-icon-users"></span> 管理员 </a>   
       </li>
-      <li><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+      <li><li><a href="${APP_PATH  }/user/loginout.do"><span class="am-icon-power-off"></span> 退出</a></li></li>
     </ul>
   </div>
 </header>
@@ -139,11 +132,11 @@
 
       <div class="am-u-sm-12">
       	<hr/>
-      	<button type="submit" class="am-btn am-btn-primary am-btn-xs">导出表格</button>
-        <table class="am-table am-table-bordered am-table-radius am-table-striped">
+      	<button id="btnexcel" type="submit" class="am-btn am-btn-primary am-btn-xs">导出表格</button>
+        <table id="excel" class="am-table am-table-bordered am-table-radius am-table-striped">
           <thead>
           <tr>
-            <th rowspan="3"><input type="checkbox" name="option1"/></th><th rowspan="3">序号</th><th rowspan="3">单位名称</th><th rowspan="3">干部名称</th><th colspan="6">单位内部测评</th><th rowspan="2" colspan="2">年度本单位考核得分</th> <th colspan="2">单位正职评分</th><th rowspan="3">个人考核总得分</th>
+            <th rowspan="3">序号</th><th rowspan="3">单位名称</th><th rowspan="3">干部名称</th><th colspan="6">单位内部测评</th><th rowspan="2" colspan="2">年度本单位考核得分</th> <th colspan="2">单位正职评分</th><th rowspan="3">个人考核总得分</th>
           </tr>
           <tr>
             <th colspan="4">综合票价票数</th><th colspan="2">群众评分</th><th rowspan="2">得分</th><th rowspan="2">折算得分(10%)</th>
@@ -184,6 +177,20 @@
 <script src="${APP_PATH}/js/amazeui.min.js"></script>
 <!--<![endif]-->
 <script src="${APP_PATH}/js/app.js"></script>
+<script src="${APP_PATH }/js/jquery.table2excel.js"></script>
+	<script>
+		$("#btnexcel").click(function(){
+			console.log(1)
+			$("#excel").table2excel({
+		        exclude: ".noExl",
+		        name: "Excel Document Name",
+		        filename: "${year}副职年度考核评分表",
+		        exclude_img: true,
+		        exclude_links: true,
+		        exclude_inputs: true
+		    });
+		})
+	</script>
 <script type="text/javascript">
 	$(document).ready(function(){
 	    $.ajax({
@@ -197,12 +204,12 @@
 	               alert("未获取到评分数据，请稍后重试！");
 	           }else{
 	               for(var gradeview in data){ 
-	                   var addtr = '<tr><td><input type="checkbox" name="'+data[gradeview].viewID+'"></td><td>'+data[gradeview].viewID+'</td><td>'+data[gradeview].departmentName+'</td><td>'+data[gradeview].cadreName+'</td><td>'+data[gradeview].departmentInnerVote.good+'</td><td>'+data[gradeview].departmentInnerVote.lessGood+'</td><td>'+data[gradeview].departmentInnerVote.common+'</td><td>'+data[gradeview].departmentInnerVote.bad+'</td><td>'+data[gradeview].departmentInnerVote.sum+'</td><td>'+data[gradeview].departmentInnerScore_rate+'</td><td>'+data[gradeview].departmentYearGrade+'</td><td>'+data[gradeview].departmentYearGrade_rate+'</td><td>'+data[gradeview].cadreVote.sum+'</td><td>'+data[gradeview].cadreScore_rate+'</td><td>'+data[gradeview].subCadre_year_score+'</td></tr>';	
+	                   var addtr = '<tr><td>'+data[gradeview].viewID+'</td><td>'+data[gradeview].departmentName+'</td><td>'+data[gradeview].cadreName+'</td><td>'+data[gradeview].departmentInnerVote.good+'</td><td>'+data[gradeview].departmentInnerVote.lessGood+'</td><td>'+data[gradeview].departmentInnerVote.common+'</td><td>'+data[gradeview].departmentInnerVote.bad+'</td><td>'+data[gradeview].departmentInnerVote.sum+'</td><td>'+data[gradeview].departmentInnerScore_rate+'</td><td>'+data[gradeview].departmentYearGrade+'</td><td>'+data[gradeview].departmentYearGrade_rate+'</td><td>'+data[gradeview].cadreVote.sum+'</td><td>'+data[gradeview].cadreScore_rate+'</td><td>'+data[gradeview].subCadre_year_score+'</td></tr>';	
 	                   $("#tbo").append(addtr);
 	               }
 	           }                                                   
 	        }        
-	    })     　　
+	    })
 	  });
 </script>
 </body>

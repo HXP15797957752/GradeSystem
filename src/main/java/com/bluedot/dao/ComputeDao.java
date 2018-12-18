@@ -23,4 +23,8 @@ public interface ComputeDao {
     public DepartmentYearScoreRecord queryDepartmentYearScoreRecordByIDAndYear(DepartmentYearScoreRecord departmentYearScoreRecord);
     //根据干部ID 年份查询干部年度评分记录
     public CadreYearScoreRecord queryCadreYearScoreRecordByIDAndYear(CadreYearScoreRecord cadreYearScoreRecord);
+    //根据ID  年份更新单位年度总分
+    public void updateDepartmentYearScoreRecord(DepartmentYearScoreRecord departmentYearScoreRecord);
+    //根据ID  年份更新干部年度总分
+    public void updateCadreYearScoreRecord(CadreYearScoreRecord cadreYearScoreRecord);
 }

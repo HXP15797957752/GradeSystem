@@ -28,4 +28,11 @@
     	select id, year, cadreID, cadreName, rank, departmentName, yearScore from cadre_year_score where year=#{year} and cadreID=#{cadreID}
     </select>
     
+    <update id="updateDepartmentYearScoreRecord" parameterType="DepartmentYearScoreRecord">
+    	update department_year_score set yearScore=#{yearScore} where year=#{year} and departmentID=#{departmentID}
+    </update>
+    
+    <update id="updateCadreYearScoreRecord" parameterType="DepartmentYearScoreRecord">
+    	update cadre_year_score set yearScore=#{yearScore} where year=#{year} and cadreID=#{cadreID}
+    </update>
 </mapper>

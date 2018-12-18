@@ -36,18 +36,11 @@
   <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 
     <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-      <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
-      <li class="am-dropdown" data-am-dropdown>
-        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
-          <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
-        </a>
-        <ul class="am-dropdown-content">
-          <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
-          <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
-        </ul>
+      <li class="am-dropdown" data-am-dropdown>       
+        
+		<a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;"> <span class="am-icon-users"></span> 管理员 </a>   
       </li>
-      <li><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+      <li><li><a href="${APP_PATH  }/user/loginout.do"><span class="am-icon-power-off"></span> 退出</a></li></li>
     </ul>
   </div>
 </header>
@@ -126,7 +119,7 @@
   <div class="admin-content">
 
     <div class="am-cf am-padding">
-      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">领导班子(单位)</strong> / <small>年度评分</small></div>
+      <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">领导班子(单位)</strong> / <small>管理服务年度评分</small></div>
     </div>
 
     <div class="am-g">
@@ -139,7 +132,8 @@
 
       <div class="am-u-sm-12">
       	<hr/>
-        <table class="am-table am-table-bordered am-table-radius am-table-striped">
+      	<button id="btnexcel" type="submit" class="am-btn am-btn-primary am-btn-xs">导出表格</button>
+        <table id="excel" class="am-table am-table-bordered am-table-radius am-table-striped">
           <thead>
           <tr>
             <th rowspan="4">序号</th><th rowspan="4">单位名称</th><th colspan="14">定性评分(60%)</th><th colspan="2" rowspan="3">定量评分(40%)</th><th rowspan="4">年度考核总得分</th>
@@ -187,6 +181,20 @@
 <script src="${APP_PATH}/js/amazeui.min.js"></script>
 <!--<![endif]-->
 <script src="${APP_PATH}/js/app.js"></script>
+<script src="${APP_PATH }/js/jquery.table2excel.js"></script>
+	<script>
+		$("#btnexcel").click(function(){
+			console.log(1)
+			$("#excel").table2excel({
+		        exclude: ".noExl",
+		        name: "Excel Document Name",
+		        filename: "${year}管理服务单位年度考核评分表",
+		        exclude_img: true,
+		        exclude_links: true,
+		        exclude_inputs: true
+		    });
+		})
+	</script>
 <script type="text/javascript">
 	$(document).ready(function(){	    
 	    $.ajax({

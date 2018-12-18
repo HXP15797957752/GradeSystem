@@ -202,6 +202,8 @@
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="uploadExcel()">上传excel</a>  
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg2').dialog('close')">关闭</a>  
 </div>
+		<script src="${APP_PATH }/js/jquery.min.js"></script>
+		<script src="${APP_PATH }/js/amazeui.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
     
