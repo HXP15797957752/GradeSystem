@@ -16,9 +16,9 @@ import com.bluedot.service.ComputeService;
  * 计算总分控制类
  * @author hxp
  * 2018年12月10日 下午7:15:30
- */
+ */  
 @Controller
-@RequestMapping("/yearscore")
+@RequestMapping("/yearscore") 
 public class ComputeController {
     @Autowired
     private ComputeService computeService;
