@@ -61,11 +61,18 @@ public class QuantifyYearGradeServiceImpl implements QuantifyYearGradeService{
 	    departments = departmentDao.searchManageDepartment();
 		operation(options, departments, quantify, df, grade,year,quantifyYearGrades);
 		for (QuantifyYearGrade quantifyYearGrade : quantifyYearGrades) {
-			  if(exit.isEmpty()) {
-					quantifyYearGradeDao.insertYearGrade(quantifyYearGrade);
-				}else {
-					quantifyYearGradeDao.updateYearGrade(quantifyYearGrade);
+			boolean isflag = false;
+			for (QuantifyYearGrade quantifyYearGrade2 : exit) {
+				if(quantifyYearGrade2.getDepartmentId() == quantifyYearGrade.getDepartmentId()) {
+					isflag = true;
+					break;
 				}
+			}
+			if(!isflag) {
+				quantifyYearGradeDao.insertYearGrade(quantifyYearGrade);
+			}else {
+				quantifyYearGradeDao.updateYearGrade(quantifyYearGrade);
+			}
 		}
 	}
 	public void operation(List<Option> options, List<Department>  departments, Quantify quantify, DecimalFormat df,QuantifyYearGrade grade, int year,List<QuantifyYearGrade> quantifyYearGrades) {

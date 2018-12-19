@@ -172,7 +172,7 @@
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
 		          <tr>
-		            <th>教学评分选项添加</th>
+		            <th>单位年度定量得分查询</th>
 		          </tr>
 		          </thead>
 		          <tbody>
