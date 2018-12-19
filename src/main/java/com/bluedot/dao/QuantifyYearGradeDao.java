@@ -13,4 +13,5 @@ public interface QuantifyYearGradeDao {
 	public List<QuantifyYearGrade> searchYearGrade(Integer year);
 	public void insertYearGrade(QuantifyYearGrade grade);
 	public void updateYearGrade(QuantifyYearGrade grade);
+	public void deleteOfDepartment(QuantifyYearGrade quantifyYearGrade);
 }

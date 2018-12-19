@@ -217,7 +217,7 @@
       <div class="am-tab-panel am-fade" id="tab3">                         
           <div class="am-u-sm-12">
             	<div class="am-g am-margin-top">
-                <form class="am-form" action="${APP_PATH }/quantify/addDepartment.do">
+                <form class="am-form" action="${APP_PATH }/quantify/addDepartment.do" method="post">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
 		          <tr>
@@ -252,7 +252,7 @@
       <div class="am-tab-panel am-fade" id="tab4">                         
           <div class="am-u-sm-12">
            <div class="am-g am-margin-top">
-              <form class="am-form" action="${APP_PATH }/quantify/addOneOption.do">
+              <form class="am-form" action="${APP_PATH }/quantify/addOneOption.do" method="post">
               	<input type="hidden" value="1" name="addUnitId">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
@@ -283,7 +283,7 @@
       <div class="am-tab-panel am-fade" id="tab5">                         
           <div class="am-u-sm-12">
             <div class="am-g am-margin-top">
-              <form class="am-form" action="${APP_PATH }/quantify/addOneOption.do">
+              <form class="am-form" action="${APP_PATH }/quantify/addOneOption.do" method="post">
                <input type="hidden" value="2" name="addUnitId">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
@@ -343,7 +343,7 @@
       <div class="am-tab-panel am-fade" id="tab7">                         
           <div class="am-u-sm-12">
             	<div class="am-g am-margin-top">
-                <form class="am-form" action="https://gitee.com/zhangguozhangyue/GradeSystem.git/quantify/addoption.do" method="post">
+                <form class="am-form" action="${APP_PATH }/quantify/addoption.do" method="post">
 		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
 		          <thead>
 		          <tr>

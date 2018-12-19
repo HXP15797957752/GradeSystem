@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 import com.bluedot.dao.DepartmentDao;
 import com.bluedot.dao.OptionDao;
 import com.bluedot.dao.QuantifyDao;
+import com.bluedot.dao.QuantifyYearGradeDao;
 import com.bluedot.po.Department;
 import com.bluedot.po.Option;
 import com.bluedot.po.Quantify;
+import com.bluedot.po.QuantifyYearGrade;
 import com.bluedot.service.DepartmentService;
 
 /**
@@ -26,7 +28,8 @@ public class DepartmentServiceImpl implements DepartmentService{
 	private QuantifyDao quantifyDao;
 	@Autowired
 	private OptionDao optionDao;
-	
+	@Autowired
+	private QuantifyYearGradeDao quantifyYearGradeDao;
 	
 	@Override
 	public void updateDepartmentGroup(Department department) {
@@ -85,8 +88,13 @@ public class DepartmentServiceImpl implements DepartmentService{
 	@Override
 	public void deleteDepartment(Department department) {
 		// TODO Auto-generated method stub
+		int year = Calendar.getInstance().get(Calendar.YEAR);
 		departmentDao.deleteDepartment(department);
 		quantifyDao.deleteQuantify(department.getDepartmentId());
+		QuantifyYearGrade quantifyYearGrade = new QuantifyYearGrade();
+		quantifyYearGrade.setDepartmentId(department.getDepartmentId());
+		quantifyYearGrade.setYear(year);
+		quantifyYearGradeDao.deleteOfDepartment(quantifyYearGrade);
 	}
 	
 	
