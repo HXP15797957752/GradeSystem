@@ -37,8 +37,8 @@ public class QualitativeServiceImpl implements QualitativeService {
     }
 
     @Override
-    public List<Department> loadDepartment() {
-        List<Department> departmentList  = qualitativeDao.queryDepartment();
+    public List<Department> loadDepartment(String userName) {
+        List<Department> departmentList  = qualitativeDao.queryDepartmentByUserName(userName);
         return departmentList;
     }
 

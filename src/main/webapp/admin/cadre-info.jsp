@@ -153,13 +153,31 @@
     </div>
 
     <div class="am-g">
-      <div class="am-u-md-3">
-		  <button type="submit" class="am-btn am-btn-primary am-btn-xs" onclick="exportUnit()">导出处级干部信息模板</button>
-	  </div>
-	  <div class="am-u-md-3">
-		  <button  type="" class="am-btn am-btn-primary am-btn-xs" onclick="openUploadFileDialog()">导入处级干部信息</button>
-	   </div>
-
+    <!-- <form action="" enctype="multipart/form-data"> -->
+	      <div class="am-u-md-3">
+			  <!-- <button type="submit" class="am-btn am-btn-primary am-btn-xs" onclick="exportUnit()">导出处级干部信息模板</button> -->
+			  <button type="button" class="am-btn am-btn-primary am-btn-xs" id="doc-prompt-toggle">  导入处级干部信息</button>
+		  </div>
+		  <div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+			  <div class="am-modal-dialog">
+			  <form id="uploadForm" action="${APP_PATH}/importexcel.do" method="post" enctype="multipart/form-data" >
+				    <div class="am-modal-bd">				    	  
+				     	   请上传正确的Excel表格文件
+				      		<input type="file" name="file" class="am-modal-prompt-input">				      	
+				    </div>
+				    <div class="am-modal-footer">
+				      <!-- <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+				      <span class="am-modal-btn" id="submitfile" data-am-modal-confirm onclick="submitfile()">上传</span> -->
+				      <button type="button" style="margin-left: 10px" class="am-modal-btn" data-am-modal-cancel class="am-btn am-btn-primary am-btn-xs">取消</button>
+				      <button type="submit" class="am-btn am-btn-primary am-btn-xs">导入</button>
+				    </div>
+			  </form>
+			  </div>
+			</div>
+		  <div class="am-u-md-3">
+			  <button class="am-btn am-btn-primary am-btn-xs" onclick="downloadfile()">下载导入模板</button>
+		   </div>
+	<!-- </form> -->
       <div class="am-u-sm-12">
       	<hr/>
         <table class="am-table am-table-bordered am-table-radius am-table-striped">
@@ -251,9 +269,31 @@ $(document).ready(function(){
     })     
   });
   
-  function updateCadre(){
-			  
-  }
+$(function() {
+	  $('#doc-prompt-toggle').on('click', function() {
+	    $('#my-prompt').modal({
+	      relatedTarget: this,
+	      onConfirm: function(e) {
+	        alert('你输入的是：' + e.data || '')
+	      },
+	      onCancel: function(e) {
+	        /* alert('不想说!');  */
+	      }
+	    });
+	  });
+	});
+	
+function downloadfile(){
+	$.ajax({
+        url:'${APP_PATH}/downloadexcel.do',
+        data:{},
+        datatype:'json',
+        type:'post',
+        success:function(data){}                                                   
+            
+    })
+}
+	
 </script>
 
 

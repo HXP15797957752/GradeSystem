@@ -14,7 +14,7 @@ public interface QualitativeService {
 
     List<Cadre> loadCadre(int ofDepartment);
 
-    List<Department> loadDepartment();
+    List<Department> loadDepartment(String userName);
     
     List<Cadre> loadAllPlusCadre(Integer rank);
 

@@ -13,6 +13,9 @@
     <select id="queryCadreByDepartment" parameterType="int" resultMap="CadreResultMap">
         select * from cadre where ofDepartment=#{ofDepartment}
     </select>
+    <select id="getDepartmentByName" parameterType="String" resultType="Department">
+         select departmentid departmentId, departmentname departmentName, gradingunitid gradingUnitId from department where departmentName=#{departmentName}
+    </select>
     <select id="getDepartmentById" parameterType="int" resultType="Department">
          select departmentid departmentId, departmentname departmentName, gradingunitid gradingUnitId from department where departmentid=#{departmentid}
     </select>
@@ -28,8 +31,8 @@
     </resultMap>
      
     
-    <select id="queryDepartment" resultMap="DepartmentResult">
-         select departmentid,departmentname,gradingunitid from department
+    <select id="queryDepartmentByUserName" parameterType="String" resultMap="DepartmentResult">
+         select departmentid,departmentname,gradingunitid from department where userName=#{userName}
     </select>
     <resultMap type="Department" id="DepartmentResult">
         <result property="departmentId" column="departmentid"/>

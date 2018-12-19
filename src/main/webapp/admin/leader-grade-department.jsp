@@ -212,9 +212,9 @@
                    }
                }                                                   
             }        
-        })     　　
+        });
       });
-	
+	  
 	function commitgrade(){		
 		 var dataMap = {};
 		 var nameKey = "";
@@ -225,7 +225,7 @@
 	                 dataMap[nameKey]  = obj.value;
                 
             }
-        });
+        }); 
         dataJson = JSON.stringify(dataMap);
         
           $.ajax({

@@ -2,6 +2,9 @@ package com.bluedot.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bluedot.po.Cadre;
 import com.bluedot.po.Department;
+import com.bluedot.po.User;
 import com.bluedot.service.QualitativeService;
 
 /**
@@ -47,8 +51,10 @@ public class QualitativeController {
      * */
     @RequestMapping("/showdepartment")
     @ResponseBody
-    public List<Department> loadDepartment() {
-        List<Department> departmentList = qualitativeService.loadDepartment();
+    public List<Department> loadDepartment(HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        System.out.println("user==="+user);
+        List<Department> departmentList = qualitativeService.loadDepartment(user.getUserName());
         return departmentList;
     }
     

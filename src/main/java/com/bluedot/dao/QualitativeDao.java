@@ -16,10 +16,11 @@ import com.bluedot.po.QuantifyYearGrade;
 public interface QualitativeDao {
     public List<Cadre> queryCadreByDepartment(@Param("ofDepartment")int ofDepartment);
 
-    public List<Department> queryDepartment();
+    public List<Department> queryDepartmentByUserName(String userName);
     
     public Department getDepartmentById(Integer id);
 
+    public Department getDepartmentByName(String departmentName);
 
     public List<Cadre> queryAllPlusCadre(Integer rank);
 
