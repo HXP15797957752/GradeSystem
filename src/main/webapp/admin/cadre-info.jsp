@@ -18,10 +18,8 @@
   <meta name="apple-mobile-web-app-title" content="Amaze UI" />
   <link rel="stylesheet" href="${APP_PATH}/css/amazeui.min.css"/>
   <link rel="stylesheet" href="${APP_PATH}/css/admin.css">
-  <link rel="stylesheet" type="text/css" href="${APP_PATH}/js/jquery-easyui-1.5.5.4/easyui.css">
   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
-	<script type="text/javascript" src="${APP_PATH}/js/jquery-easyui-1.5.5.4/jquery.easyui.min.js"></script>
-	<script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script> 
+
 </head>
 <body>
    <header class="am-topbar admin-header">
@@ -180,10 +178,10 @@
 	<!-- </form> -->
       <div class="am-u-sm-12">
       	<hr/>
-        <table class="am-table am-table-bordered am-table-radius am-table-striped">
+        <table id="table" class="am-table am-table-bordered am-table-radius am-table-striped" style="table-layout:fixed;">
           <thead>
           <tr>
-            <th>序号</th><th>工资编号</th><th>姓名</th><th>职位</th><th>级别</th><th>所在部门</th><th>操作</th>
+            <th>ID</th><th>工资编号</th><th>姓名</th><th>职位</th><th>级别</th><th>所在部门</th><th>操作</th>
           </tr>
           </thead>
           <tbody id="pluscadre">
@@ -195,7 +193,23 @@
         </table>
       </div>
     </div>
-
+			<div class="am-modal am-modal-confirm" tabindex="-1" id="update">
+			  <div class="am-modal-dialog">
+			    <div class="am-modal-hd">修改处级干部信息</div>
+			    <div class="am-modal-bd" id="cadreform">
+					  ID：<input type="text" id="cadreID" value="11" disabled="disabled"/><br>
+			工资编号：<input type="text" id="salaryID" value="12345678" disabled="disabled"/><br>
+					 姓    名：<input type="text" id="cadreName" value="书记" disabled="disabled"/><br>
+			    	职     位：<input type="text" id="position" value="书记"/><br>
+			    	级     别：<input type="text" id="rank"/><br>
+			    	部     门：<input type="text" id="ofDepartment"/><br>
+			    </div>
+			    <div class="am-modal-footer">
+			      <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+			      <span class="am-modal-btn" data-am-modal-confirm>修改</span>
+			    </div>
+			  </div>
+			</div>
    
   </div>
   <!-- content end -->
@@ -205,21 +219,7 @@
 <footer>
   <hr>
   <p class="am-padding-left">© 2018 江西农业大学.蓝点工作室</p>
-</footer>
-<div id="dlg2" class="easyui-dialog" style="width:400px;height:180px;padding:10px 20px" closed="true" buttons="#dlg-buttons2">  
-    <form id="uploadForm" action="${APP_PATH}/user/excel/upload.do" method="post" enctype="multipart/form-data" >  
-        <table>  
-            <tr>  
-                <td>上传文件：</td>  
-                <td><input type="file" name="unitManageFile"></td>  
-            </tr>  
-        </table>  
-    </form>  
-</div>  
-<div id="dlg-buttons2">  
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="uploadExcel()">上传excel</a>  
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg2').dialog('close')">关闭</a>  
-</div>
+</footer> 
 		<script src="${APP_PATH }/js/jquery.min.js"></script>
 		<script src="${APP_PATH }/js/amazeui.min.js"></script>
 <script type="text/javascript">
@@ -233,13 +233,13 @@ $(document).ready(function(){
         success:function(data){      
             console.log(data);
            if(data.length==0){
-               alert("未获取到单位参数，请稍后重试！");
+               alert("未获取到正职参数，请稍后重试！");
            }else{
                for(var cadre in data){
             	   var cid = data[cadre].cadreID;
             	   var rank  = data[cadre].rank==0?"正处级":"副处级";
 
-                   var addtr = '<tr><td>'+cid+'</td><td>'+data[cadre].salaryID+'</td><td>'+data[cadre].cadreName+'</td><td>'+data[cadre].position+'</td><td>'+rank+'</td><td>'+data[cadre].ofDepartment.departmentName+'</td><td><button  class="am-btn am-btn-primary am-btn-xs">修改</button></td></tr>'
+                   var addtr = '<tr><td>'+cid+'</td><td>'+data[cadre].salaryID+'</td><td>'+data[cadre].cadreName+'</td><td>'+data[cadre].position+'</td><td>'+rank+'</td><td>'+data[cadre].ofDepartment.departmentName+'</td><td><div class="am-fr"><button onclick="updateCadre('+cid+')" type="submit" class="am-btn am-btn-primary am-btn-xs">修改</button><button onclick="deleteRow(this,'+cid+')" type="button" class="am-btn am-btn-default am-btn-xs">删除</button></div></td></tr>';
 
                    $("#pluscadre").append(addtr);
                }
@@ -255,12 +255,12 @@ $(document).ready(function(){
         success:function(data){      
             console.log(data);
            if(data.length==0){
-               alert("未获取到单位参数，请稍后重试！");
+               alert("未获取到副职参数，请稍后重试！");
            }else{
                for(var cadre in data){
             	   var cid = data[cadre].cadreID;
             	   var rank  = data[cadre].rank==0?"正处级":"副处级";
-                   var addtr = '<tr><td>'+cid+'</td><td>'+data[cadre].salaryID+'</td><td>'+data[cadre].cadreName+'</td><td>'+data[cadre].position+'</td><td>'+rank+'</td><td>'+data[cadre].ofDepartment.departmentName+'</td><td><button  class="am-btn am-btn-primary am-btn-xs">修改</button></td></tr>'
+                   var addtr = '<tr><td>'+cid+'</td><td>'+data[cadre].salaryID+'</td><td>'+data[cadre].cadreName+'</td><td>'+data[cadre].position+'</td><td>'+rank+'</td><td>'+data[cadre].ofDepartment.departmentName+'</td><td><div class="am-fr"><button onclick="updateCadre('+cadre+')" type="button" class="am-btn am-btn-primary am-btn-xs">修改</button><button onclick="deleteRow(this,'+cid+')" type="button" class="am-btn am-btn-default am-btn-xs">删除</button></div></td></tr>'
  
                    $("#subcadre").append(addtr);
                }
@@ -287,6 +287,60 @@ function downloadfile(){
 	window.location.href="${APP_PATH}/downloadexcel.do"
 }
 	
+	function deleteRow(r,id){
+		var i = r.parentNode.parentNode.rowIndex;
+		document.getElementById("table").deleteRow(i);
+		$.ajax({
+	        url:'${APP_PATH}/schoolgrade/deletecadrebyid.do',
+	        data:{"cadreID":id},
+	        datatype:'json',
+	        type:'post',
+	        success:function(data){      
+	            alert("刪除成功！");                                                 
+	        }        
+	    })  
+	}
+	
+	function updateCadre(cadreID){
+		$.ajax({
+	        url:'${APP_PATH}/schoolgrade/getcadrebyid.do',	    
+	        data:{"cadreID":cadreID},
+	        datatype:'json',
+	        type:'post',
+	        success:function(data){  
+	        	
+	        	
+	        	var rank  = data.rank==0?"正处级":"副处级";
+	        	$("#cadreform").html('ID：<input type="text" id="cadreID" value="'+data.cadreID+'" disabled="disabled"/><br>工资编号：<input type="text" id="salaryID" value="'+data.salaryID+'" disabled="disabled"/><br> 姓    名：<input type="text" id="cadreName" value="'+data.cadreName+'" disabled="disabled"/><br>	职     位：<input type="text" id="position" value="'+data.position+'"/><br>级     别：<input type="text" id="rank" value="'+rank+'"/><br>部     门：<input type="text" id="ofDepartment" value="'+data.ofDepartment.departmentName+'"/><br>');
+	        	
+	        	
+	        	$('#update').modal({
+	                relatedTarget: this,
+	                onConfirm: function(options) {
+	                	var rank  = $("#rank").val()=="正处级"?0:1;
+	                	$.ajax({
+	            	        url:'${APP_PATH}/schoolgrade/updatecadre.do',
+	            	        data:{"cadreID":$("#cadreID").val(),"salaryID":$("#salaryID").val(),"cadreName":$("#cadreName").val(),
+	            	        	"position":$("#position").val(),"rank":rank, "departmentName":$("#ofDepartment").val()
+	            	        	},
+	            	        datatype:'json',
+	            	        type:'post',
+	            	        success:function(data){      
+	            	            alert("修改成功！");                                                 
+	            	        }        
+	            	    }) 
+	                    var cadreName = $("#cadreName").val();
+	                    alert($("#position").val());
+	                    alert(cadreName+'确定了，但不知道要整哪样');
+	                },
+	                // closeOnConfirm: false,
+	                onCancel: function() {
+	                  //alert('算求，不弄了');
+	                }
+	              });                                              
+	        }        
+	    })  
+	}
 </script>
 
 

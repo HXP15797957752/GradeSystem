@@ -21,6 +21,14 @@ public interface QualitativeService {
     List<Department> loadDepartmentByType(int type);
 
     List<Department> loadDepartment();
+
+    void deleteCadreByID(int cadreID);
+
+    Cadre getCadreById(int cadreID);
+
+    void updateCadre(Cadre cadre);
+
+    Department queryDepartmentByName(String departmentName);
     
 
 }

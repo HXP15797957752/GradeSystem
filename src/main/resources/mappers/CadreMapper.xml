@@ -8,5 +8,7 @@
     	 values(#{salaryID}, #{cadreName}, #{position}, #{rank}, #{departmentId})
     </insert>
     
-    
+    <update id="updateCadre" parameterType="Cadre">
+    	update cadre set position=#{position}, rank=#{rank}, ofDepartment=#{departmentId} where cadreID=#{cadreID}
+    </update>
 </mapper>

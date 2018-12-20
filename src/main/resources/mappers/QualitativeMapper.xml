@@ -6,7 +6,7 @@
         select * from cadre where rank= #{rank}
     </select>
 
-	<select id="getCadreById" parameterType="int" resultType="Cadre">
+	<select id="getCadreById" parameterType="int" resultMap="CadreResultMap">
         select * from cadre where cadreID=#{cadreID}
     </select>
     
@@ -50,4 +50,9 @@
     <select id="queryDepartmentQuantifyGrade" parameterType="QuantifyYearGrade" resultType="QuantifyYearGrade">
     	select  id, year, departmentId, sumGrade, departmentName from quantifygrade where year=#{year} and departmentId=#{departmentId} 
     </select>
+    
+    <delete id="deleteCadreByID" parameterType="int">
+    	delete from cadre where cadreID=#{cadreID}
+    </delete>
+    
 </mapper>

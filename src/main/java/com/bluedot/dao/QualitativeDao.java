@@ -24,11 +24,16 @@ public interface QualitativeDao {
 
     public List<Cadre> queryAllPlusCadre(Integer rank);
 
-    public Cadre getCadreById(Integer id);
+    public Cadre getCadreById(Integer id);  
 
     public List<Department> queryDepartmentByType(int type);
     
     public QuantifyYearGrade queryDepartmentQuantifyGrade(QuantifyYearGrade guantifyYearGrade);
 
     public List<Department> queryDepartment();
+
+    public void deleteCadreByID(int cadreID);
+
+  
+
 }

@@ -39,7 +39,7 @@ public class ComputeServiceImpl implements ComputeService {
      * 计算教学单位年度总分，并返回一个list给controller
      * */
     @Override
-    public List<GradeDepartmentView> loadTeachYearScore() {
+    public List<GradeDepartmentView> loadTeachYearScore(Integer year) {
         //需要用来装GradeDepartmentView的List
         List <GradeDepartmentView> viewList  = new ArrayList();
         //查询教学部门集合
@@ -48,7 +48,7 @@ public class ComputeServiceImpl implements ComputeService {
         for(Department department:departmentList) {
             VoteDepartment voteDepartment = new VoteDepartment();
             //设置年份
-            voteDepartment.setYear(LocalDate.now().getYear());
+            voteDepartment.setYear(year);
             Integer id  = department.getDepartmentId();    
             voteDepartment.setDepartmentID(id);
             GradeDepartmentView view = new GradeDepartmentView();
@@ -77,7 +77,7 @@ public class ComputeServiceImpl implements ComputeService {
             //定量评价总分
             QuantifyYearGrade quantifyYearGrade = new QuantifyYearGrade();
             quantifyYearGrade.setDepartmentId(id);
-            quantifyYearGrade.setYear(LocalDate.now().getYear());
+            quantifyYearGrade.setYear(year);
             QuantifyYearGrade query_quantify_score = qualitativeDao.queryDepartmentQuantifyGrade(quantifyYearGrade);
             QuantifyYearGrade quantify_score = query_quantify_score ==null? new QuantifyYearGrade(0.0):query_quantify_score;
             //设置定量评分
@@ -88,12 +88,12 @@ public class ComputeServiceImpl implements ComputeService {
             view.setDepartmentYearScore(view.getLeaderScore_rate()+view.getDepartmentInnerScore_rate()+view.getSchoolVoteScore_rate()+view.getQuantifySocre_rate());
             //根据年份 单位ID查询教学单位年度总分，若存在则更新，不存在则新增
             DepartmentYearScoreRecord queryRecord =computeDao
-                    .queryDepartmentYearScoreRecordByIDAndYear(new DepartmentYearScoreRecord((Integer)LocalDate.now().getYear(),id));
+                    .queryDepartmentYearScoreRecordByIDAndYear(new DepartmentYearScoreRecord((Integer)year,id));
             if (null!=queryRecord) {
-                computeDao.updateDepartmentYearScoreRecord(new DepartmentYearScoreRecord((Integer)LocalDate.now().getYear(),
+                computeDao.updateDepartmentYearScoreRecord(new DepartmentYearScoreRecord((Integer)year,
                         id, view.getDepartmentName(), view.getDepartmentYearScore()));
             }else {
-                computeDao.saveDepartmentYearScoreRecord(new DepartmentYearScoreRecord((Integer)LocalDate.now().getYear(),
+                computeDao.saveDepartmentYearScoreRecord(new DepartmentYearScoreRecord((Integer)year,
                         id, view.getDepartmentName(), view.getDepartmentYearScore()));
             }
             viewList.add(view);
@@ -104,7 +104,7 @@ public class ComputeServiceImpl implements ComputeService {
      * 计算管理单位年度总分并存数据库，并返回一个list给controller
      * */
     @Override
-    public List<GradeDepartmentView> loadManageYearScore() {
+    public List<GradeDepartmentView> loadManageYearScore(Integer year) {
       //需要用来装GradeDepartmentView的List
         List <GradeDepartmentView> viewList  = new ArrayList();
         //查询管理部门集合
@@ -113,7 +113,7 @@ public class ComputeServiceImpl implements ComputeService {
         for(Department department:departmentList) {
             VoteDepartment voteDepartment = new VoteDepartment();
             //设置年份
-            voteDepartment.setYear(LocalDate.now().getYear());
+            voteDepartment.setYear(year);
             Integer id  = department.getDepartmentId();    
             voteDepartment.setDepartmentID(id);
             GradeDepartmentView view = new GradeDepartmentView();
@@ -142,7 +142,7 @@ public class ComputeServiceImpl implements ComputeService {
             //定量评价总分
             QuantifyYearGrade quantifyYearGrade = new QuantifyYearGrade();
             quantifyYearGrade.setDepartmentId(id);
-            quantifyYearGrade.setYear(LocalDate.now().getYear());
+            quantifyYearGrade.setYear(year);
             QuantifyYearGrade query_quantify_score = qualitativeDao.queryDepartmentQuantifyGrade(quantifyYearGrade);
             QuantifyYearGrade quantify_score = query_quantify_score ==null? new QuantifyYearGrade(0.0):query_quantify_score;
             //设置定量评分
@@ -154,12 +154,12 @@ public class ComputeServiceImpl implements ComputeService {
           //将单位年度总分保存到数据库
           //根据年份 单位ID查询教学单位年度总分，若存在则更新，不存在则新增
             DepartmentYearScoreRecord queryRecord =computeDao
-                    .queryDepartmentYearScoreRecordByIDAndYear(new DepartmentYearScoreRecord((Integer)LocalDate.now().getYear(),id));
+                    .queryDepartmentYearScoreRecordByIDAndYear(new DepartmentYearScoreRecord((Integer)year,id));
             if (null!=queryRecord) {
-                computeDao.updateDepartmentYearScoreRecord(new DepartmentYearScoreRecord((Integer)LocalDate.now().getYear(),
+                computeDao.updateDepartmentYearScoreRecord(new DepartmentYearScoreRecord((Integer)year,
                         id, view.getDepartmentName(), view.getDepartmentYearScore()));
             }else {
-                computeDao.saveDepartmentYearScoreRecord(new DepartmentYearScoreRecord((Integer)LocalDate.now().getYear(),
+                computeDao.saveDepartmentYearScoreRecord(new DepartmentYearScoreRecord((Integer)year,
                         id, view.getDepartmentName(), view.getDepartmentYearScore()));
             }
             viewList.add(view);
@@ -170,7 +170,7 @@ public class ComputeServiceImpl implements ComputeService {
      * 计算正职年度总分并存数据库，并返回一个list给controller
      * */
     @Override
-    public List<GradeCadreView> loadCadreYearScore(){
+    public List<GradeCadreView> loadCadreYearScore(Integer year){
         //用于返回的List
         List<GradeCadreView> viewList = new ArrayList<GradeCadreView>();
         //获取所有正职集合
@@ -184,7 +184,7 @@ public class ComputeServiceImpl implements ComputeService {
             view.setCadreName(cadre.getCadreName());
             VoteCadre  cadreVote = new VoteCadre();
             cadreVote.setType(2);
-            cadreVote.setYear(LocalDate.now().getYear());
+            cadreVote.setYear(year);
             cadreVote.setCadreID(cadre.getCadreID());
             //查询并赋值单位内部测评对象
             VoteCadre queryCadreVote = voteDao.queryVoteCadreRecord(cadreVote);
@@ -198,8 +198,7 @@ public class ComputeServiceImpl implements ComputeService {
             view.setSchoolVote(cadreSchoolVoteView);
             view.setSchoolVoteScore_rate(cadreSchoolVoteView.getSum()*GradeCadreView.SCHOOL_TO_CADRE_RATE);
             //查询并设置本单位年度考核得分
-            DepartmentYearScoreRecord ds = computeDao.queryDepartmentYearScoreRecordByIDAndYear(new DepartmentYearScoreRecord((Integer)LocalDate.now()
-                    .getYear(), cadre.getDepartmentId()));
+            DepartmentYearScoreRecord ds = computeDao.queryDepartmentYearScoreRecordByIDAndYear(new DepartmentYearScoreRecord((Integer)year, cadre.getDepartmentId()));
             Double yearScore = (ds==null?0.0:ds.getYearScore());
             view.setDepartmentYearGrade(yearScore);
             view.setDepartmentYearGrade_rate(yearScore*GradeCadreView.DEPARTMENT_YEAR_SCORE_RATE);
@@ -214,13 +213,13 @@ public class ComputeServiceImpl implements ComputeService {
                     view.getDepartmentYearGrade_rate()+view.getLeaderScore_rate());
             //查询 更新干部年度总分
           //根据年份 ID查询干部年度总分，若存在则更新，不存在则新增
-            CadreYearScoreRecord queryRecord =computeDao.queryCadreYearScoreRecordByIDAndYear(new CadreYearScoreRecord((Integer)LocalDate.now().getYear(),
+            CadreYearScoreRecord queryRecord =computeDao.queryCadreYearScoreRecordByIDAndYear(new CadreYearScoreRecord((Integer)year,
                         cadre.getCadreID()));                   
             if (null!=queryRecord) {
-                computeDao.updateCadreYearScoreRecord(new CadreYearScoreRecord((Integer)LocalDate.now().getYear(), cadre.getCadreID(), cadre.getCadreName(),
+                computeDao.updateCadreYearScoreRecord(new CadreYearScoreRecord((Integer)year, cadre.getCadreID(), cadre.getCadreName(),
                         cadre.getRank(), cadre.getOfDepartment().getDepartmentName(), view.getCadre_year_score()));
             }else {
-                computeDao.saveCadreYearScoreRecord(new CadreYearScoreRecord((Integer)LocalDate.now().getYear(), cadre.getCadreID(), cadre.getCadreName(),
+                computeDao.saveCadreYearScoreRecord(new CadreYearScoreRecord((Integer)year, cadre.getCadreID(), cadre.getCadreName(),
                         cadre.getRank(), cadre.getOfDepartment().getDepartmentName(), view.getCadre_year_score()));
             }        
             viewList.add(view);
@@ -231,7 +230,7 @@ public class ComputeServiceImpl implements ComputeService {
      * 计算副职年度总分并存数据库，并返回一个list给controller
      * */
     @Override
-    public List<GradeSubCadreView> loadSubCadreYearScore() {
+    public List<GradeSubCadreView> loadSubCadreYearScore(Integer year) {
       //用于返回的List
         List<GradeSubCadreView> viewList = new ArrayList<GradeSubCadreView>();
         //获取所有正职集合
@@ -245,7 +244,7 @@ public class ComputeServiceImpl implements ComputeService {
             view.setCadreName(cadre.getCadreName());
             VoteCadre  cadreVote = new VoteCadre();
             cadreVote.setType(3);
-            cadreVote.setYear(LocalDate.now().getYear());
+            cadreVote.setYear(year);
             cadreVote.setCadreID(cadre.getCadreID());
             //查询并赋值单位内部测评对象
             VoteCadre queryCadreVote = voteDao.queryVoteCadreRecord(cadreVote);
@@ -259,8 +258,7 @@ public class ComputeServiceImpl implements ComputeService {
             view.setCadreVote(cadreToSubcadreVote);
             view.setCadreScore_rate(cadreToSubcadreVote.getSum()*GradeSubCadreView.CADRE_TO_SUBCADRE_RATE);
             //查询并设置本单位年度考核得分
-            DepartmentYearScoreRecord ds = computeDao.queryDepartmentYearScoreRecordByIDAndYear(new DepartmentYearScoreRecord((Integer)LocalDate.now()
-                    .getYear(), cadre.getDepartmentId()));
+            DepartmentYearScoreRecord ds = computeDao.queryDepartmentYearScoreRecordByIDAndYear(new DepartmentYearScoreRecord((Integer)year, cadre.getDepartmentId()));
             Double yearScore = (ds==null?0.0:ds.getYearScore());
             view.setDepartmentYearGrade(yearScore);
             view.setDepartmentYearGrade_rate(yearScore*GradeSubCadreView.DEPARTMENT_YEAR_SCORE_RATE);
@@ -268,13 +266,13 @@ public class ComputeServiceImpl implements ComputeService {
             //计算副职干部考核总分
             view.setSubCadre_year_score(view.getDepartmentInnerScore_rate()+view.getDepartmentYearGrade_rate()+view.getCadreScore_rate());
           //根据年份 ID查询干部年度总分，若存在则更新，不存在则新增
-            CadreYearScoreRecord queryRecord =computeDao.queryCadreYearScoreRecordByIDAndYear(new CadreYearScoreRecord((Integer)LocalDate.now().getYear(),
+            CadreYearScoreRecord queryRecord =computeDao.queryCadreYearScoreRecordByIDAndYear(new CadreYearScoreRecord((Integer)year,
                         cadre.getCadreID()));                   
             if (null!=queryRecord) {
-                computeDao.updateCadreYearScoreRecord(new CadreYearScoreRecord((Integer)LocalDate.now().getYear(), cadre.getCadreID(), cadre.getCadreName(),
+                computeDao.updateCadreYearScoreRecord(new CadreYearScoreRecord((Integer)year, cadre.getCadreID(), cadre.getCadreName(),
                         cadre.getRank(), cadre.getOfDepartment().getDepartmentName(), view.getSubCadre_year_score()));
             }else {
-                computeDao.saveCadreYearScoreRecord(new CadreYearScoreRecord((Integer)LocalDate.now().getYear(), cadre.getCadreID(), cadre.getCadreName(),
+                computeDao.saveCadreYearScoreRecord(new CadreYearScoreRecord((Integer)year, cadre.getCadreID(), cadre.getCadreName(),
                         cadre.getRank(), cadre.getOfDepartment().getDepartmentName(), view.getSubCadre_year_score()));
             } 
             viewList.add(view);

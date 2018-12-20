@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bluedot.dao.CadreDao;
 import com.bluedot.dao.QualitativeDao;
 import com.bluedot.po.Cadre;
 import com.bluedot.po.Department;
@@ -18,6 +19,8 @@ import com.bluedot.service.QualitativeService;
 public class QualitativeServiceImpl implements QualitativeService {
     @Autowired
     private QualitativeDao qualitativeDao;
+    @Autowired
+    private CadreDao cadreDao;
     /*
      * 查询所有正职干部信息
      * */
@@ -52,6 +55,33 @@ public class QualitativeServiceImpl implements QualitativeService {
     public List<Department> loadDepartment() {
         List<Department> departmentList  = qualitativeDao.queryDepartment();
         return departmentList;
+    }
+
+    @Override
+    public void deleteCadreByID(int cadreID) {
+        qualitativeDao.deleteCadreByID(cadreID);
+        
+    }
+
+    @Override
+    public Cadre getCadreById(int cadreID) {
+        Cadre cadre = qualitativeDao.getCadreById(cadreID);
+        return cadre;
+    }
+
+    @Override
+    public void updateCadre(Cadre cadre) {
+       
+        cadreDao.updateCadre(cadre);
+        
+    }
+    /*
+     * 通过Name查询部门
+     * */
+    @Override
+    public Department queryDepartmentByName(String departmentName) {
+        Department department = qualitativeDao.getDepartmentByName(departmentName);
+        return department;
     }
     
 }

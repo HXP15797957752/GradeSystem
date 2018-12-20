@@ -1,10 +1,12 @@
 package com.bluedot.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bluedot.po.GradeCadreView;
@@ -27,8 +29,10 @@ public class ComputeController {
      * */
     @RequestMapping("/loadteach")
     @ResponseBody
-    public List<GradeDepartmentView> loadTeachYearScore(){
-        List<GradeDepartmentView> viewList = computeService.loadTeachYearScore();
+    public List<GradeDepartmentView> loadTeachYearScore(@RequestParam("year")Integer year){
+        List<GradeDepartmentView> viewList = null;
+        Integer trueYear = (year==null?LocalDate.now().getYear():year);
+            viewList = computeService.loadTeachYearScore(trueYear);
         return viewList;
     }
     /*
@@ -36,8 +40,9 @@ public class ComputeController {
      * */
     @RequestMapping("/loadmanage")
     @ResponseBody
-    public List<GradeDepartmentView> loadManageYearScore(){
-        List<GradeDepartmentView> viewList = computeService.loadManageYearScore();
+    public List<GradeDepartmentView> loadManageYearScore(@RequestParam("year")Integer year){
+        Integer trueYear = (year==null?LocalDate.now().getYear():year);
+        List<GradeDepartmentView> viewList = computeService.loadManageYearScore(trueYear);
         return viewList;
     }
     
@@ -46,8 +51,9 @@ public class ComputeController {
      * */
     @RequestMapping("/loadcadre")
     @ResponseBody
-    public List<GradeCadreView> loadCadreYearSocre(){
-        List<GradeCadreView>  viewList =computeService.loadCadreYearScore();
+    public List<GradeCadreView> loadCadreYearSocre(@RequestParam("year")Integer year){
+        Integer trueYear = (year==null?LocalDate.now().getYear():year);
+        List<GradeCadreView>  viewList =computeService.loadCadreYearScore(trueYear);
         return viewList;
     }
     /*
@@ -55,8 +61,9 @@ public class ComputeController {
      * */
     @RequestMapping("/loadsubcadre")
     @ResponseBody
-    public List<GradeSubCadreView> loadSubCadreYearScore(){
-        List<GradeSubCadreView> viewList = computeService.loadSubCadreYearScore();
+    public List<GradeSubCadreView> loadSubCadreYearScore(@RequestParam("year")Integer year){
+        Integer trueYear = (year==null?LocalDate.now().getYear():year);
+        List<GradeSubCadreView> viewList = computeService.loadSubCadreYearScore(trueYear);
         return viewList;
     }
 }

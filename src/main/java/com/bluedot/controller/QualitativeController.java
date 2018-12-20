@@ -80,6 +80,50 @@ public class QualitativeController {
         return departmentList;
     }
     
+    /*
+     * 删除干部信息
+     * */
+    @RequestMapping("/deletecadrebyid")
+    @ResponseBody
+    public void  deleteCadre(@RequestParam("cadreID")int cadreID) {
+        qualitativeService.deleteCadreByID(cadreID);
+         
+    }
+    
+    /*
+     * 查询干部信息
+     * */
+    @RequestMapping("/getcadrebyid")
+    @ResponseBody
+    public Cadre  getCadreByID(@RequestParam("cadreID")int cadreID) {
+        Cadre cadre = qualitativeService.getCadreById(cadreID);
+        return cadre;
+    }
+    
+    /*
+     * 更新干部信息
+     * */
+    @RequestMapping("/updatecadre")
+    @ResponseBody
+    public void  updateCadre(HttpServletRequest request) {
+        Integer cadreID = Integer.valueOf(request.getParameter("cadreID"));
+        Integer salaryID = Integer.valueOf(request.getParameter("salaryID"));
+        String cadreName = request.getParameter("cadreName");
+        String position = request.getParameter("position");
+        Integer rank = Integer.valueOf(request.getParameter("rank"));
+        String departmentName = request.getParameter("departmentName");
+        Department department = qualitativeService.queryDepartmentByName(departmentName);
+        if(null==department) {
+            return;
+        }
+        Cadre cadre = new Cadre(cadreID,salaryID,cadreName,position,rank);
+        cadre.setDepartmentId(department.getDepartmentId());
+        cadre.setOfDepartment(department);
+        System.out.println(cadre);
+        qualitativeService.updateCadre(cadre);
+        
+    }
+    
 }
 
 

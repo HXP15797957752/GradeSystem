@@ -212,7 +212,7 @@
          $.ajax({
              url:'${APP_PATH}/schoolgrade/showdepartmentbyname.do',
              data:{},
-             datatype:'json',
+             datatype:'json', 
              type:'post',
              success:function(data){       
                  console.log(data);

@@ -13,13 +13,13 @@ import com.bluedot.po.GradeSubCadreView;
  */
 public interface ComputeService {
 
-    List<GradeDepartmentView> loadTeachYearScore();
+    List<GradeDepartmentView> loadTeachYearScore(Integer trueYear);
 
-    List<GradeDepartmentView> loadManageYearScore();
+    List<GradeDepartmentView> loadManageYearScore(Integer trueYear);
 
-    List<GradeCadreView> loadCadreYearScore();
+    List<GradeCadreView> loadCadreYearScore(Integer trueYear);
 
-    List<GradeSubCadreView> loadSubCadreYearScore();
+    List<GradeSubCadreView> loadSubCadreYearScore(Integer trueYear);
 
   
 }

@@ -133,7 +133,20 @@
       <div class="am-u-sm-12">
       	<hr/>
       	<button id="btnexcel" type="submit" class="am-btn am-btn-primary am-btn-xs">导出表格</button>
-        <table id="excel" class="am-table am-table-bordered am-table-radius am-table-striped">
+      	<select id="year" onchange="changeYearScore()">
+      		<option value="选择年份">选择年份</option>
+			<option value="2017">2017年</option>
+			<option value="2018">2018年</option>
+			<option value="2019">2019年</option>
+			<option value="2020">2020年</option>
+			<option value="2021">2021年</option>
+			<option value="2022">2022年</option>
+			<option value="2023">2023年</option>
+			<option value="2024">2024年</option>
+			<option value="2025">2025年</option>
+			<option value="2026">2026年</option>
+		</select>
+        <table id="excel" class="am-table am-table-bordered am-table-radius am-table-striped" style="table-layout:fixed;">
           <thead>
           <tr>
             <th rowspan="4">序号</th><th rowspan="4">单位名称</th><th colspan="14">定性评分(40%)</th><th colspan="2" rowspan="3">定量评分(60%)</th><th rowspan="4">年度考核总得分</th>
@@ -199,7 +212,7 @@
 	$(document).ready(function(){	    
 	    $.ajax({
 	        url:'${APP_PATH}/yearscore/loadteach.do',
-	        data:{},
+	        data:{'year':new Date().getFullYear()},
 	        datatype:'json',
 	        type:'post',
 	        success:function(data){      
@@ -216,5 +229,33 @@
 	    })
 	  });
 </script>
+<script type="text/javascript">
+           function changeYearScore(){
+               var selectValue = document.getElementById("year").value;
+               if(selectValue == "选择年份"){
+                   //alert("请选择"); 
+               }else{
+                   $.ajax({
+                        url:'${APP_PATH}/yearscore/loadteach.do',
+                        data:{'year':selectValue},
+                        datatype:'json',
+                        type:'post',
+                        success:function(data){ 
+                        	$("#tbo").empty();
+                        	if(data.length==0){
+                        		
+             	               alert("未获取到评分数据，请稍后重试！");
+             	           }else{  
+             	               for(var gradeview in data){
+             	                   var addtr = '<tr><td>'+data[gradeview].viewID+'</td><td>'+data[gradeview].departmentName+'</td><td>'+data[gradeview].leaderScore+'</td><td>'+data[gradeview].leaderScore_rate+'</td><td>'+data[gradeview].departmentInnerVote.good+'</td><td>'+data[gradeview].departmentInnerVote.lessGood+'</td><td>'+data[gradeview].departmentInnerVote.common+'</td><td>'+data[gradeview].departmentInnerVote.bad+'</td><td>'+data[gradeview].departmentInnerVote.sum+'</td><td>'+data[gradeview].departmentInnerScore_rate+'</td><td>'+data[gradeview].schoolVote.good+'</td><td>'+data[gradeview].schoolVote.lessGood+'</td><td>'+data[gradeview].schoolVote.common+'</td><td>'+data[gradeview].schoolVote.bad+'</td><td>'+data[gradeview].schoolVote.sum+'</td><td>'+data[gradeview].schoolVoteScore_rate+'</td><td>'+data[gradeview].quantifyScore+'</td><td>'+data[gradeview].quantifySocre_rate+'</td><td>'+data[gradeview].departmentYearScore+'</td></tr>';	
+             	                   $("#tbo").append(addtr);
+             	               }
+             	           }                                                    
+                        }        
+                    })
+               }
+           };
+   
+        </script>
 </body>
 </html>

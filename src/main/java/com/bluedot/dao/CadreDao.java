@@ -9,4 +9,6 @@ import com.bluedot.po.Cadre;
  */
 public interface CadreDao {
     public void addCadre(Cadre cadre);
+
+    public void updateCadre(Cadre cadre);
 }

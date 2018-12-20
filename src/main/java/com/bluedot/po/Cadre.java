@@ -38,6 +38,14 @@ public class Cadre {
         super();
     }
 
+    public Cadre(Integer cadreID,Integer salaryID,String cadreName,String position,Integer rank) {
+        this.cadreID = cadreID;
+        this.salaryID = salaryID;
+        this.cadreName = cadreName;
+        this.position = position;
+        this.rank = rank;
+    }
+
     public Integer getCadreID() {
         return cadreID;
     }

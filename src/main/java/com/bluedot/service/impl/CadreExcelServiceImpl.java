@@ -61,7 +61,12 @@ public class CadreExcelServiceImpl implements CadreExcelService{
            if(null!=department) {
                cadre.setDepartmentId(department.getDepartmentId());
            }
-           cadreDao.addCadre(cadre);
+           Cadre queryCadre =  qualitativeDao.getCadreById(cadre.getCadreID());
+           if(null!=queryCadre) {
+               cadreDao.updateCadre(cadre);
+           }else { 
+               cadreDao.addCadre(cadre);
+           }
         } 
     }
     /*
