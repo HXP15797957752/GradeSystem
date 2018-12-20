@@ -118,13 +118,18 @@
     </div>
 
     <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
-      <li><a href="#" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>评分比例设置<br/></a></li>
-      <li><a href="#" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>考核分组设置<br/></a></li>
-      <li><a href="#" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>教学科研单位评分<br/></a></li>
-      <li><a href="#" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>管理服务单位评分<br/></a></li>
+      <li><a href="${APP_PATH }/admin/teach-unit-score-statistics.jsp" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>教学单位年度评分<br/></a></li>
+      <li><a href="${APP_PATH }/admin/manage-unit-score-statistics.jsp" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>管理单位年度评分<br/></a></li>
+      <li><a href="${APP_PATH }/admin/chief-score-statistics.jsp" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>正职年度评分<br/></a></li>
+      <li><a href="${APP_PATH }/admin/subchief-score-statistics.jsp" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>副职年度评分<br/></a></li>
     </ul>
-
-    <div class="am-g">
+    <div class="am-u-sm-12">
+		<div class="am-g">
+			<img alt="江西农业大学" src="${APP_PATH}/i/123.jpg">
+			
+		</div>
+	</div>
+    <!-- <div class="am-g">
       <div class="am-u-sm-12">
         <table class="am-table am-table-bd am-table-striped admin-content-table">
           <thead>
@@ -200,9 +205,9 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
 
-    <div class="am-g">
+    <!-- <div class="am-g">
       <div class="am-u-md-6">
         <div class="am-panel am-panel-default">
           <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-4'}">考核进度要求<span class="am-icon-chevron-down am-fr" ></span></div>
@@ -287,7 +292,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <!-- content end -->
 

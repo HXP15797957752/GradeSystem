@@ -75,13 +75,18 @@
     </div>
 
     <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
-      <li><a href="grade-table.html" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>民主测评统计<br/>2300</a></li>
-      <li><a href="teach-unit.html" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>教学科研统计<br/>308</a></li>
-      <li><a href="manage-unit.html" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>管理服务统计<br/>80082</a></li>
-      <li><a href="#" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>在线用户<br/>3000</a></li>
+      <li><a href="${APP_PATH }/user/index.jsp" class="am-text-success"><span class="am-icon-btn am-icon-file-text"></span><br/>首页<br/></a></li>
+      <li><a href="${APP_PATH}/user/unit-grade.jsp" class="am-text-warning"><span class="am-icon-btn am-icon-briefcase"></span><br/>单位民主测评<br/></a></li>
+      <li><a href="${APP_PATH}/user/school-grade.jsp" class="am-text-danger"><span class="am-icon-btn am-icon-recycle"></span><br/>学校民主测评<br/></a></li>
+      <li><a href="<c:url value='/user/usermessage.jsp'/>" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>个人资料<br/></a></li>
     </ul>
-
-    <div class="am-g">
+	<div class="am-u-sm-12">
+		<div class="am-g">
+			<img alt="江西农业大学" src="${APP_PATH}/i/123.jpg">
+			
+		</div>
+	</div>
+    <!-- <div class="am-g">
       <div class="am-u-sm-12">
         <table class="am-table am-table-bd am-table-striped admin-content-table">
           <thead>
@@ -157,9 +162,9 @@
           </tbody>
         </table>
       </div>
-    </div>
+    </div> -->
 
-    <div class="am-g">
+    <!-- <div class="am-g">
       <div class="am-u-md-6">
         <div class="am-panel am-panel-default">
           <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">文件上传<span class="am-icon-chevron-down am-fr" ></span></div>
@@ -308,7 +313,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
   <!-- content end -->
 
