@@ -16,4 +16,7 @@
 	<delete id="deleteOfDepartment" parameterType="com.bluedot.po.QuantifyYearGrade">
 		delete from quantifygrade where year = #{year,jdbcType=INTEGER} and departmentId = #{departmentId,jdbcType=INTEGER}
 	</delete>
+	<update id="updateDepartmentName" parameterType="com.bluedot.po.QuantifyYearGrade">
+		update quantifygrade set  departmentName = #{departmentName,jdbcType=VARCHAR} where  year = #{year,jdbcType=INTEGER} and departmentId = #{departmentId,jdbcType=INTEGER}
+	</update>
 </mapper>

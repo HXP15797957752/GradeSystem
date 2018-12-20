@@ -76,12 +76,22 @@ public class DepartmentServiceImpl implements DepartmentService{
 	@Override
 	public void updateDepartment(Department department) {
 		// TODO Auto-generated method stub
+		int year = Calendar.getInstance().get(Calendar.YEAR);
 		Department department2 =departmentDao.searchDepartment(department.getDepartmentId());
 		if(department.getGradingUnitId() == department2.getGradingUnitId()) {
 			departmentDao.updateDepartment(department);
+			QuantifyYearGrade quantifyYearGrade = new QuantifyYearGrade();
+			quantifyYearGrade.setDepartmentId(department.getDepartmentId());
+			quantifyYearGrade.setDepartmentName(department.getDepartmentName());
+			quantifyYearGrade.setYear(year);
+			quantifyYearGradeDao.updateDepartmentName(quantifyYearGrade);
 		}else {
 			quantifyDao.deleteQuantify(department2.getDepartmentId());
 			departmentDao.deleteDepartment(department2);
+			QuantifyYearGrade quantifyYearGrade = new QuantifyYearGrade();
+			quantifyYearGrade.setDepartmentId(department.getDepartmentId());
+			quantifyYearGrade.setYear(year);
+			quantifyYearGradeDao.deleteOfDepartment(quantifyYearGrade);
 			insertDepartment(department);
 		}
 	}
