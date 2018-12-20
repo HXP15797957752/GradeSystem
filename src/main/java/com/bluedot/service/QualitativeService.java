@@ -14,10 +14,13 @@ public interface QualitativeService {
 
     List<Cadre> loadCadre(int ofDepartment);
 
-    List<Department> loadDepartment(String userName);
+    List<Department>  loadDepartmentByName(String userName);
     
     List<Cadre> loadAllPlusCadre(Integer rank);
 
     List<Department> loadDepartmentByType(int type);
+
+    List<Department> loadDepartment();
+    
 
 }

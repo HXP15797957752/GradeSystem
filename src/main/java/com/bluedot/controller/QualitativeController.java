@@ -49,15 +49,27 @@ public class QualitativeController {
     /*
      * 加载前端页面select的option选项即被考核的单位
      * */
-    @RequestMapping("/showdepartment")
+    @RequestMapping("/showdepartmentbyname")
     @ResponseBody
-    public List<Department> loadDepartment(HttpSession session) {
+    public List<Department> loadDepartmentByName(HttpSession session) {
         User user = (User) session.getAttribute("user");
-        System.out.println("user==="+user);
-        List<Department> departmentList = qualitativeService.loadDepartment(user.getUserName());
+        List<Department> departmentList = null;
+        if(null!=user) {
+            departmentList = qualitativeService.loadDepartmentByName(user.getUserName());
+        }
         return departmentList;
     }
     
+    /*
+     * 加载前端页面select的option选项即被考核的单位
+     * */
+    @RequestMapping("/showdepartment")
+    @ResponseBody
+    public List<Department> loadDepartment(HttpSession session) {
+        List<Department> departmentList = null;
+        departmentList = qualitativeService.loadDepartment();
+        return departmentList;
+    }
     /*
      * 加载学校民主测评页面对应类型的被考核单位
      * */

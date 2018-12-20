@@ -97,7 +97,7 @@
     <div class="am-panel am-panel-default admin-sidebar-panel">
       <div class="am-panel-bd">
         <p><span class="am-icon-bookmark"></span> 公告</p>
-        <p>单位民主测评必须于2018-12-22之前完成，请相关人员督促到位。—— 组织部</p>
+        <p>年度考核过程中相关人员务必公平公正对待。—— 组织部</p>
       </div>
     </div>
 

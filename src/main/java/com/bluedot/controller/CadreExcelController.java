@@ -1,6 +1,5 @@
 package com.bluedot.controller;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,10 +17,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartRequest;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.bluedot.service.CadreExcelService;
+import com.bluedot.utils.WebUtil;
 
 /**
  * 处级干部表格导入控制类
@@ -59,7 +58,7 @@ public class CadreExcelController {
       //创建HSSFWorkbook对象(excel的文档对象)
         HSSFWorkbook wb = new HSSFWorkbook();
         //建立新的sheet对象（excel的表单）
-        HSSFSheet sheet=wb.createSheet("处级干部信息表");
+        HSSFSheet sheet= wb.createSheet("处级干部信息表");
         //在sheet里创建第一行，参数为行索引(excel的行)，可以是0～65535之间的任何一个
         HSSFRow row1=sheet.createRow(0);
         //创建单元格（excel的单元格，参数为列索引，可以是0～255之间的任何一个    
@@ -79,17 +78,11 @@ public class CadreExcelController {
         
        //输出Excel文件
           try {
-              OutputStream output=response.getOutputStream();
-              response.reset();
-              response.setHeader("Content-disposition", "attachment; filename=model.xls");
-              response.setContentType("application/msexcel");        
-              response.getWriter().append("Served at: ").append(request.getContextPath());
-              wb.write(output);
-              output.close();
-          } catch (IOException e) {
-              System.out.println("文件下载失败！");
-              e.printStackTrace();
-          }
-          
+            WebUtil.downloadExcel(response, wb, "处级干部信息导入模板.xls");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    
     }
 }

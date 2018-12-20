@@ -29,4 +29,6 @@ public interface QualitativeDao {
     public List<Department> queryDepartmentByType(int type);
     
     public QuantifyYearGrade queryDepartmentQuantifyGrade(QuantifyYearGrade guantifyYearGrade);
+
+    public List<Department> queryDepartment();
 }

@@ -34,6 +34,9 @@
     <select id="queryDepartmentByUserName" parameterType="String" resultMap="DepartmentResult">
          select departmentid,departmentname,gradingunitid from department where userName=#{userName}
     </select>
+    <select id="queryDepartment"  resultMap="DepartmentResult">
+         select departmentid,departmentname,gradingunitid from department 
+    </select>
     <resultMap type="Department" id="DepartmentResult">
         <result property="departmentId" column="departmentid"/>
         <result property="departmentName" column="departmentname"/>

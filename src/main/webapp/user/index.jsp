@@ -54,16 +54,16 @@
     <div class="am-panel am-panel-default admin-sidebar-panel">
       <div class="am-panel-bd">
         <p><span class="am-icon-bookmark"></span> 公告</p>
-        <p>时光静好，与君语；细水流年，与君同。—— Amaze</p>
+        <p>年度考核过程中相关人员务必公平公正对待。—— 组织部</p>
       </div>
     </div>
 
-    <div class="am-panel am-panel-default admin-sidebar-panel">
+    <!-- <div class="am-panel am-panel-default admin-sidebar-panel">
       <div class="am-panel-bd">
         <p><span class="am-icon-tag"></span> wiki</p>
         <p>Welcome to the Amaze wiki!</p>
       </div>
-    </div>
+    </div> -->
   </div>
   <!-- sidebar end -->
 
