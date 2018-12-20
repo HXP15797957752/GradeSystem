@@ -81,7 +81,7 @@ public class DepartmentServiceImpl implements DepartmentService{
 			departmentDao.updateDepartment(department);
 		}else {
 			quantifyDao.deleteQuantify(department2.getDepartmentId());
-			departmentDao.updateDepartment(department);
+			departmentDao.deleteDepartment(department2);
 			insertDepartment(department);
 		}
 	}
