@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="${APP_PATH}/css/admin.css">
   <link rel="stylesheet" type="text/css" href="${APP_PATH}/js/jquery-easyui-1.5.5.4/easyui.css">
   <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
-	<script type="text/javascript" src="${APP_PATH}/js/jquery-easyui-1.5.5.4/jquery.easyui.min.js"></script>
+ <script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
 	<script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script> 
 </head>
 <body>
