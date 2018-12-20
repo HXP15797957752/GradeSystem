@@ -16,4 +16,5 @@ public interface QuantifyDao {
 	public void updateQuantifyProportionAll(Quantify quantify);
 	public void updateQuantifyGradeAll(Quantify quantify);
 	public void initYear(Integer year);
+	public void deleteQuantifyKind(Quantify quantify);
 }

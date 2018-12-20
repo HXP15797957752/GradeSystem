@@ -37,6 +37,18 @@ public class QuantifyServiceImpl implements QuantifyService{
 		Integer year = Calendar.getInstance().get(Calendar.YEAR);
 		quantifyDao.initYear(year);
 	}
+	
+	@Override
+	public void deleteOptionType(Option option, Integer type) {
+		// TODO Auto-generated method stub
+		Integer year = Calendar.getInstance().get(Calendar.YEAR);
+		Quantify quantify = new Quantify();
+		quantify.setUnitID(type);
+		quantify.setOptionID(option.getId());
+		quantify.setYear(year);
+		quantifyDao.deleteQuantifyKind(quantify);
+	}
+
 	@Override
 	public void searchAllQuantify(int type, List<List<Quantify>> lists,List<Double> listSum, Integer year) {
 		// TODO Auto-generated method stub
