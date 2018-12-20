@@ -27,5 +27,7 @@
    <update id="initYear">
    		update quantify set year = #{year,jdbcType=INTEGER}
    </update>
-   
+   <delete id="deleteQuantifyKind" parameterType="com.bluedot.po.Quantify">
+   		delete from quantify where unitid = #{unitID,jdbcType=INTEGER} and year = #{year,jdbcType=INTEGER} and optionid = #{optionID,jdbcType=INTEGER}
+   </delete>
 </mapper>

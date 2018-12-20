@@ -57,11 +57,15 @@ public class QuantifyController {
 		List<Option> teacherOptions = optionService.searchTeacherOption();
 		List<Department> manageDepartment = departmentService.searchManageDepartment();
 		List<Department> teacherDepartment = departmentService.searchTeacherDepartment();
+		List<Option> teachList = optionService.searchOption(1);
+		List<Option> manageList = optionService.searchOption(2);
 		request.setAttribute("options", options);
 		request.setAttribute("manageOptions", manageOptions);
 		request.setAttribute("teacherOptions", teacherOptions);
 		request.setAttribute("manageDepartments", manageDepartment);
 		request.setAttribute("teacherDepartments", teacherDepartment);
+		request.setAttribute("manageOptionr", manageList);
+		request.setAttribute("teacherOptionr", teachList);
 		return "admin/set-score-scale";
 	}
 	@RequestMapping("/quantifyInit")
@@ -224,6 +228,11 @@ public class QuantifyController {
 	@RequestMapping("/deleteDepartment")
 	public String deleteDepartment(HttpServletRequest request, Department department) {
 		departmentService.deleteDepartment(department);
+		return "admin/index";
+	}
+	@RequestMapping("/deleteOptionKind")
+	public String deleteOption(HttpServletRequest request,Option option,Integer type) {
+		quantifyService.deleteOptionType(option,type);
 		return "admin/index";
 	}
 	@RequestMapping("/deleteOption")

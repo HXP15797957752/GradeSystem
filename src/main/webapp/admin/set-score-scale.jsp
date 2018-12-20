@@ -138,8 +138,10 @@
        <li><a href="#tab3">单位添加</a></li>
       <li><a href="#tab4">教学科研评分选项添加</a></li>
       <li><a href="#tab5">管理服务评分选项添加</a></li>
-      <li><a href="#tab6">评分选项</a></li>
-      <li><a href="#tab7">评分选项添加</a></li>
+       <li><a href="#tab6">教学科研评分选项修改</a></li>
+      <li><a href="#tab7">管理服务评分选项修改</a></li>
+      <li><a href="#tab8">评分选项</a></li>
+      <li><a href="#tab9">评分选项添加</a></li>
     </ul>
 
     <div class="am-tabs-bd">
@@ -310,8 +312,69 @@
 		      </div>
           </div>  
       </div>
-      <!--   评分选项start-->
+      
+      
+      
+       <!--   评分选项start-->
       <div class="am-tab-panel am-fade" id="tab6">                         
+          <div class="am-u-sm-12">
+            <div class="am-g am-margin-top">
+              <form class="am-form">
+		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
+		          <thead>
+		          <tr>
+		            <th>序号</th><th>评分选项名</th><th>操作</th>
+		          </tr>
+		          </thead>
+		          <tbody>
+			          <c:forEach items="${teacherOptionr }" var="option">
+			          	 <tr>
+				          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="id" value="${option.id}" readonly="true"></td>
+				          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="optionName" value="${option.optionName}"></td>
+				            <td>
+								<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="deleteTOption(this)">删除</button>
+				            </td>
+				          </tr>
+			          </c:forEach>
+		          </tbody>
+		        </table>
+		     </form>
+		      </div>
+          </div>  
+      </div>
+      
+      <!--   评分选项start-->
+      <div class="am-tab-panel am-fade" id="tab7">                         
+          <div class="am-u-sm-12">
+            <div class="am-g am-margin-top">
+              <form class="am-form">
+		        <table class="am-table am-table-bordered am-table-radius am-table-striped">
+		          <thead>
+		          <tr>
+		            <th>序号</th><th>评分选项名</th><th>操作</th>
+		          </tr>
+		          </thead>
+		          <tbody>
+			          <c:forEach items="${manageOptionr }" var="option">
+			          	 <tr>
+				          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="id" value="${option.id}" readonly="true"></td>
+				          	<td><input type="text" style="width:100%;border:none;"placeholder="请输入" name="optionName" value="${option.optionName}"></td>
+				            <td>
+								<button type="button" class="am-btn am-btn-primary am-btn-xs" onclick="deleteMOption(this)">删除</button>
+				            </td>
+				          </tr>
+			          </c:forEach>
+		          </tbody>
+		        </table>
+		     </form>
+		      </div>
+          </div>  
+      </div>
+      
+      
+      
+      <!--   评分选项start-->
+      <div class="am-tab-panel am-fade" id="tab8">                         
           <div class="am-u-sm-12">
             <div class="am-g am-margin-top">
               <form class="am-form">
@@ -340,7 +403,7 @@
       </div>
       
        <!--   评分选项添加 start-->
-      <div class="am-tab-panel am-fade" id="tab7">                         
+      <div class="am-tab-panel am-fade" id="tab9">                         
           <div class="am-u-sm-12">
             	<div class="am-g am-margin-top">
                 <form class="am-form" action="${APP_PATH }/quantify/addoption.do" method="post">
@@ -384,6 +447,7 @@
 <script type="text/javascript">
 	function deleteOption(object){
 		var tr1 = object.parentNode.parentNode;
+		tr1.style.display="none";
 		$.ajax({
 			url : "${APP_PATH }/quantify/deleteOption.do",
     		Type : "post",
@@ -398,8 +462,45 @@
     		}
 		})
 	}
+	function deleteTOption(object){
+		var tr1 = object.parentNode.parentNode;
+		tr1.style.display="none";
+		$.ajax({
+			url : "${APP_PATH }/quantify/deleteOptionKind.do",
+    		Type : "post",
+    		data :{
+    			id :tr1.cells[0].childNodes[0].value,
+    			type : 1
+    		},
+    		dataType :"json",
+    		success :function(result){
+    			alert("删除成功");
+    		},error : function(){
+    			alert("删除成功");
+    		}
+		})
+	}
+	function deleteMOption(object){
+		var tr1 = object.parentNode.parentNode;
+		tr1.style.display="none";
+		$.ajax({
+			url : "${APP_PATH }/quantify/deleteOptionKind.do",
+    		Type : "post",
+    		data :{
+    			id :tr1.cells[0].childNodes[0].value,
+    			type : 2
+    		},
+    		dataType :"json",
+    		success :function(result){
+    			alert("删除成功");
+    		},error : function(){
+    			alert("删除成功");
+    		}
+		})
+	}
     function DeleteDepartment(object){
     	var tr1 = object.parentNode.parentNode;
+    	tr1.style.display="none";
     	$.ajax({
     		url : "${APP_PATH }/quantify/deleteDepartment.do",
     		Type : "post",
