@@ -447,6 +447,7 @@
 <script type="text/javascript">
 	function deleteOption(object){
 		var tr1 = object.parentNode.parentNode;
+		tr1.style.display="none";
 		$.ajax({
 			url : "${APP_PATH }/quantify/deleteOption.do",
     		Type : "post",
@@ -463,6 +464,7 @@
 	}
 	function deleteTOption(object){
 		var tr1 = object.parentNode.parentNode;
+		tr1.style.display="none";
 		$.ajax({
 			url : "${APP_PATH }/quantify/deleteOptionKind.do",
     		Type : "post",
@@ -480,6 +482,7 @@
 	}
 	function deleteMOption(object){
 		var tr1 = object.parentNode.parentNode;
+		tr1.style.display="none";
 		$.ajax({
 			url : "${APP_PATH }/quantify/deleteOptionKind.do",
     		Type : "post",
@@ -497,6 +500,7 @@
 	}
     function DeleteDepartment(object){
     	var tr1 = object.parentNode.parentNode;
+    	tr1.style.display="none";
     	$.ajax({
     		url : "${APP_PATH }/quantify/deleteDepartment.do",
     		Type : "post",
