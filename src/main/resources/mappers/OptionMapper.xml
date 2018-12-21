@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bluedot.dao.OptionDao" >
+
+  	<insert id="insertOption" parameterType="com.bluedot.po.Option">
+  		insert into qoption (optionName)values(#{optionName,jdbcType=VARCHAR})
+  	</insert>
+  	<select id="searchAllOption" resultType="com.bluedot.po.Option">
+  		select id,optionname from qoption
+  	</select>
+  	<select id="searchManageOption" resultType="com.bluedot.po.Option">
+  		select id,optionname from qoption where id not in (select optionid from quantify where unitid = 2)
+  	</select>
+  	<select id="searchTeacherOption" resultType="com.bluedot.po.Option">
+  		select id,optionname from qoption where id not in (select optionid from quantify where unitid = 1)
+  	</select>
+  	<update id="updateOption" parameterType="com.bluedot.po.Option">
+  		update qoption set optionname =  #{optionName,jdbcType=VARCHAR} where id = #{id,jdbcType=INTEGER} 
+  	</update>
+  	<delete id="deleteOption" parameterType="com.bluedot.po.Option">
+  		delete from qoption where id = #{id,jdbcType=INTEGER}
+  	</delete>
+  	<select id="searchHTOption" resultType="com.bluedot.po.Option">
+  		select id,optionname from qoption where id in (select distinct optionid as id from quantify where unitid = 1)
+  	</select>
+  	<select id="searchHMOption" resultType="com.bluedot.po.Option">
+  		select id,optionname from qoption where id in (select distinct optionid as id from quantify where unitid = 2)
+  	</select>
+  	<delete id="deleteQuantifyByOptionId" parameterType="java.lang.Integer">
+  		delete from quantify where optionid = #{id,jdbcType=INTEGER}
+  	</delete>
+</mapper>

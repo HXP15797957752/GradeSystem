@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bluedot.dao.QuantifyYearGradeDao">
+	<select id="searchQuantifyYearGrade" resultType="com.bluedot.po.QuantifyYearGrade">
+		select distinct year from quantifygrade;
+	</select>
+	<select id="searchYearGrade" parameterType="java.lang.Integer" resultType="com.bluedot.po.QuantifyYearGrade">
+		select * from quantifygrade where year = #{year,jdbcType=INTEGER}
+	</select>
+	<insert id="insertYearGrade" parameterType="com.bluedot.po.QuantifyYearGrade">
+		insert into quantifygrade (year,departmentId,sumGrade,departmentName)values(#{year,jdbcType=INTEGER},#{departmentId,jdbcType=INTEGER},#{sumGrade,jdbcType=DOUBLE},#{departmentName,jdbcType=VARCHAR})
+	</insert>
+	<update id="updateYearGrade" parameterType="com.bluedot.po.QuantifyYearGrade">
+		update quantifygrade set departmentName = #{departmentName,jdbcType=VARCHAR},sumGrade = #{sumGrade,jdbcType=DOUBLE} where year = #{year,jdbcType=INTEGER} and departmentId = #{departmentId,jdbcType=INTEGER}
+	</update>
+	<delete id="deleteOfDepartment" parameterType="com.bluedot.po.QuantifyYearGrade">
+		delete from quantifygrade where year = #{year,jdbcType=INTEGER} and departmentId = #{departmentId,jdbcType=INTEGER}
+	</delete>
+	<update id="updateDepartmentName" parameterType="com.bluedot.po.QuantifyYearGrade">
+		update quantifygrade set  departmentName = #{departmentName,jdbcType=VARCHAR} where  year = #{year,jdbcType=INTEGER} and departmentId = #{departmentId,jdbcType=INTEGER}
+	</update>
+</mapper>

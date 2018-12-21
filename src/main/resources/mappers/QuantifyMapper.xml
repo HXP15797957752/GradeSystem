@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bluedot.dao.QuantifyDao" >
+
+   <insert id="insertQuantify" parameterType="com.bluedot.po.Quantify">
+   		insert into quantify (year,unitid,optionid,departmentid)values
+   		(#{year,jdbcType=INTEGER},#{unitID,jdbcType=INTEGER},#{optionID,jdbcType=INTEGER},#{departmentID,jdbcType=INTEGER})
+   </insert>
+   <delete id="deleteQuantify" parameterType="java.lang.Integer">
+   		delete from quantify where departmentid = #{id,jdbcType=INTEGER} 
+   </delete>
+   <update id="updateQuantifyProportion" parameterType="com.bluedot.po.Quantify">
+   		update quantify set proportion = #{proportion,jdbcType=DOUBLE} where optionid = #{optionID,jdbcType=INTEGER} and departmentid = #{departmentID,jdbcType=INTEGER}
+   </update>
+   <update id="updateQuantifyGrade" parameterType="com.bluedot.po.Quantify">
+   		update quantify set grade = #{grade,jdbcType=DOUBLE} where optionid = #{optionID,jdbcType=INTEGER} and departmentid = #{departmentID,jdbcType=INTEGER}
+   </update>
+   <select id="searchOneQuantify" parameterType="com.bluedot.po.Quantify" resultType="com.bluedot.po.Quantify">
+   		select grade,proportion,optionid,departmentid,year,id from quantify where optionid = #{optionID,jdbcType=INTEGER} and departmentid = #{departmentID,jdbcType=INTEGER} and year = #{year,jdbcType=INTEGER}
+   </select>
+   <update id="updateQuantifyProportionAll" parameterType="com.bluedot.po.Quantify">
+   		update quantify set proportion = #{proportion,jdbcType=DOUBLE} where optionid = #{optionID,jdbcType=INTEGER} and unitid = #{unitID,jdbcType=INTEGER}
+   </update>
+   <update id="updateQuantifyGradeAll" parameterType="com.bluedot.po.Quantify">
+   		update quantify set grade = #{grade,jdbcType=DOUBLE} where optionid = #{optionID,jdbcType=INTEGER} and unitid = #{unitID,jdbcType=INTEGER}
+   </update>
+   <update id="initYear">
+   		update quantify set year = #{year,jdbcType=INTEGER}
+   </update>
+   <delete id="deleteQuantifyKind" parameterType="com.bluedot.po.Quantify">
+   		delete from quantify where unitid = #{unitID,jdbcType=INTEGER} and year = #{year,jdbcType=INTEGER} and optionid = #{optionID,jdbcType=INTEGER}
+   </delete>
+</mapper>
